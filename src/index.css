@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --velvet-ivory: #F7F3EC;
+    --warm-sand: #E8DED1;
+    --deep-velvet: #321F25;
+    --rich-burgundy: #5A2935;
+    --antique-gold: #B9975B;
+    --champagne-gold: #D4BD8A;
+    --espresso: #241D1A;
+    --muted-taupe: #82756C;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #F7F3EC;
+    color: #241D1A;
+  }
+
+  body {
+    background-color: #F7F3EC;
+    color: #241D1A;
+    font-family: 'Manrope', 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, .font-editorial {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    letter-spacing: -0.01em;
+  }
+
+  /* Custom Luxury Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #F7F3EC;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #E8DED1;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #B9975B;
+  }
+}
+
+@layer utilities {
+  .text-shadow-subtle {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  }
+  
+  .text-shadow-editorial {
+    text-shadow: 0 1px 3px rgba(36, 29, 26, 0.2);
+  }
+
+  /* Luxury Image Zoom on hover */
+  .img-zoom {
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+  }
+  .group:hover .img-zoom {
+    transform: scale(1.045);
+  }
+
+  /* Thin Golden Thread Line */
+  .thread-accent-line {
+    background: linear-gradient(90deg, transparent 0%, rgba(185, 151, 91, 0.5) 25%, rgba(185, 151, 91, 0.8) 50%, rgba(185, 151, 91, 0.5) 75%, transparent 100%);
+    height: 1px;
+  }
+}
+
+/* Thread running stitch effect */
+.stitch-border {
+  border-bottom: 1px dashed rgba(185, 151, 91, 0.4);
+}
+
+/* Glassmorphism for Luxury Navigation */
+.nav-scrolled {
+  background-color: rgba(247, 243, 236, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(36, 29, 26, 0.12);
+  box-shadow: 0 4px 20px -2px rgba(50, 31, 37, 0.05);
+}
+
+/* Micro-interaction for luxury links */
+.luxury-link {
+  position: relative;
+  display: inline-block;
+}
+.luxury-link::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: #B9975B;
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.luxury-link:hover::after {
+  width: 100%;
+}
