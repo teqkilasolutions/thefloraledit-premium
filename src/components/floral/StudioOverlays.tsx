@@ -29,10 +29,11 @@ function DesignNotes() {
 function Comparison() {
   const { isComparisonOpen, setIsComparisonOpen, activeFramework, setActiveFramework } = usePresentation();
   if (!isComparisonOpen) return null;
-  return <StudioDialog title="Three expressions. One floral world." onClose={() => setIsComparisonOpen(false)} wide><div className="concept-comparison">{CONCEPTS.map(c => <div key={c.id} className={`concept-card concept-${c.id}`}><img src={floralImage(c.id === 'celebration' ? 'wedding-table.jpg' : 'atelier-composition.jpg')} alt={c.id === 'celebration' ? 'An outdoor floral celebration table' : 'An architectural arrangement of seasonal flowers'} width="400" height="400" /><div><span className="eyebrow">{c.short}</span><h3>{c.name}</h3><p>{c.description}</p><button className="studio-button" onClick={() => { setIsComparisonOpen(false); setActiveFramework(c.id); }}>{c.id === activeFramework ? <>Current concept <Check size={16} /></> : <>Explore {c.short}<ArrowUpRight size={16} /></>}</button></div></div>)}</div></StudioDialog>;
+  return <StudioDialog title="Three expressions. One floral world." onClose={() => setIsComparisonOpen(false)} wide><div className="concept-comparison">{CONCEPTS.map(c => <div key={c.id} className={`concept-card concept-${c.id}`}><img src={floralImage(c.id === 'garden' ? 'garden-gate-v2.jpg' : c.id === 'celebration' ? 'celebration-reception-v2.jpg' : 'atelier-bouquet-v2.jpg')} alt={c.id === 'garden' ? 'A rose-covered garden entrance' : c.id === 'celebration' ? 'A candlelit floral celebration' : 'A dramatic sculptural floral arrangement'} width="400" height="400" /><div><span className="eyebrow">{c.short}</span><h3>{c.name}</h3><p>{c.description}</p><button className="studio-button" onClick={() => { setIsComparisonOpen(false); setActiveFramework(c.id); }}>{c.id === activeFramework ? <>Current concept <Check size={16} /></> : <>Explore {c.short}<ArrowUpRight size={16} /></>}</button></div></div>)}</div></StudioDialog>;
 }
 
 export function StudioOverlays() {
   const { isEnquiryModalOpen, enquiryService, closeEnquiry } = usePresentation();
   return <><ProductView /><Bag /><DesignNotes /><Comparison />{isEnquiryModalOpen && <StudioDialog title="Let’s talk flowers" onClose={closeEnquiry}><div className="enquiry-dialog-intro"><span className="eyebrow">A thought is all it takes</span><p>Tell us a little about what you’re imagining.</p></div><StudioForm key={enquiryService} service={enquiryService} /></StudioDialog>}</>;
 }
+

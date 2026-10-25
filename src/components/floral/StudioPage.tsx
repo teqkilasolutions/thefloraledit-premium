@@ -1,9 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowDown, ArrowRight, ArrowUpRight, Flower2, Menu, Plus, ShoppingBag, X } from 'lucide-react';
+import { ArrowUpRight, Flower2, Menu, Plus, ShoppingBag, X } from 'lucide-react';
 import { usePresentation, type FrameworkId } from '../../context/PresentationContext';
 import { FLORAL_PRODUCTS } from '../../data/floralData';
 import { StudioForm } from './StudioForm';
 import { base, floralImage, money, YEAR } from '../../data/studio';
+import { BotanicalDrawing, CelebrationSignature, EventInvitation, ReferenceHero, StudioPromises } from './StudioArtDirection';
+import { SeasonalEdit } from './SeasonalEdit';
 
 function Brand({ light = false }: { light?: boolean }) {
   return <a className="studio-brand" href="#home" aria-label="The Floral Edit home"><img src={`${base}assets/brand/the-floral-edit-monogram-${light ? 'white' : 'dark'}.png`} width="43" height="48" alt="" /><span>The Floral Edit<small>Flowers, thoughtfully composed</small></span></a>;
@@ -33,39 +35,8 @@ function Navigation({ dark }: { dark: boolean }) {
   </nav>;
 }
 
-function Hero({ concept }: { concept: FrameworkId }) {
-  const { openEnquiry } = usePresentation();
-  if (concept === 'celebration') return <section className="celebration-hero">
-    <img className="celebration-backdrop" src={floralImage('wedding-table.jpg')} alt="An outdoor celebration table set with flowers and glassware" fetchPriority="high" />
-    <div className="celebration-shade" />
-    <div className="celebration-hero-copy"><span className="eyebrow">The art of gathering</span><h1>Some moments<br />stay with you.</h1><p>Flowers for the celebrations you’ll remember.<br className="desktop-break" /> Thoughtfully imagined. Beautifully yours.</p><button className="studio-button button-light" onClick={() => openEnquiry('Wedding & celebration flowers')}>Tell us about your celebration <ArrowUpRight size={17} /></button><a className="hero-secondary" href="#services">Explore the possibilities <ArrowDown size={15} /></a></div>
-    <div className="celebration-hero-footer"><span>Weddings · Private dinners · Meaningful occasions</span><span>Delhi NCR & beyond</span></div>
-  </section>;
-  const dark = concept === 'atelier';
-  return <section className={`editorial-hero section-shell ${dark ? 'atelier-hero' : ''}`}>
-    <div className="hero-copy"><span className="eyebrow"><span className="tiny-flower">✳</span> An independent floral design studio</span>
-      <h1>{dark ? <>Nature,<br />with a point<br />of view.</> : <>Flowers,<br />thoughtfully<br />composed.</>}</h1>
-      <p>{dark ? 'An exploration of flowers, form and feeling. Sculptural compositions and botanical spaces, made to be experienced.' : 'Seasonal flowers, sculptural vessels and the quiet beauty of something made just for you.'}</p>
-      <div className="hero-actions"><a className="studio-button" href={dark ? '#journal' : '#collections'}>{dark ? 'Discover our world' : 'Explore the collection'}<ArrowUpRight size={17} /></a><button className="text-button" onClick={() => openEnquiry(dark ? 'Bespoke floral commission' : 'Event flowers & celebrations')}>{dark ? 'Start a commission' : 'Plan an occasion'} <ArrowRight size={16} /></button></div>
-      <div className="hero-detail"><span className="status-dot" /><span>Seasonal by nature. Personal by design.</span></div>
-    </div>
-    <figure className="hero-figure"><img src={floralImage('atelier-composition.jpg')} alt="Ivory calla lilies, garden roses and burgundy flowers arranged in a ceramic amphora" width="1000" height="1250" fetchPriority="high" /><figcaption><span>The seasonal study</span><span>Ivory, burgundy & a little wildness <ArrowUpRight size={14} /></span></figcaption><span className="image-rail">The Floral Edit — Studio collection</span></figure>
-    <div className="hero-bottom"><span>Floral design & considered objects</span><a href="#services">A world in bloom <ArrowDown size={14} /></a><span>Based in New Delhi</span></div>
-  </section>;
-}
-
 function SectionHeading({ label, title, text, action }: { label: string; title: string; text?: string; action?: { href: string; title: string } }) {
   return <div className="section-heading"><div><span className="eyebrow">{label}</span><h2>{title}</h2></div>{text && <p>{text}</p>}{action && <a className="text-button" href={action.href}>{action.title}<ArrowUpRight size={16} /></a>}</div>;
-}
-
-function Services() {
-  const { openEnquiry } = usePresentation();
-  const services = [
-    { title: 'Flowers for the everyday', description: 'A thoughtful gift. A favourite corner. A small reason to pause.', image: 'tulip-bouquet.jpg', alt: 'A fresh bouquet of pink tulips in a glass vase', service: 'Seasonal & bespoke bouquets', note: 'Seasonal bouquets' },
-    { title: 'A moment, made memorable', description: 'Intimate tables to extraordinary celebrations, composed around you.', image: 'wedding-table.jpg', alt: 'Flowers and glassware on an outdoor wedding table', service: 'Wedding & event flowers', note: 'Events & celebrations' },
-    { title: 'Objects with a little soul', description: 'Sculptural ceramics to hold your flowers, or simply hold their own.', image: 'amphora.jpg', alt: 'An ivory ceramic amphora with delicate gold bands', service: 'Ceramics & vessel styling', note: 'The vessel collection' },
-  ];
-  return <section id="services" className="section-shell services-section"><SectionHeading label="The world of The Floral Edit" title="Beauty, in all its forms." text="For the everyday and the once-in-a-lifetime. Discover what we can create together." /><div className="services-grid">{services.map((s, i) => <button className="service-card" key={s.title} onClick={() => openEnquiry(s.service)}><div className="service-image"><img loading="lazy" src={floralImage(s.image)} alt={s.alt} width="700" height="850" /><span className="image-action"><ArrowUpRight size={20} /></span></div><span className="service-category">{s.note}</span><h3>{s.title}</h3><p>{s.description}</p><span className="service-line">{i === 2 ? 'Discuss vessel styling' : 'Make it personal'} <ArrowRight size={16} /></span></button>)}</div></section>;
 }
 
 function Shop() {
@@ -79,7 +50,8 @@ function Journal({ concept }: { concept: FrameworkId }) {
 }
 
 function Philosophy() {
-  return <section id="studio" className="philosophy-section"><div className="section-shell philosophy-grid"><div className="philosophy-image"><img loading="lazy" src={floralImage('tulip-bouquet.jpg')} alt="Pink tulips with natural green foliage" width="700" height="850" /><span>Always a little closer to nature.</span></div><div className="philosophy-copy"><span className="eyebrow">A note from the studio</span><h2>A little less ordinary.<br />A little more you.</h2><p>We believe the most beautiful flowers feel like they belong. To a place. To a moment. To you.</p><p>Our approach brings together a love of seasonal stems, thoughtful proportions and the small details that make something personal. From a single vessel to a room in bloom, we begin by listening.</p><div className="philosophy-signature">With flowers, always.<span>The Floral Edit</span></div><a className="text-button" href="#enquiry">Meet us in the making <ArrowUpRight size={16} /></a></div></div></section>;
+  const { activeFramework } = usePresentation();
+  return <section id="studio" className="philosophy-section"><BotanicalDrawing /><div className="section-shell philosophy-grid"><div className="philosophy-image"><img loading="lazy" src={floralImage('garden-bouquet-v2.jpg')} alt="An airy gathering of garden roses, cosmos and sweet peas" width="700" height="850" /><span>Always a little closer to nature.</span></div><div className="philosophy-copy"><span className="eyebrow">{activeFramework === 'garden' ? 'Our floral philosophy' : 'A note from the studio'}</span><h2>A little less ordinary.<br />A little more you.</h2><p>We believe the most beautiful flowers feel like they belong. To a place. To a moment. To you.</p><p>Our approach brings together a love of seasonal stems, thoughtful proportions and the small details that make something personal. From a single vessel to a room in bloom, we begin by listening.</p><div className="philosophy-signature">With flowers, always.<span>The Floral Edit</span></div><a className="text-button" href="#enquiry">Meet us in the making <ArrowUpRight size={16} /></a></div></div></section>;
 }
 
 function Process() {
@@ -97,6 +69,15 @@ function Footer({ dark }: { dark: boolean }) {
 export function StudioPage() {
   const { activeFramework, openEnquiry } = usePresentation();
   const dark = activeFramework === 'atelier';
-  return <div className={`floral-site theme-${activeFramework}`} id="home"><a className="skip-link" href="#main-content">Skip to content</a><Navigation key={activeFramework} dark={dark} /><main id="main-content"><Hero concept={activeFramework} /><div className="studio-manifesto"><Flower2 size={23} strokeWidth={1} /><p>Never just flowers. Always a feeling.</p><span>Seasonal stems. Thoughtful design. A personal touch.</span></div><Services />{activeFramework !== 'atelier' && <Shop />}<Journal concept={activeFramework} /><Philosophy />{activeFramework === 'celebration' && <Process />}{activeFramework === 'atelier' && <Shop />}<section id="enquiry" className={`enquiry-section ${activeFramework === 'celebration' ? 'enquiry-expanded' : ''}`}><div className="section-shell"><div className="enquiry-intro"><span className="eyebrow">Good things begin with a conversation</span><h2>Let’s make something<br />beautiful together.</h2><p>A thought, an occasion, a space waiting to bloom.<br />We’d love to hear what you have in mind.</p>{activeFramework !== 'celebration' && <button className="studio-button" onClick={() => openEnquiry(dark ? 'Private floral commission' : 'Bespoke flowers & events')}>Begin your floral story <ArrowUpRight size={17} /></button>}</div>{activeFramework === 'celebration' && <StudioForm service="Wedding & celebration flowers" />}</div></section></main><Footer dark={dark} /></div>;
+  return <div className={`floral-site theme-${activeFramework}`} id="home">
+    <a className="skip-link" href="#main-content">Skip to content</a>
+    <Navigation key={activeFramework} dark={dark} />
+    <main id="main-content">
+      <ReferenceHero concept={activeFramework} />
+      {activeFramework === 'garden' ? <><Philosophy /><div id="services"><SeasonalEdit key={activeFramework} /></div><StudioPromises /><Shop /><Journal concept={activeFramework} /></> : activeFramework === 'atelier' ? <><StudioPromises /><div id="services"><SeasonalEdit key={activeFramework} /></div><Journal concept={activeFramework} /><Philosophy /><Shop /></> : <><CelebrationSignature /><EventInvitation /><StudioPromises /><Journal concept={activeFramework} /><Process /><Philosophy /><Shop /></>}
+      <section id="enquiry" className={`enquiry-section ${activeFramework === 'celebration' ? 'enquiry-expanded' : ''}`}><div className="section-shell"><div className="enquiry-intro"><span className="eyebrow">Good things begin with a conversation</span><h2>Let’s make something<br />beautiful together.</h2><p>A thought, an occasion, a space waiting to bloom.<br />We’d love to hear what you have in mind.</p>{activeFramework !== 'celebration' && <button className="studio-button" onClick={() => openEnquiry(dark ? 'Private floral commission' : 'Bespoke flowers & events')}>Begin your floral story <ArrowUpRight size={17} /></button>}</div>{activeFramework === 'celebration' && <StudioForm service="Wedding & celebration flowers" />}</div></section>
+    </main><Footer dark={dark} />
+  </div>;
 }
+
 

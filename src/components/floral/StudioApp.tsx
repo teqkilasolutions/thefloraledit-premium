@@ -5,6 +5,7 @@ import { StudioPage } from './StudioPage';
 import { CONCEPTS } from '../../data/studio';
 import { StudioOverlays } from './StudioOverlays';
 import './studio.css';
+import './references.css';
 
 function Presentation() {
   const { activeFramework, setActiveFramework, viewportMode, setViewportMode, setIsSpecsOpen, setIsComparisonOpen } = usePresentation();
