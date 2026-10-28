@@ -14,13 +14,13 @@ async (page) => {
     await page.evaluate(() => document.fonts.ready);
     const metrics = await page.evaluate(() => {
       const brand = document.querySelector('.studio-nav .studio-brand').getBoundingClientRect();
-      const logo = document.querySelector('.studio-nav .studio-brand img').getBoundingClientRect();
+      const logo = document.querySelector('.studio-brand-mark').getBoundingClientRect();
       const actions = document.querySelector('.nav-actions').getBoundingClientRect();
       const navLinks = document.querySelector('.nav-links').getBoundingClientRect();
       const headings = [...document.querySelectorAll('main h1,main h2')];
       return {
         scroll: document.documentElement.scrollWidth, brandLeft:brand.left, brandRight:brand.right, actionsLeft:actions.left, linksRight:navLinks.right,
-        logo:logo.width, wordmark:parseFloat(getComputedStyle(document.querySelector('.studio-nav .studio-brand > span')).fontSize),
+        logo:logo.width, wordmark:parseFloat(getComputedStyle(document.querySelector('.studio-nav .studio-brand-name')).fontSize),
         scriptHeadings:headings.every(el=>getComputedStyle(el).fontFamily.includes('Allura')),
         headingSpans:[...document.querySelectorAll('h1 > span')].every(el=>getComputedStyle(el).fontFamily.includes('Allura')),
         tracking:headings.every(el=>{const v=getComputedStyle(el).letterSpacing;return v==='normal'||parseFloat(v)>=0;}),

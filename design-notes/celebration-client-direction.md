@@ -14,3 +14,9 @@ Preserve the ivory, blush, olive and warm brown palette and floral imagery. Alte
 Garden and Atelier remain retired. Existing product dialogs, bag persistence, mobile navigation, enquiry drafts/downloads and reduced-motion support remain in scope. No payment or server-side enquiry delivery is connected.
 
 Validation: production build, changed-source lint, responsive browser checks from 320px through 1440px (including navigation transitions), font-role and heading containment checks, menu/dialog keyboard behavior, bag quantity/persistence, service enquiry context and draft download. Desktop and mobile screenshots are reviewed with all images loaded before publishing.
+
+## Supplied master logo — 29 October 2026
+
+Use the client's 3601×3601 JPEG at public/assets/brand/the-floral-edit-master-logo.jpg. It is a byte-identical copy of IMG_4678.JPG.jpeg: no AI redraw, recolouring or removal of floral shading. The header frames the monogram more closely using CSS; live adjacent text supplies the company name and original tagline “Where floral meets design.” The footer displays the complete artwork and links to its full-resolution original. All framing removes only outer empty green space; the mark, flower, name, tagline and underline are retained in the full footer lockup. The original embedded colour profile is preserved.
+
+Verified original file hash, 3601px image decode, filter:none, desktop/mobile screenshots and navigation separation at eight viewport widths. Existing fonts, menus, shopping bag and enquiry draft behavior remain checked by the Celebration browser suite.

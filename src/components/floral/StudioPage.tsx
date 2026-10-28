@@ -7,11 +7,11 @@ import { base, floralImage, money, YEAR } from '../../data/studio';
 import { BotanicalDrawing, CelebrationSignature, EventInvitation, ReferenceHero, StudioPromises } from './StudioArtDirection';
 
 
-function Brand({ light = false }: { light?: boolean }) {
-  return <a className="studio-brand" href="#home" aria-label="The Floral Edit home"><img src={`${base}assets/brand/the-floral-edit-monogram-${light ? 'white' : 'dark'}.png`} width="88" height="88" alt="" /><span>The Floral Edit<small>Flowers, thoughtfully composed</small></span></a>;
+function Brand() {
+  return <a className="studio-brand" href="#home" aria-label="The Floral Edit home"><span className="studio-brand-mark" aria-hidden="true"><img src={`${base}assets/brand/the-floral-edit-master-logo.jpg`} width="3601" height="3601" alt="" fetchPriority="high" /></span><span className="studio-brand-name">The Floral Edit<small>Where floral meets design</small></span></a>;
 }
 
-function Navigation({ dark }: { dark: boolean }) {
+function Navigation() {
   const { cartItems, setIsCartOpen, openEnquiry } = usePresentation();
   const [menuOpen, setMenuOpen] = useState(false);
   const nav = useRef<HTMLElement>(null);
@@ -28,7 +28,7 @@ function Navigation({ dark }: { dark: boolean }) {
   return <nav ref={nav} className="studio-nav" aria-label="Main navigation">
     <div className="studio-nav-inner">
       <div className="nav-links">{links.map(([href, title]) => <a href={href} key={href}>{title}</a>)}</div>
-      <Brand light={dark} />
+      <Brand />
       <div className="nav-actions"><button className="nav-enquire" onClick={() => openEnquiry()}>Let’s talk flowers <ArrowUpRight size={15} /></button><button className="icon-button bag-button" onClick={() => { setMenuOpen(false); setIsCartOpen(true); }} aria-label={`Shopping bag, ${quantity} ${quantity === 1 ? 'item' : 'items'}`}><ShoppingBag size={19} strokeWidth={1.4} /><span className="bag-count" aria-hidden="true">{quantity}</span></button><button className="icon-button menu-button" aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen} aria-controls="studio-mobile-menu" onClick={() => setMenuOpen(v => !v)}>{menuOpen ? <X size={22} /> : <Menu size={22} />}</button></div>
     </div>
     {menuOpen && <div id="studio-mobile-menu" className="studio-mobile-menu">{links.map(([href, title]) => <a key={href} href={href} onClick={() => setMenuOpen(false)}>{title}<ArrowUpRight size={17} /></a>)}<a href="#journal" onClick={() => setMenuOpen(false)}>The inspiration journal<ArrowUpRight size={17} /></a><button className="studio-button" onClick={() => { setMenuOpen(false); openEnquiry(); }}>Plan something beautiful <ArrowUpRight size={17} /></button></div>}
@@ -62,20 +62,20 @@ function Process() {
   ].map(([n, title, copy]) => <div key={n}><span className="process-number">{n}</span><h3>{title}</h3><p>{copy}</p></div>)}</div></section>;
 }
 
-function Footer({ dark }: { dark: boolean }) {
-  return <footer className="studio-footer"><div className="section-shell"><div className="footer-main"><div><Brand light={dark} /><p>An independent floral design studio.<br />Rooted in New Delhi. Inspired by nature.</p></div><div><span className="footer-label">Explore</span><a href="#collections">The vessel collection</a><a href="#services">Flowers & occasions</a><a href="#journal">The inspiration journal</a></div><div><span className="footer-label">Come a little closer</span><a href="#studio">Our approach</a><a href="#enquiry">Begin a conversation <ArrowUpRight size={14} /></a><p>Delhi NCR & beyond<br />By private appointment</p></div></div><div className="footer-bottom"><span>© {YEAR} The Floral Edit</span><Flower2 size={19} strokeWidth={1} /><span>Creative direction by TEQKILA</span></div></div></footer>;
+function Footer() {
+  return <footer className="studio-footer"><div className="section-shell"><div className="footer-main"><div><a className="brand-artwork" href={`${base}assets/brand/the-floral-edit-master-logo.jpg`} target="_blank" rel="noopener noreferrer" aria-label="View The Floral Edit original logo in full detail (opens in a new tab)"><img src={`${base}assets/brand/the-floral-edit-master-logo.jpg`} width="3601" height="3601" alt="The Floral Edit — Where floral meets design. Original monogram with a detailed calla lily on green." loading="lazy" /></a><p>An independent floral design studio.<br />Rooted in New Delhi. Inspired by nature.</p></div><div><span className="footer-label">Explore</span><a href="#collections">The vessel collection</a><a href="#services">Flowers & occasions</a><a href="#journal">The inspiration journal</a></div><div><span className="footer-label">Come a little closer</span><a href="#studio">Our approach</a><a href="#enquiry">Begin a conversation <ArrowUpRight size={14} /></a><p>Delhi NCR & beyond<br />By private appointment</p></div></div><div className="footer-bottom"><span>© {YEAR} The Floral Edit</span><Flower2 size={19} strokeWidth={1} /><span>Creative direction by TEQKILA</span></div></div></footer>;
 }
 
 export function StudioPage() {
   return <div className="floral-site theme-celebration" id="home">
     <a className="skip-link" href="#main-content">Skip to content</a>
-    <Navigation dark={false} />
+    <Navigation />
     <main id="main-content">
       <ReferenceHero />
       <CelebrationSignature /><EventInvitation /><StudioPromises />
       <Journal concept="celebration" /><Process /><Philosophy /><Shop />
       <section id="enquiry" className="enquiry-section enquiry-expanded"><div className="section-shell"><div className="enquiry-intro"><span className="eyebrow">Good things begin with a conversation</span><h2>Let’s make something<br />beautiful together.</h2><p>A thought, an occasion, a space waiting to bloom.<br />We’d love to hear what you have in mind.</p></div><StudioForm service="Wedding & celebration flowers" /></div></section>
-    </main><Footer dark={false} />
+    </main><Footer />
   </div>;
 }
 
