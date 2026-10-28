@@ -10,7 +10,7 @@ Run `npm ci`, then `npm run dev`. `npm run build` creates a production build in 
 
 ## Typography
 
-Exactly three self-hosted font families: Allura for the single signature line, Lora for spacious formal headings and company branding, and Manrope for readable body text and controls. Font licenses are included in public/assets/fonts.
+Exactly three self-hosted font families: Allura for artistic hero and section headings, Lora for formal subheadings and company branding, and Manrope for readable body text and controls. The original monogram is prominent beside a smaller company name; generous leading and spacing keep the page open and readable. Font licenses are included in public/assets/fonts.
 
 Garden and Atelier are retired. Historical concept sources remain for reference, but old concept links always open Celebration. The presentation toolbar and comparison controls are removed.
 

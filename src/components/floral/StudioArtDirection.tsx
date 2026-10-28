@@ -22,10 +22,9 @@ export function ReferenceHero() {
     <div className="reference-hero-shade" />
     <div className="reference-hero-content celebration-hero-copy">
       <span className="hero-kicker">Floral design & meaningful celebrations</span>
-      <span className="signature-line">Where your story blooms.</span>
-      <h1>Flowers for<br />unforgettable<br className="hero-line-break" /> moments.</h1>
+      <h1><span>Where your</span><span>story blooms.</span></h1>
       <div className="hero-flourish"><span /><Leaf size={21} strokeWidth={1} /></div>
-      <p>Thoughtful flowers. Beautifully imagined spaces. Celebrations that feel entirely your own.</p>
+      <p>Thoughtful flowers. Beautifully imagined spaces.<br />Celebrations that feel entirely your own.</p>
       <div className="hero-actions"><a className="studio-button" href="#services">Explore our world <ArrowUpRight size={17} /></a><button className="reference-secondary" onClick={() => openEnquiry('Wedding & celebration flowers')}>Plan your occasion <ArrowRight size={15} /></button></div>
     </div>
     <div className="reference-hero-footer"><span>Weddings · Intimate gatherings · Floral installations</span><a href="#services">Step inside <ArrowDown size={14} /></a></div>
@@ -48,6 +47,6 @@ export function CelebrationSignature() {
 
 export function EventInvitation() {
   const { openEnquiry } = usePresentation();
-  return <section className="event-invitation"><img src={floralImage('celebration-reception-v2.jpg')} alt="Ivory and blush floral centrepieces with candlelight" loading="lazy" width="1800" height="1013" /><div className="event-invitation-shade" /><div><span className="eyebrow">Your vision. Our flowers.</span><h2>Some things are<br />meant to be felt.</h2><p>From the first idea to the last flower,<br />let’s create a setting that stays with you.</p><button className="studio-button" onClick={() => openEnquiry('Full event floral design')}>Let’s imagine your occasion <ArrowUpRight size={17} /></button></div></section>;
+  return <section className="event-invitation"><img src={floralImage('wedding-table.jpg')} alt="A garden table set with seasonal flowers and softly coloured glassware" loading="lazy" width="1200" height="900" /><div className="event-invitation-shade" /><div><span className="eyebrow">Your vision. Our flowers.</span><h2>Some things are<br />meant to be felt.</h2><p>From the first idea to the last flower,<br />let’s create a setting that stays with you.</p><button className="studio-button" onClick={() => openEnquiry('Full event floral design')}>Let’s imagine your occasion <ArrowUpRight size={17} /></button></div></section>;
 }
 

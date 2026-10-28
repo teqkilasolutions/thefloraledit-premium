@@ -1,13 +1,16 @@
-# Client-selected Celebration House
+# Celebration homepage: signature typography refinement
 
-Keep the established ivory, blush, olive and warm brown palette and event photography. Retire the concept presentation toolbar and routes to Garden/Atelier. Old concept query links must show the selected Celebration site.
+Client direction, 29 October 2026: make the original monogram more visible, reduce the company wordmark slightly, and extend artistic cursive typography to all large headings. Use two formal fonts for subheadings and content, with open proportions and easy reading throughout.
 
-Typography: exactly three loaded families. Allura is limited to one opening line, “Where your story blooms.” Lora regular/medium is used for clear, formal headings and the company wordmark. Manrope regular/medium/semibold is used for body copy and controls. Remove negative tracking, increase line height, and retain readable mobile text. Fonts are served locally with their SIL Open Font Licenses.
+The three locally hosted families now have distinct roles:
+- Allura regular for the hero and major section headings. No negative tracking, horizontal scaling or simulated bold; deliberate line breaks and generous vertical space protect the connected strokes.
+- Lora regular/medium for the company name, subheadings, service and product titles.
+- Manrope regular/medium/semibold for content, navigation, forms and controls.
 
-Make the existing monogram and company name recognisable together without dominating the header. Preserve working accessible menus, product dialogs, shopping bag, enquiry saving and export. No new backend or payment promises.
+The competing one-line signature is removed. The hero headline is now “Where your story blooms.” The original monogram grows from 62px to 88px on desktop and from 45px to 64px on typical phones, while the name reduces from 30px to 25px and from 24px to 21px respectively. Small phones retain a 58px mark with a 19px name.
 
-## Verification
+Preserve the ivory, blush, olive and warm brown palette and floral imagery. Alternate softly arched service images with straight frames. Give every section, heading and caption more room. Product prices sit beneath their titles to avoid crowding. The event invitation uses a garden table close-up, and forms stack earlier on tablets to keep fields comfortable.
 
-Production build and changed-source lint passed. The Celebration browser suite verifies single-site rendering even through legacy Garden/Atelier URLs; exactly one unwrapped signature line; correct font roles and nonnegative heading tracking; logo/control separation at 320, 390, 768, 1024 and 1440px; unobscured mobile navigation; service enquiry context; keyboard product dialogs; bag quantity, subtotal and persistence; enquiry draft downloads; and reduced motion. Independent read-only review found no important issues.
+Garden and Atelier remain retired. Existing product dialogs, bag persistence, mobile navigation, enquiry drafts/downloads and reduced-motion support remain in scope. No payment or server-side enquiry delivery is connected.
 
-Legacy concept source files remain as historical reference; neither retired design nor the presentation controls is reachable from the published site.
+Validation: production build, changed-source lint, responsive browser checks from 320px through 1440px (including navigation transitions), font-role and heading containment checks, menu/dialog keyboard behavior, bag quantity/persistence, service enquiry context and draft download. Desktop and mobile screenshots are reviewed with all images loaded before publishing.

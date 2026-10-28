@@ -4,102 +4,204 @@
 @font-face { font-family:'Manrope'; font-style:normal; font-weight:400; font-display:swap; src:url('/assets/fonts/manrope-400.ttf') format('truetype'); }
 @font-face { font-family:'Manrope'; font-style:normal; font-weight:500; font-display:swap; src:url('/assets/fonts/manrope-500.ttf') format('truetype'); }
 @font-face { font-family:'Manrope'; font-style:normal; font-weight:600; font-display:swap; src:url('/assets/fonts/manrope-600.ttf') format('truetype'); }
+
+/* Three clear voices: handwritten headlines, formal subheadings, readable copy. */
 body, .floral-site, .studio-dialog { font-family:'Manrope',sans-serif; }
 .floral-site :is(p,a,button,input,textarea,label,span,small,strong,dd,dt,li), .studio-dialog :is(p,a,button,input,textarea,label,span,small,strong,dd,dt,li) { font-family:'Manrope',sans-serif; }
-.floral-site.theme-celebration :is(h1,h2,h3,h4,h5), .studio-dialog :is(h2,h3,h4) { font-family:'Lora',Georgia,serif; letter-spacing:0; font-weight:400; line-height:1.3; }
-.floral-site .studio-brand > span { font-family:'Lora',Georgia,serif; font-size:30px; line-height:1.3; letter-spacing:.025em; font-weight:500; }
-.studio-brand img { width:62px; height:62px; object-fit:contain; }
-.studio-brand { gap:17px; }
-.studio-brand small { font-family:'Manrope',sans-serif; font-size:9px; letter-spacing:.09em; font-weight:500; margin-top:6px; }
-.studio-nav-inner { height:112px; }
+.floral-site.theme-celebration :is(h1,h2) { font-family:'Allura',cursive; font-weight:400; line-height:1.16; letter-spacing:0; }
+.floral-site.theme-celebration :is(h1,h2) > span { font:inherit; }
+.floral-site.theme-celebration :is(h3,h4,h5), .studio-dialog :is(h2,h3,h4) { font-family:'Lora',Georgia,serif; letter-spacing:0; font-weight:400; line-height:1.45; }
+.floral-site .eyebrow, .floral-site .hero-kicker { font-family:'Lora',Georgia,serif; font-size:15px; font-weight:400; letter-spacing:.015em; line-height:1.7; text-transform:none; }
+
+/* Give the original monogram presence without enlarging the company name. */
+.studio-nav-inner { height:124px; }
+.studio-brand { gap:16px; }
+.studio-brand img { width:88px; height:88px; flex-shrink:0; object-fit:contain; }
+.floral-site .studio-brand > span { font-family:'Lora',Georgia,serif; font-size:25px; font-weight:500; line-height:1.4; letter-spacing:.02em; }
+.studio-brand small { font-family:'Manrope',sans-serif; font-size:9px; line-height:1.6; letter-spacing:.025em; font-weight:400; margin-top:5px; text-transform:none; }
 .nav-links { gap:24px; font-size:13px; }
 .nav-enquire { font-size:13px; }
-.reference-hero-celebration { min-height:770px; }
-.reference-hero-celebration .reference-hero-content { padding:65px 0 105px; }
-.reference-hero-celebration .hero-kicker { font-size:11px; letter-spacing:.09em; margin-bottom:24px; }
-.floral-site .reference-hero-content > .signature-line { font-family:'Allura',cursive; display:block; font-size:clamp(36px,3.5vw,54px); font-weight:400; line-height:1.3; letter-spacing:0; white-space:nowrap; color:#d9b4a4; margin-bottom:18px; }
-.theme-celebration .reference-hero-celebration h1 { font-family:'Lora',Georgia,serif; font-size:clamp(48px,4.6vw,68px); line-height:1.22; letter-spacing:.005em; max-width:720px; }
-.hero-line-break { display:none; }
-.reference-hero-celebration .reference-hero-content > p { font-size:15px; line-height:1.9; max-width:390px; }
+html { scroll-padding-top:145px; }
+
+/* An opening with space for both the signature headline and the floral setting. */
+.reference-hero-celebration { min-height:760px; }
+.reference-hero-celebration .reference-hero-content { padding:65px 0 112px; text-align:left; }
+.reference-hero-celebration .hero-kicker { color:#faf7f1; margin-bottom:25px; }
+.theme-celebration .reference-hero-celebration h1 { font-size:clamp(100px,8.8vw,134px); line-height:1.04; letter-spacing:0; max-width:730px; text-shadow:0 2px 16px #3b302c30; }
+.reference-hero-celebration h1 > span { display:block; }
+.reference-hero-celebration .reference-hero-content > p { font-size:16px; line-height:1.95; max-width:425px; margin-top:26px; }
 .hero-flourish { margin-top:24px; }
-.reference-hero-celebration .hero-actions { gap:25px; }
+.reference-hero-celebration .hero-actions { gap:26px; margin-top:28px; }
 .studio-button, .reference-secondary { font-size:13px; letter-spacing:.015em; }
 .hero-edition { display:none; }
-.reference-hero-footer { font-size:11px; }
-.theme-celebration .signature-events-heading h2, .theme-celebration .section-heading h2 { font-size:clamp(30px,3vw,43px); line-height:1.35; }
-.theme-celebration .signature-event-card h3 { font-size:24px; line-height:1.4; }
-.signature-event-card > p { font-size:13px; line-height:1.8; }
-.theme-celebration .event-invitation h2 { font-size:48px; line-height:1.35; }
-.theme-celebration .journal-grid figcaption h3 { font-size:28px; line-height:1.4; }
-.theme-celebration .philosophy-copy h2 { font-size:39px; line-height:1.4; }
-.theme-celebration .philosophy-image > span, .theme-celebration .philosophy-signature { font-family:'Lora',Georgia,serif; font-size:20px; line-height:1.6; font-style:normal; transform:none; }
-.theme-celebration .philosophy-image > span { right:-25px; max-width:260px; font-size:18px; }
-.philosophy-copy p, .process-grid p, .section-heading > p, .event-invitation p, .enquiry-intro > p { font-size:15px; line-height:1.9; }
-.theme-celebration .process-grid h3 { font-size:30px; }
-.product-info h3 { font-size:23px; line-height:1.4; }
-.product-card > p { font-size:12px; line-height:1.8; }
-.product-info > span { font-size:13px; }
+.reference-hero-footer { font-size:11px; line-height:1.8; bottom:27px; }
+
+/* Large, airy script stays with section titles. Smaller titles remain formal. */
+.signature-events { padding-block:100px 105px; }
+.signature-events-heading { margin-bottom:48px; }
+.signature-events-heading .eyebrow { color:#74634f; margin-bottom:12px; }
+.theme-celebration .signature-events-heading h2, .theme-celebration .section-heading h2 { font-size:clamp(62px,5.8vw,84px); line-height:1.18; }
+.signature-events-heading .botanical-small { width:34px; height:40px; margin-top:14px; }
+.signature-events-grid { gap:28px; }
+.signature-event-card:nth-child(odd) > div { border-radius:160px 160px 2px 2px; }
+.signature-event-card img { height:360px; }
+.theme-celebration .signature-event-card h3 { font-size:23px; line-height:1.5; margin:24px 0 8px; }
+.signature-event-card > p { font-size:14px; line-height:1.85; }
+.event-invitation { min-height:510px; }
+.event-invitation > img { object-position:65% 60%; }
+.event-invitation-shade { background:linear-gradient(90deg,#3b302cf2 0%,#3b302cb8 36%,#3b302c26 100%); }
+.event-invitation > div:last-child { padding-block:70px; }
+.event-invitation .eyebrow { font-size:15px; }
+.theme-celebration .event-invitation h2 { font-size:clamp(68px,6vw,86px); line-height:1.14; }
+.philosophy-copy p, .process-grid p, .section-heading > p, .event-invitation p, .enquiry-intro > p { font-size:15px; line-height:1.95; }
+.studio-promises { padding-block:36px; }
+.studio-promises span { font-family:'Lora',Georgia,serif; font-size:14px; line-height:1.6; }
+.studio-promises small { font-family:'Manrope',sans-serif; font-size:12px; line-height:1.8; margin-top:6px; }
+.section-heading { margin-bottom:48px; gap:48px; align-items:center; }
+.section-heading .eyebrow { margin-bottom:13px; }
+.section-heading > div { min-width:0; }
+.section-heading > p { max-width:320px; flex-shrink:0; }
+.journal-section, .process-section { padding-block:110px; }
+.journal-grid { gap:44px; }
+.journal-grid figcaption { padding-top:26px; }
+.journal-grid figcaption > span { text-transform:none; font-size:12px; letter-spacing:.025em; margin-bottom:10px; }
+.theme-celebration .journal-grid figcaption h3 { font-size:28px; line-height:1.5; }
+.journal-link { padding-block:26px; line-height:1.8; }
+.journal-link strong { font-family:'Lora',Georgia,serif!important; font-size:23px; line-height:1.5; }
+.process-section { border-top:1px solid var(--line); }
+.process-grid { gap:55px; }
+.theme-celebration .process-grid h3 { font-size:28px; margin-block:23px 15px; }
+.philosophy-section { padding-block:110px; }
+.theme-celebration .philosophy-copy h2 { font-size:clamp(58px,4.7vw,70px); line-height:1.2; margin-bottom:30px; }
+.theme-celebration .philosophy-image > span, .theme-celebration .philosophy-signature { font-family:'Lora',Georgia,serif; font-size:20px; line-height:1.65; font-style:normal; transform:none; }
+.theme-celebration .philosophy-image > span { right:-25px; max-width:255px; font-size:18px; }
+.philosophy-signature > span { text-transform:none; font-size:12px; letter-spacing:.02em; }
+.shop-section { padding-block:100px 30px; }
+.product-info { flex-direction:column; align-items:flex-start; gap:7px; margin-top:23px; }
+.product-info h3 { font-size:23px; line-height:1.5; }
+.product-info > span { font-size:14px; }
+.product-card > p { font-size:13px; line-height:1.85; }
+.collection-note { font-size:12px; padding-block:25px 0; }
+.enquiry-section { padding-block:110px; }
+.enquiry-expanded > .section-shell { grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:7%; }
+.theme-celebration .enquiry-section h2 { font-size:clamp(60px,5.2vw,76px); line-height:1.2; max-width:560px; }
+.studio-form label { font-size:13px; line-height:1.8; }
+.studio-form :is(input,textarea) { font-family:'Manrope',sans-serif; }
+.form-note { font-size:12px; line-height:1.85; }
 .product-detail-copy h3, .bag-empty h3, .form-saved h3 { font-size:35px; line-height:1.4; }
 .product-detail-copy > p, .bag-summary > p, .bag-item-copy p { font-size:14px; line-height:1.85; }
 .studio-dialog .dialog-heading h2 { font-size:25px; line-height:1.4; }
 .studio-dialog .bag-item-copy h3 { font-size:23px; line-height:1.4; }
 .studio-dialog .text-button { font-size:13px; }
-.studio-form label { font-size:13px; line-height:1.8; }
-.studio-form :is(input,textarea) { font-family:'Manrope',sans-serif; }
-.theme-celebration .enquiry-section h2 { font-size:43px; line-height:1.4; max-width:540px; }
-.footer-main p, .footer-main > div > a:not(.studio-brand) { font-size:13px; line-height:1.85; }
-.footer-bottom { font-size:11px; }
-.studio-promises span { font-size:13px; }
-.studio-promises small { font-size:11px; line-height:1.7; }
-.journal-link strong { font-family:'Lora',Georgia,serif!important; font-size:23px; line-height:1.5; }
+.footer-main p, .footer-main > div > a:not(.studio-brand) { font-size:14px; line-height:1.9; }
+.footer-label { text-transform:none; font-family:'Lora',Georgia,serif!important; font-size:17px; letter-spacing:0; }
+.footer-bottom { font-size:12px; }
+
 @media (max-width:1150px) {
-  .studio-brand > span { font-size:27px!important; }
-  .studio-brand img { width:54px; height:54px; }
-  .nav-links { gap:15px; font-size:12px; }
-  .nav-actions { gap:12px; }
-  .reference-hero-celebration h1 { font-size:57px!important; }
+  .studio-nav-inner { gap:18px; }
+  .nav-links { gap:17px; font-size:12px; }
+  .nav-actions { gap:14px; }
+  .floral-site .studio-brand > span { font-size:23px; }
+  .studio-brand { gap:12px; }
+  .studio-brand img { width:80px; height:80px; }
+  .reference-hero-celebration { min-height:720px; }
+  .theme-celebration .reference-hero-celebration h1 { font-size:110px; }
+  .signature-events-grid { gap:20px; }
+  .signature-event-card img { height:300px; }
+  .theme-celebration .signature-event-card h3 { font-size:21px; }
+  .section-heading { gap:30px; }
+  .theme-celebration .section-heading h2 { font-size:64px; }
+  .section-heading > p { max-width:285px; font-size:14px; }
+  .studio-promises { grid-template-columns:1fr 1fr; gap:28px; }
+  .studio-promises > div { justify-content:flex-start; border:0; }
+  .theme-celebration .philosophy-copy h2 { font-size:58px; }
+  .theme-celebration .enquiry-section h2 { font-size:60px; }
   .product-info h3 { font-size:21px; }
 }
+@media (max-width:1050px) {
+  .studio-nav-inner { height:106px; }
+  .studio-brand img { width:76px; height:76px; }
+  .signature-events-grid { grid-template-columns:1fr 1fr; gap:36px 26px; }
+  .signature-event-card img { height:auto; aspect-ratio:4/4.5; }
+  .enquiry-expanded > .section-shell { grid-template-columns:1fr; gap:42px; }
+  .enquiry-intro { max-width:650px; }
+  .theme-celebration .enquiry-section h2 { font-size:72px; }
+  .enquiry-expanded .studio-form { max-width:740px; width:100%; }
+}
 @media (max-width:767px) {
-  html { scroll-padding-top:90px; }
-  .studio-nav-inner { height:90px; width:calc(100% - 32px); gap:8px; }
-  .studio-brand { gap:11px; }
-  .studio-brand img { width:45px; height:47px; }
-  .floral-site .studio-brand > span { font-size:24px!important; letter-spacing:.005em; }
-  .studio-brand small { font-size:7px; letter-spacing:.045em; }
-  .reference-hero-celebration { min-height:730px; }
-  .reference-hero-celebration .reference-hero-content { padding:45px 0 95px; }
-  .reference-hero-celebration .hero-kicker { font-size:10px; letter-spacing:.06em; margin-bottom:24px; }
-  .floral-site .reference-hero-content > .signature-line { font-size:37px; line-height:1.3; margin-bottom:18px; }
-  .theme-celebration .reference-hero-celebration h1 { font-size:39px!important; line-height:1.32; max-width:100%; letter-spacing:0; }
-  .hero-line-break { display:inline; }
-  .reference-hero-celebration .reference-hero-content > p { font-size:14px; line-height:1.9; max-width:310px; }
-  .reference-hero-celebration .hero-actions { gap:12px; margin-top:24px; }
+  html { scroll-padding-top:120px; }
+  .studio-nav-inner { height:100px; width:calc(100% - 32px); gap:8px; }
+  .studio-brand { gap:10px; }
+  .studio-brand img { width:64px; height:68px; }
+  .floral-site .studio-brand > span { font-size:21px; letter-spacing:.015em; }
+  .studio-brand small { font-size:8px; letter-spacing:0; margin-top:4px; }
+  .nav-actions { gap:4px; }
+  .reference-hero-celebration { min-height:710px; }
+  .reference-hero-celebration .reference-hero-content { padding:48px 0 110px; }
+  .reference-hero-celebration .hero-kicker { font-size:14px; max-width:270px; line-height:1.8; margin-bottom:26px; }
+  .theme-celebration .reference-hero-celebration h1 { font-size:clamp(66px,19.5vw,100px); line-height:1.1; max-width:100%; }
+  .reference-hero-celebration .reference-hero-content > p { font-size:15px; line-height:1.95; max-width:340px; margin-top:24px; }
+  .reference-hero-celebration .hero-actions { gap:14px; margin-top:26px; }
   .reference-hero-footer { font-size:10px; }
-  .signature-events-heading h2, .theme-celebration .section-heading h2 { font-size:30px; line-height:1.45; }
-  .signature-events-grid { gap:28px 16px; }
-  .theme-celebration .signature-event-card h3 { font-size:20px; line-height:1.45; }
-  .signature-event-card > p { font-size:12px; }
-  .theme-celebration .event-invitation h2 { font-size:34px; line-height:1.45; }
-  .theme-celebration .philosophy-copy h2 { font-size:32px; line-height:1.45; }
-  .theme-celebration .journal-grid figcaption h3 { font-size:26px; line-height:1.45; }
-  .theme-celebration .enquiry-section h2 { font-size:32px; line-height:1.45; }
-  .product-info h3 { font-size:21px; }
-  .studio-promises { grid-template-columns:1fr; gap:20px; }
+  .signature-events, .journal-section, .process-section, .philosophy-section, .enquiry-section { padding-block:70px; }
+  .signature-events-heading { margin-bottom:35px; }
+  .theme-celebration .signature-events-heading h2, .theme-celebration .section-heading h2 { font-size:clamp(49px,13.8vw,66px); line-height:1.18; }
+  .floral-site .eyebrow { font-size:13px; line-height:1.8; }
+  .signature-events-heading .eyebrow { margin-bottom:14px; }
+  .signature-events-grid { gap:34px 20px; }
+  .theme-celebration .signature-event-card h3 { font-size:20px; line-height:1.55; margin:20px 0 8px; }
+  .signature-event-card > p { font-size:13px; line-height:1.85; }
+  .event-invitation { min-height:490px; }
+  .event-invitation > div:last-child { padding-block:60px; }
+  .theme-celebration .event-invitation h2 { font-size:62px; line-height:1.16; }
+  .event-invitation p { font-size:15px; }
+  .event-invitation .studio-button { font-size:12px; }
+  .section-heading { gap:20px; margin-bottom:34px; align-items:flex-start; }
+  .section-heading > p { max-width:360px; font-size:15px; }
+  .studio-promises { grid-template-columns:1fr; gap:24px; padding:34px 24px; }
+  .studio-promises > div { gap:17px; }
+  .studio-promises span { font-size:15px; }
   .studio-promises small { font-size:12px; }
-  .footer-main > div > a:not(.studio-brand), .footer-main p { font-size:12px; }
-  .footer-bottom { flex-wrap:wrap; font-size:10px; }
+  .journal-grid { gap:42px; }
+  .theme-celebration .journal-main > img { height:auto; aspect-ratio:4/4.4; }
+  .theme-celebration .journal-grid figcaption h3 { font-size:25px; line-height:1.5; }
+  .process-grid { gap:32px; }
+  .theme-celebration .process-grid h3 { font-size:27px; margin-top:18px; }
+  .theme-celebration .philosophy-copy h2 { font-size:58px; line-height:1.2; }
+  .philosophy-copy p, .process-grid p { font-size:15px; }
+  .philosophy-grid { gap:64px; }
+  .philosophy-image { width:94%; }
+  .theme-celebration .philosophy-image > span { right:-15px; padding:17px 20px; max-width:235px; font-size:17px; }
+  .shop-section { padding-block:70px 25px; }
+  .product-grid { gap:30px 20px; }
+  .product-info h3 { font-size:21px; }
+  .product-card > p { font-size:12px; }
+  .product-info > span { font-size:13px; }
+  .collection-note { font-size:11px; line-height:1.8; }
+  .enquiry-expanded > .section-shell { display:grid; }
+  .theme-celebration .enquiry-section h2 { font-size:clamp(53px,14vw,64px); line-height:1.2; }
+  .enquiry-intro > p { font-size:15px; }
+  .enquiry-expanded .studio-form { margin-top:0; padding:26px 20px; }
+  .footer-main > div > a:not(.studio-brand), .footer-main p { font-size:13px; }
+  .footer-bottom { flex-wrap:wrap; font-size:11px; }
   .footer-bottom > svg { display:none; }
 }
 @media (max-width:359px) {
   .studio-nav-inner { width:calc(100% - 24px); }
-  .studio-brand img { width:36px; height:42px; }
+  .studio-brand img { width:58px; height:64px; }
   .studio-brand { gap:8px; }
-  .floral-site .studio-brand > span { font-size:20px!important; }
-  .studio-brand small { font-size:6px; }
+  .floral-site .studio-brand > span { font-size:19px; }
+  .studio-brand small { font-size:7px; }
   .nav-actions { gap:0; }
-  .reference-hero-celebration h1 { font-size:34px!important; }
-  .floral-site .reference-hero-content > .signature-line { font-size:32px; }
-  .signature-events-grid { grid-template-columns:1fr; }
-  .signature-event-card img { height:auto; aspect-ratio:4/4.2; }
+  .reference-hero-celebration .hero-kicker { font-size:13px; }
+  .theme-celebration .reference-hero-celebration h1 { font-size:65px; }
+  .reference-hero-celebration .reference-hero-content > p { font-size:14px; }
+  .signature-events-grid { grid-template-columns:1fr; gap:34px; }
+  .theme-celebration .signature-event-card h3 { font-size:24px; }
+  .theme-celebration .event-invitation h2 { font-size:54px; }
+  .theme-celebration .philosophy-copy h2 { font-size:50px; }
+  .product-grid { gap:28px 16px; }
+  .product-info h3 { font-size:19px; }
+  .theme-celebration .enquiry-section h2 { font-size:49px; }
+  .footer-main { column-gap:15px; }
 }

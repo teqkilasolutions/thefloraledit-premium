@@ -8,7 +8,7 @@ import { BotanicalDrawing, CelebrationSignature, EventInvitation, ReferenceHero,
 
 
 function Brand({ light = false }: { light?: boolean }) {
-  return <a className="studio-brand" href="#home" aria-label="The Floral Edit home"><img src={`${base}assets/brand/the-floral-edit-monogram-${light ? 'white' : 'dark'}.png`} width="43" height="48" alt="" /><span>The Floral Edit<small>Flowers, thoughtfully composed</small></span></a>;
+  return <a className="studio-brand" href="#home" aria-label="The Floral Edit home"><img src={`${base}assets/brand/the-floral-edit-monogram-${light ? 'white' : 'dark'}.png`} width="88" height="88" alt="" /><span>The Floral Edit<small>Flowers, thoughtfully composed</small></span></a>;
 }
 
 function Navigation({ dark }: { dark: boolean }) {
@@ -55,7 +55,7 @@ function Philosophy() {
 }
 
 function Process() {
-  return <section className="section-shell process-section"><SectionHeading label="Considered from the first conversation" title="Your occasion, our full attention." /><div className="process-grid">{[
+  return <section className="section-shell process-section"><SectionHeading label="Your occasion, our full attention" title="Imagined together." text="A personal approach, from our first conversation to the final flowers." /><div className="process-grid">{[
     ['01', 'We listen.', 'Your story, your setting, the atmosphere you want to create. We start with what matters to you.'],
     ['02', 'We imagine.', 'A seasonal palette, thoughtful vessels and a floral direction shaped around your occasion.'],
     ['03', 'It comes to life.', 'From the first stem to the finishing touches, every detail is considered as part of the whole.'],
@@ -74,7 +74,7 @@ export function StudioPage() {
       <ReferenceHero />
       <CelebrationSignature /><EventInvitation /><StudioPromises />
       <Journal concept="celebration" /><Process /><Philosophy /><Shop />
-      <section id="enquiry" className="enquiry-section enquiry-expanded"><div className="section-shell"><div className="enquiry-intro"><span className="eyebrow">Good things begin with a conversation</span><h2>Let’s make something beautiful together.</h2><p>A thought, an occasion, a space waiting to bloom.<br />We’d love to hear what you have in mind.</p></div><StudioForm service="Wedding & celebration flowers" /></div></section>
+      <section id="enquiry" className="enquiry-section enquiry-expanded"><div className="section-shell"><div className="enquiry-intro"><span className="eyebrow">Good things begin with a conversation</span><h2>Let’s make something<br />beautiful together.</h2><p>A thought, an occasion, a space waiting to bloom.<br />We’d love to hear what you have in mind.</p></div><StudioForm service="Wedding & celebration flowers" /></div></section>
     </main><Footer dark={false} />
   </div>;
 }
