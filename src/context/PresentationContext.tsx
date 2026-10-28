@@ -37,10 +37,7 @@ interface PresentationContextType {
 const PresentationContext = createContext<PresentationContextType | undefined>(undefined);
 
 export const PresentationProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [activeFramework, setActiveFramework] = useState<FrameworkId>(() => {
-    const requested = new URLSearchParams(window.location.search).get('concept') || new URLSearchParams(window.location.search).get('preview');
-    return requested === 'atelier' || requested === 'celebration' ? requested : 'garden';
-  });
+  const [activeFramework, setActiveFramework] = useState<FrameworkId>('celebration');
   const [viewportMode, setViewportMode] = useState<ViewportMode>('desktop');
   const [isSpecsOpen, setIsSpecsOpen] = useState(false);
   const [isComparisonOpen, setIsComparisonOpen] = useState(false);
@@ -139,3 +136,4 @@ export const usePresentation = () => {
   }
   return context;
 };
+

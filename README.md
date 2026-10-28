@@ -1,21 +1,19 @@
-# The Floral Edit — Premium
+# The Floral Edit
 
-Three refined floral website concepts: The Editorial Garden, The Botanical Atelier, and The Celebration House.
+The client-selected Celebration House website for floral design, meaningful occasions and considered vessels.
 
 Live website: https://teqkilasolutions.github.io/thefloraledit-premium/
 
-## Run locally
+## Development
 
-Install dependencies with `npm ci`, then run `npm run dev`.
+Run `npm ci`, then `npm run dev`. `npm run build` creates a production build in dist. `npm run build:pages` creates the GitHub Pages build in docs; commit its updated contents to publish.
 
-## Production
+## Typography
 
-`npm run build` builds to `dist/`. `npm run build:pages` builds to `docs/`, the GitHub Pages publishing directory. Commit updated docs after building to publish changes.
+Exactly three self-hosted font families: Allura for the single signature line, Lora for spacious formal headings and company branding, and Manrope for readable body text and controls. Font licenses are included in public/assets/fonts.
 
-## Features
+Garden and Atelier are retired. Historical concept sources remain for reference, but old concept links always open Celebration. The presentation toolbar and comparison controls are removed.
 
-Responsive layouts, coordinated illustrative photography, keyboard-accessible dialogs, persistent shopping bag, true mobile preview, saved/exportable enquiry drafts, concept comparison and design notes.
+Product views and shopping bags are interactive. Enquiries can be saved locally and downloaded. Live payment and server-side enquiry delivery are not connected.
 
-Live payments and server-side enquiry delivery are not connected. No enquiries are sent from this presentation. Drafts and shopping selections remain in the browser.
-
-Source is in `src/`; imagery is in `public/assets/floral/`; design documentation and image prompts are in `design-notes/`. Vessel and floral composition photographs are generated illustrations. Other floral imagery is from Unsplash.
+Source: src/. Photography: public/assets/floral/. Design records: design-notes/. Vessel and floral scenes include generated illustrative imagery; other floral imagery is from Unsplash.

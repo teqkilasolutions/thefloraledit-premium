@@ -1,5 +1,5 @@
 import { ArrowDown, ArrowRight, ArrowUpRight, CalendarDays, Flower2, HeartHandshake, Leaf } from 'lucide-react';
-import { type FrameworkId, usePresentation } from '../../context/PresentationContext';
+import { usePresentation } from '../../context/PresentationContext';
 import { floralImage } from '../../data/studio';
 
 export function BotanicalDrawing({ small = false }: { small?: boolean }) {
@@ -15,31 +15,22 @@ export function BotanicalDrawing({ small = false }: { small?: boolean }) {
   </svg>;
 }
 
-export function ReferenceHero({ concept }: { concept: FrameworkId }) {
+export function ReferenceHero() {
   const { openEnquiry } = usePresentation();
-  const garden = concept === 'garden';
-  const celebration = concept === 'celebration';
-  const photo = garden ? 'garden-gate-v2.jpg' : celebration ? 'celebration-reception-v2.jpg' : 'atelier-bouquet-v2.jpg';
-  const alt = garden ? 'An open sage garden gate surrounded by ivory and blush climbing roses' : celebration ? 'A candlelit reception with chandeliers, blush roses and a suspended floral canopy' : 'Sculptural ivory flowers in a tall vase against a deep botanical green backdrop';
-  return <section className={`reference-hero reference-hero-${concept}`}>
-    <img className="reference-hero-photo" src={floralImage(photo)} alt={alt} fetchPriority="high" width="1800" height="1013" />
+  return <section className="reference-hero reference-hero-celebration">
+    <img className="reference-hero-photo" src={floralImage('celebration-reception-v2.jpg')} alt="A candlelit reception with chandeliers, blush roses and a suspended floral canopy" fetchPriority="high" width="1800" height="1013" />
     <div className="reference-hero-shade" />
-    <div className={`reference-hero-content ${celebration ? 'celebration-hero-copy' : ''}`}>
-      <span className="hero-kicker">{garden ? 'Rooted in nature. Made for you.' : celebration ? 'Floral design & meaningful celebrations' : 'An independent floral atelier · New Delhi'}</span>
-      <h1>{garden ? <>Flowers for<br />the way you feel.</> : celebration ? <>We turn moments<br />into memories.</> : <>An instinct<br />for the<br />extraordinary.</>}</h1>
-      {celebration && <div className="hero-flourish"><span /><Leaf size={21} strokeWidth={1} /></div>}
-      <p>{garden ? 'A garden gathered into a bouquet. A little wild, deeply personal, and always full of feeling.' : celebration ? 'Thoughtful flowers. Beautifully imagined spaces. Celebrations that feel entirely your own.' : 'Expressive flowers. Sculptural forms. A world of botanical possibilities, composed around you.'}</p>
-      <div className="hero-actions">
-        <a className="studio-button" href={celebration ? '#services' : '#seasonal-edit'}>{garden ? 'Find your flowers' : celebration ? 'Explore our world' : 'Discover the floral edit'}<ArrowUpRight size={17} /></a>
-        {!garden && <button className="reference-secondary" onClick={() => openEnquiry(celebration ? 'Wedding & celebration flowers' : 'Private botanical commission')}>{celebration ? 'Plan your occasion' : 'Create something bespoke'}<ArrowRight size={15} /></button>}
-      </div>
-      {garden && <span className="garden-signature">a little closer to nature</span>}
+    <div className="reference-hero-content celebration-hero-copy">
+      <span className="hero-kicker">Floral design & meaningful celebrations</span>
+      <span className="signature-line">Where your story blooms.</span>
+      <h1>Flowers for<br />unforgettable<br className="hero-line-break" /> moments.</h1>
+      <div className="hero-flourish"><span /><Leaf size={21} strokeWidth={1} /></div>
+      <p>Thoughtful flowers. Beautifully imagined spaces. Celebrations that feel entirely your own.</p>
+      <div className="hero-actions"><a className="studio-button" href="#services">Explore our world <ArrowUpRight size={17} /></a><button className="reference-secondary" onClick={() => openEnquiry('Wedding & celebration flowers')}>Plan your occasion <ArrowRight size={15} /></button></div>
     </div>
-    <div className="reference-hero-footer"><span>{garden ? 'Seasonal bouquets & beautiful beginnings' : celebration ? 'Weddings · Intimate gatherings · Floral installations' : 'Flowers / Objects / Atmospheres'}</span><a href={celebration ? '#services' : '#seasonal-edit'}>Step inside <ArrowDown size={14} /></a></div>
-    {!garden && <span className="hero-edition">{celebration ? 'The Celebration House' : 'The Botanical Atelier'} / The Floral Edit</span>}
+    <div className="reference-hero-footer"><span>Weddings · Intimate gatherings · Floral installations</span><a href="#services">Step inside <ArrowDown size={14} /></a></div>
   </section>;
 }
-
 export function StudioPromises() {
   return <div className="studio-promises"><div><Flower2 size={25} strokeWidth={1} /><span>Designed around you<small>A personal floral language</small></span></div><div><Leaf size={25} strokeWidth={1} /><span>Led by the season<small>Natural colour & character</small></span></div><div><HeartHandshake size={26} strokeWidth={1} /><span>Considered with care<small>From first stem to final detail</small></span></div><div><CalendarDays size={25} strokeWidth={1} /><span>For every occasion<small>The everyday & the extraordinary</small></span></div></div>;
 }
@@ -59,3 +50,4 @@ export function EventInvitation() {
   const { openEnquiry } = usePresentation();
   return <section className="event-invitation"><img src={floralImage('celebration-reception-v2.jpg')} alt="Ivory and blush floral centrepieces with candlelight" loading="lazy" width="1800" height="1013" /><div className="event-invitation-shade" /><div><span className="eyebrow">Your vision. Our flowers.</span><h2>Some things are<br />meant to be felt.</h2><p>From the first idea to the last flower,<br />let’s create a setting that stays with you.</p><button className="studio-button" onClick={() => openEnquiry('Full event floral design')}>Let’s imagine your occasion <ArrowUpRight size={17} /></button></div></section>;
 }
+

@@ -5,7 +5,7 @@ import { FLORAL_PRODUCTS } from '../../data/floralData';
 import { StudioForm } from './StudioForm';
 import { base, floralImage, money, YEAR } from '../../data/studio';
 import { BotanicalDrawing, CelebrationSignature, EventInvitation, ReferenceHero, StudioPromises } from './StudioArtDirection';
-import { SeasonalEdit } from './SeasonalEdit';
+
 
 function Brand({ light = false }: { light?: boolean }) {
   return <a className="studio-brand" href="#home" aria-label="The Floral Edit home"><img src={`${base}assets/brand/the-floral-edit-monogram-${light ? 'white' : 'dark'}.png`} width="43" height="48" alt="" /><span>The Floral Edit<small>Flowers, thoughtfully composed</small></span></a>;
@@ -67,17 +67,15 @@ function Footer({ dark }: { dark: boolean }) {
 }
 
 export function StudioPage() {
-  const { activeFramework, openEnquiry } = usePresentation();
-  const dark = activeFramework === 'atelier';
-  return <div className={`floral-site theme-${activeFramework}`} id="home">
+  return <div className="floral-site theme-celebration" id="home">
     <a className="skip-link" href="#main-content">Skip to content</a>
-    <Navigation key={activeFramework} dark={dark} />
+    <Navigation dark={false} />
     <main id="main-content">
-      <ReferenceHero concept={activeFramework} />
-      {activeFramework === 'garden' ? <><Philosophy /><div id="services"><SeasonalEdit key={activeFramework} /></div><StudioPromises /><Shop /><Journal concept={activeFramework} /></> : activeFramework === 'atelier' ? <><StudioPromises /><div id="services"><SeasonalEdit key={activeFramework} /></div><Journal concept={activeFramework} /><Philosophy /><Shop /></> : <><CelebrationSignature /><EventInvitation /><StudioPromises /><Journal concept={activeFramework} /><Process /><Philosophy /><Shop /></>}
-      <section id="enquiry" className={`enquiry-section ${activeFramework === 'celebration' ? 'enquiry-expanded' : ''}`}><div className="section-shell"><div className="enquiry-intro"><span className="eyebrow">Good things begin with a conversation</span><h2>Let’s make something<br />beautiful together.</h2><p>A thought, an occasion, a space waiting to bloom.<br />We’d love to hear what you have in mind.</p>{activeFramework !== 'celebration' && <button className="studio-button" onClick={() => openEnquiry(dark ? 'Private floral commission' : 'Bespoke flowers & events')}>Begin your floral story <ArrowUpRight size={17} /></button>}</div>{activeFramework === 'celebration' && <StudioForm service="Wedding & celebration flowers" />}</div></section>
-    </main><Footer dark={dark} />
+      <ReferenceHero />
+      <CelebrationSignature /><EventInvitation /><StudioPromises />
+      <Journal concept="celebration" /><Process /><Philosophy /><Shop />
+      <section id="enquiry" className="enquiry-section enquiry-expanded"><div className="section-shell"><div className="enquiry-intro"><span className="eyebrow">Good things begin with a conversation</span><h2>Let’s make something beautiful together.</h2><p>A thought, an occasion, a space waiting to bloom.<br />We’d love to hear what you have in mind.</p></div><StudioForm service="Wedding & celebration flowers" /></div></section>
+    </main><Footer dark={false} />
   </div>;
 }
-
 

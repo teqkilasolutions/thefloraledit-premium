@@ -1,0 +1,105 @@
+@font-face { font-family:'Allura'; font-style:normal; font-weight:400; font-display:swap; src:url('/assets/fonts/allura-400.ttf') format('truetype'); }
+@font-face { font-family:'Lora'; font-style:normal; font-weight:400; font-display:swap; src:url('/assets/fonts/lora-400.ttf') format('truetype'); }
+@font-face { font-family:'Lora'; font-style:normal; font-weight:500; font-display:swap; src:url('/assets/fonts/lora-500.ttf') format('truetype'); }
+@font-face { font-family:'Manrope'; font-style:normal; font-weight:400; font-display:swap; src:url('/assets/fonts/manrope-400.ttf') format('truetype'); }
+@font-face { font-family:'Manrope'; font-style:normal; font-weight:500; font-display:swap; src:url('/assets/fonts/manrope-500.ttf') format('truetype'); }
+@font-face { font-family:'Manrope'; font-style:normal; font-weight:600; font-display:swap; src:url('/assets/fonts/manrope-600.ttf') format('truetype'); }
+body, .floral-site, .studio-dialog { font-family:'Manrope',sans-serif; }
+.floral-site :is(p,a,button,input,textarea,label,span,small,strong,dd,dt,li), .studio-dialog :is(p,a,button,input,textarea,label,span,small,strong,dd,dt,li) { font-family:'Manrope',sans-serif; }
+.floral-site.theme-celebration :is(h1,h2,h3,h4,h5), .studio-dialog :is(h2,h3,h4) { font-family:'Lora',Georgia,serif; letter-spacing:0; font-weight:400; line-height:1.3; }
+.floral-site .studio-brand > span { font-family:'Lora',Georgia,serif; font-size:30px; line-height:1.3; letter-spacing:.025em; font-weight:500; }
+.studio-brand img { width:62px; height:62px; object-fit:contain; }
+.studio-brand { gap:17px; }
+.studio-brand small { font-family:'Manrope',sans-serif; font-size:9px; letter-spacing:.09em; font-weight:500; margin-top:6px; }
+.studio-nav-inner { height:112px; }
+.nav-links { gap:24px; font-size:13px; }
+.nav-enquire { font-size:13px; }
+.reference-hero-celebration { min-height:770px; }
+.reference-hero-celebration .reference-hero-content { padding:65px 0 105px; }
+.reference-hero-celebration .hero-kicker { font-size:11px; letter-spacing:.09em; margin-bottom:24px; }
+.floral-site .reference-hero-content > .signature-line { font-family:'Allura',cursive; display:block; font-size:clamp(36px,3.5vw,54px); font-weight:400; line-height:1.3; letter-spacing:0; white-space:nowrap; color:#d9b4a4; margin-bottom:18px; }
+.theme-celebration .reference-hero-celebration h1 { font-family:'Lora',Georgia,serif; font-size:clamp(48px,4.6vw,68px); line-height:1.22; letter-spacing:.005em; max-width:720px; }
+.hero-line-break { display:none; }
+.reference-hero-celebration .reference-hero-content > p { font-size:15px; line-height:1.9; max-width:390px; }
+.hero-flourish { margin-top:24px; }
+.reference-hero-celebration .hero-actions { gap:25px; }
+.studio-button, .reference-secondary { font-size:13px; letter-spacing:.015em; }
+.hero-edition { display:none; }
+.reference-hero-footer { font-size:11px; }
+.theme-celebration .signature-events-heading h2, .theme-celebration .section-heading h2 { font-size:clamp(30px,3vw,43px); line-height:1.35; }
+.theme-celebration .signature-event-card h3 { font-size:24px; line-height:1.4; }
+.signature-event-card > p { font-size:13px; line-height:1.8; }
+.theme-celebration .event-invitation h2 { font-size:48px; line-height:1.35; }
+.theme-celebration .journal-grid figcaption h3 { font-size:28px; line-height:1.4; }
+.theme-celebration .philosophy-copy h2 { font-size:39px; line-height:1.4; }
+.theme-celebration .philosophy-image > span, .theme-celebration .philosophy-signature { font-family:'Lora',Georgia,serif; font-size:20px; line-height:1.6; font-style:normal; transform:none; }
+.theme-celebration .philosophy-image > span { right:-25px; max-width:260px; font-size:18px; }
+.philosophy-copy p, .process-grid p, .section-heading > p, .event-invitation p, .enquiry-intro > p { font-size:15px; line-height:1.9; }
+.theme-celebration .process-grid h3 { font-size:30px; }
+.product-info h3 { font-size:23px; line-height:1.4; }
+.product-card > p { font-size:12px; line-height:1.8; }
+.product-info > span { font-size:13px; }
+.product-detail-copy h3, .bag-empty h3, .form-saved h3 { font-size:35px; line-height:1.4; }
+.product-detail-copy > p, .bag-summary > p, .bag-item-copy p { font-size:14px; line-height:1.85; }
+.studio-dialog .dialog-heading h2 { font-size:25px; line-height:1.4; }
+.studio-dialog .bag-item-copy h3 { font-size:23px; line-height:1.4; }
+.studio-dialog .text-button { font-size:13px; }
+.studio-form label { font-size:13px; line-height:1.8; }
+.studio-form :is(input,textarea) { font-family:'Manrope',sans-serif; }
+.theme-celebration .enquiry-section h2 { font-size:43px; line-height:1.4; max-width:540px; }
+.footer-main p, .footer-main > div > a:not(.studio-brand) { font-size:13px; line-height:1.85; }
+.footer-bottom { font-size:11px; }
+.studio-promises span { font-size:13px; }
+.studio-promises small { font-size:11px; line-height:1.7; }
+.journal-link strong { font-family:'Lora',Georgia,serif!important; font-size:23px; line-height:1.5; }
+@media (max-width:1150px) {
+  .studio-brand > span { font-size:27px!important; }
+  .studio-brand img { width:54px; height:54px; }
+  .nav-links { gap:15px; font-size:12px; }
+  .nav-actions { gap:12px; }
+  .reference-hero-celebration h1 { font-size:57px!important; }
+  .product-info h3 { font-size:21px; }
+}
+@media (max-width:767px) {
+  html { scroll-padding-top:90px; }
+  .studio-nav-inner { height:90px; width:calc(100% - 32px); gap:8px; }
+  .studio-brand { gap:11px; }
+  .studio-brand img { width:45px; height:47px; }
+  .floral-site .studio-brand > span { font-size:24px!important; letter-spacing:.005em; }
+  .studio-brand small { font-size:7px; letter-spacing:.045em; }
+  .reference-hero-celebration { min-height:730px; }
+  .reference-hero-celebration .reference-hero-content { padding:45px 0 95px; }
+  .reference-hero-celebration .hero-kicker { font-size:10px; letter-spacing:.06em; margin-bottom:24px; }
+  .floral-site .reference-hero-content > .signature-line { font-size:37px; line-height:1.3; margin-bottom:18px; }
+  .theme-celebration .reference-hero-celebration h1 { font-size:39px!important; line-height:1.32; max-width:100%; letter-spacing:0; }
+  .hero-line-break { display:inline; }
+  .reference-hero-celebration .reference-hero-content > p { font-size:14px; line-height:1.9; max-width:310px; }
+  .reference-hero-celebration .hero-actions { gap:12px; margin-top:24px; }
+  .reference-hero-footer { font-size:10px; }
+  .signature-events-heading h2, .theme-celebration .section-heading h2 { font-size:30px; line-height:1.45; }
+  .signature-events-grid { gap:28px 16px; }
+  .theme-celebration .signature-event-card h3 { font-size:20px; line-height:1.45; }
+  .signature-event-card > p { font-size:12px; }
+  .theme-celebration .event-invitation h2 { font-size:34px; line-height:1.45; }
+  .theme-celebration .philosophy-copy h2 { font-size:32px; line-height:1.45; }
+  .theme-celebration .journal-grid figcaption h3 { font-size:26px; line-height:1.45; }
+  .theme-celebration .enquiry-section h2 { font-size:32px; line-height:1.45; }
+  .product-info h3 { font-size:21px; }
+  .studio-promises { grid-template-columns:1fr; gap:20px; }
+  .studio-promises small { font-size:12px; }
+  .footer-main > div > a:not(.studio-brand), .footer-main p { font-size:12px; }
+  .footer-bottom { flex-wrap:wrap; font-size:10px; }
+  .footer-bottom > svg { display:none; }
+}
+@media (max-width:359px) {
+  .studio-nav-inner { width:calc(100% - 24px); }
+  .studio-brand img { width:36px; height:42px; }
+  .studio-brand { gap:8px; }
+  .floral-site .studio-brand > span { font-size:20px!important; }
+  .studio-brand small { font-size:6px; }
+  .nav-actions { gap:0; }
+  .reference-hero-celebration h1 { font-size:34px!important; }
+  .floral-site .reference-hero-content > .signature-line { font-size:32px; }
+  .signature-events-grid { grid-template-columns:1fr; }
+  .signature-event-card img { height:auto; aspect-ratio:4/4.2; }
+}
