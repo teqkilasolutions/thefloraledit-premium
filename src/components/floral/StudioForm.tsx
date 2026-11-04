@@ -1,36 +1,52 @@
 import { useState, type FormEvent } from 'react';
-import { ArrowUpRight, Check, Download } from 'lucide-react';
+import { ArrowUpRight, Check, Download, X } from 'lucide-react';
+import { usePortfolio } from '../../context/PortfolioContext';
+import { PHOTO_BY_ID, PHOTO_IDS, photoUrl, projectForPhoto } from '../../data/portfolio';
+import { readInspiration } from '../../lib/inspiration';
+
+function EnquiryInspiration({ ids, onRemove }: { ids: string[]; onRemove?: (id: string) => void }) {
+  if (!ids.length) return null;
+  return <div className="enquiry-inspiration"><h4>Your inspiration</h4><p>These photographs will be included in your downloaded brief.</p><ul aria-label="Saved inspiration for this enquiry">{ids.filter(id => PHOTO_BY_ID[id]).map(id => { const photo = PHOTO_BY_ID[id]; return <li key={id}><img src={photoUrl(photo, true)} alt={photo.alt} width="58" height="68" /><span>{projectForPhoto(id)?.title}<br />{photo.caption}</span>{onRemove && <button type="button" className="icon-button" aria-label={`Remove ${photo.caption} from enquiry`} onClick={() => onRemove(id)}><X size={15} /></button>}</li>; })}</ul></div>;
+}
 
 const STORAGE_KEY = 'floral-edit-enquiry-v1';
-type EnquiryDraft = { name: string; email: string; phone: string; service: string; date: string; location: string; notes: string };
+type EnquiryDraft = { name: string; email: string; phone: string; service: string; date: string; location: string; notes: string; inspirationIds?: string[] };
 export function StudioForm({ service = 'Event flowers', compact = false }: { service?: string; compact?: boolean }) {
+  const { savedIds, toggleSaved, replaceSaved } = usePortfolio();
   const [saved, setSaved] = useState(false);
   const [storageError, setStorageError] = useState(false);
+  const [savedSnapshot, setSavedSnapshot] = useState<EnquiryDraft | null>(null);
   const [savedDraft] = useState<EnquiryDraft | null>(() => {
     try {
       const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
       if (!stored || typeof stored !== 'object' || Array.isArray(stored) || typeof stored.service !== 'string') return null;
       const draft: EnquiryDraft = { name: '', email: '', phone: '', service: '', date: '', location: '', notes: '' };
-      for (const key of Object.keys(draft) as (keyof EnquiryDraft)[]) if (typeof stored[key] === 'string') draft[key] = stored[key].slice(0, key === 'notes' ? 3000 : 500);
+      for (const key of ['name', 'email', 'phone', 'service', 'date', 'location', 'notes'] as const) if (typeof stored[key] === 'string') draft[key] = stored[key].slice(0, key === 'notes' ? 3000 : 500);
+      if (Array.isArray(stored.inspirationIds)) draft.inspirationIds = readInspiration(JSON.stringify(stored.inspirationIds), PHOTO_IDS);
       return draft;
     } catch { return null; }
   });
   const [restored, setRestored] = useState(false);
   const [form, setForm] = useState<EnquiryDraft>(() => ({ name: savedDraft?.name || '', email: savedDraft?.email || '', phone: savedDraft?.phone || '', service, date: '', location: '', notes: '' }));
-  const change = (key: keyof typeof form, value: string) => { setForm(p => ({ ...p, [key]: value })); setSaved(false); };
-  const summary = `THE FLORAL EDIT\nEnquiry draft — not yet sent\n\n${Object.entries(form).map(([key, value]) => `${key[0].toUpperCase() + key.slice(1)}: ${value || 'To discuss'}`).join('\n')}\n`;
+  const change = (key: Exclude<keyof EnquiryDraft, 'inspirationIds'>, value: string) => { setForm(p => ({ ...p, [key]: value })); setSaved(false); };
+  const draft = savedSnapshot || { ...form, inspirationIds: savedIds };
+  const referenceLines = (draft.inspirationIds || []).filter(id => PHOTO_BY_ID[id]).map((id, index) => `${index + 1}. ${projectForPhoto(id)?.title}: ${PHOTO_BY_ID[id].caption}\n${new URL(photoUrl(PHOTO_BY_ID[id]), window.location.href).href}`);
+  const summary = `THE FLORAL EDIT\nEnquiry draft — not yet sent\n\n${Object.entries(draft).filter(([key]) => key !== 'inspirationIds').map(([key, value]) => `${key[0].toUpperCase() + key.slice(1)}: ${value || 'To discuss'}`).join('\n')}\n\nSaved inspiration:\n${referenceLines.length ? referenceLines.join('\n\n') : 'No photographs selected.'}\n`;
   function download() {
     const url = URL.createObjectURL(new Blob([summary], { type: 'text/plain;charset=utf-8' }));
     const a = document.createElement('a'); a.href = url; a.download = 'the-floral-edit-enquiry.txt'; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
   function submit(e: FormEvent) {
     e.preventDefault();
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(form)); setStorageError(false); } catch { setStorageError(true); }
+    const snapshot = { ...form, inspirationIds: [...savedIds] };
+    setSavedSnapshot(snapshot);
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(snapshot)); setStorageError(false); } catch { setStorageError(true); }
     setSaved(true);
   }
-  if (saved) return <div className="form-saved" role="status"><span className="saved-icon"><Check size={25} /></span><h3>Your vision, beautifully noted.</h3><p>{storageError ? 'Your browser could not save this draft. Download a copy to keep your details.' : 'Your enquiry draft is saved on this device. You can return to it or download a copy.'}</p><p className="form-note">This presentation does not send enquiries. Your request has not been delivered to the studio.</p><button className="studio-button" onClick={download}><Download size={16} /> Download enquiry</button><button className="text-button" onClick={() => setSaved(false)}>Continue editing</button></div>;
+  if (saved) return <div className="form-saved" role="status"><span className="saved-icon"><Check size={25} /></span><h3>Your vision, beautifully noted.</h3><p>{storageError ? 'Your browser could not save this draft. Download a copy to keep your details.' : 'Your enquiry draft is saved on this device. You can return to it or download a copy.'}</p><p className="form-note">This presentation does not send enquiries. Your request has not been delivered to the studio.</p><EnquiryInspiration ids={savedSnapshot?.inspirationIds || []} /><button className="studio-button" onClick={download}><Download size={16} /> Download enquiry</button><button className="text-button" onClick={() => { setSaved(false); setSavedSnapshot(null); }}>Continue editing</button></div>;
   return <form className={`studio-form ${compact ? 'form-compact' : ''}`} onSubmit={submit}>
-    {savedDraft && !restored && <div className="draft-recovery"><p>You have a saved enquiry on this device.</p><button type="button" className="text-button" onClick={() => { setForm(savedDraft); setRestored(true); }}>Restore saved enquiry <ArrowUpRight size={15} /></button></div>}
+    {savedDraft && !restored && <div className="draft-recovery"><p>You have a saved enquiry on this device.</p><button type="button" className="text-button" onClick={() => { const { inspirationIds, ...fields } = savedDraft; setForm(fields); if (inspirationIds !== undefined) replaceSaved(inspirationIds); setSavedSnapshot(null); setRestored(true); }}>Restore saved enquiry <ArrowUpRight size={15} /></button></div>}
+    <EnquiryInspiration ids={savedIds} onRemove={toggleSaved} />
     <div className="form-grid">
       <label>Your name<input autoComplete="name" required maxLength={100} value={form.name} onChange={e => change('name', e.target.value)} placeholder="Full name" /></label>
       <label>Email address<input type="email" autoComplete="email" required maxLength={200} value={form.email} onChange={e => change('email', e.target.value)} placeholder="you@example.com" /></label>

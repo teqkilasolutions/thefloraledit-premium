@@ -1,6 +1,8 @@
 import { ArrowDown, ArrowRight, ArrowUpRight, CalendarDays, Flower2, HeartHandshake, Leaf } from 'lucide-react';
 import { usePresentation } from '../../context/PresentationContext';
 import { floralImage } from '../../data/studio';
+import { PHOTO_BY_ID } from '../../data/portfolio';
+import { PortfolioImage } from './PortfolioSections';
 
 export function BotanicalDrawing({ small = false }: { small?: boolean }) {
   return <svg className={small ? 'botanical-drawing botanical-small' : 'botanical-drawing'} viewBox="0 0 240 330" fill="none" aria-hidden="true" focusable="false">
@@ -18,16 +20,16 @@ export function BotanicalDrawing({ small = false }: { small?: boolean }) {
 export function ReferenceHero() {
   const { openEnquiry } = usePresentation();
   return <section className="reference-hero reference-hero-celebration">
-    <img className="reference-hero-photo" src={floralImage('celebration-reception-v2.jpg')} alt="A candlelit reception with chandeliers, blush roses and a suspended floral canopy" fetchPriority="high" width="1800" height="1013" />
+    <PortfolioImage className="reference-hero-photo" photo={PHOTO_BY_ID['night-room']} priority sizes="100vw" />
     <div className="reference-hero-shade" />
     <div className="reference-hero-content celebration-hero-copy">
       <span className="hero-kicker">Floral design & meaningful celebrations</span>
       <h1><span>Where your</span><span>story blooms.</span></h1>
       <div className="hero-flourish"><span /><Leaf size={21} strokeWidth={1} /></div>
       <p>Thoughtful flowers. Beautifully imagined spaces.<br />Celebrations that feel entirely your own.</p>
-      <div className="hero-actions"><a className="studio-button" href="#services">Explore our world <ArrowUpRight size={17} /></a><button className="reference-secondary" onClick={() => openEnquiry('Wedding & celebration flowers')}>Plan your occasion <ArrowRight size={15} /></button></div>
+      <div className="hero-actions"><a className="studio-button" href="#work">Explore our work <ArrowUpRight size={17} /></a><button className="reference-secondary" onClick={() => openEnquiry('Event flowers & celebrations')}>Enquire about your occasion <ArrowRight size={15} /></button></div>
     </div>
-    <div className="reference-hero-footer"><span>Weddings · Intimate gatherings · Floral installations</span><a href="#services">Step inside <ArrowDown size={14} /></a></div>
+    <div className="reference-hero-footer"><span>A floral arch. An evening in colour.</span><a href="#work">Step inside <ArrowDown size={14} /></a></div>
   </section>;
 }
 export function StudioPromises() {
@@ -37,12 +39,11 @@ export function StudioPromises() {
 export function CelebrationSignature() {
   const { openEnquiry } = usePresentation();
   const offerings = [
-    { name: 'Bouquets', note: 'A little wild. Entirely yours.', image: 'garden-bouquet-v2.jpg', service: 'Bridal & occasion bouquets' },
-    { name: 'Table flowers', note: 'A beautiful reason to gather.', image: 'wedding-table.jpg', service: 'Dinner tables & centrepieces' },
-    { name: 'Ceremony flowers', note: 'The setting for your story.', image: 'garden-gate-v2.jpg', service: 'Ceremony flowers & floral arches' },
-    { name: 'Complete celebrations', note: 'One vision. Every detail.', image: 'celebration-reception-v2.jpg', service: 'Full celebration floral styling' },
+    { name: 'Floral installations', note: 'An entrance. A focal point. A feeling.', image: 'day-arch', service: 'Floral installations & arches' },
+    { name: 'Table flowers', note: 'A beautiful reason to gather.', image: 'night-table', service: 'Table flowers & centrepieces' },
+    { name: 'Complete settings', note: 'One vision, carried through the details.', image: 'heritage-room', service: 'Complete event floral styling' },
   ];
-  return <section id="services" className="signature-events section-shell"><div className="signature-events-heading"><span className="eyebrow">The signature collection</span><h2>Details that tell your story.</h2><BotanicalDrawing small /></div><div className="signature-events-grid">{offerings.map(o => <button key={o.name} className="signature-event-card" onClick={() => openEnquiry(o.service)}><div><img src={floralImage(o.image)} alt={o.name === 'Ceremony flowers' ? 'A rose-covered garden arch' : o.name === 'Bouquets' ? 'An airy bouquet of garden roses and seasonal flowers' : 'Floral table styling with seasonal flowers'} loading="lazy" width="600" height="750" /><span><ArrowUpRight size={18} /></span></div><h3>{o.name}</h3><p>{o.note}</p></button>)}</div></section>;
+  return <section id="services" className="signature-events section-shell"><div className="signature-events-heading"><span className="eyebrow">Floral design, considered together</span><h2>Details that tell your story.</h2></div><div className="signature-events-grid">{offerings.map(o => <button key={o.name} className="signature-event-card" onClick={() => openEnquiry(o.service)}><div><PortfolioImage photo={PHOTO_BY_ID[o.image]} sizes="(max-width: 700px) 90vw, 33vw" /><span><ArrowUpRight size={18} /></span></div><h3>{o.name}</h3><p>{o.note}</p></button>)}</div></section>;
 }
 
 export function EventInvitation() {

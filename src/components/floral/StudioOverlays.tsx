@@ -21,7 +21,7 @@ function Bag() {
 
 export function StudioOverlays() {
   const { isEnquiryModalOpen, enquiryService, closeEnquiry } = usePresentation();
-  return <><ProductView /><Bag />{isEnquiryModalOpen && <StudioDialog title="Let’s talk flowers" onClose={closeEnquiry}><div className="enquiry-dialog-intro"><span className="eyebrow">A thought is all it takes</span><p>Tell us a little about what you’re imagining.</p></div><StudioForm key={enquiryService} service={enquiryService} /></StudioDialog>}</>;
+  return <><ProductView /><Bag />{isEnquiryModalOpen && <StudioDialog title="Enquire about your occasion" onClose={closeEnquiry}><div className="enquiry-dialog-intro"><span className="eyebrow">A thought is all it takes</span><p>Tell us a little about what you’re imagining.</p></div><StudioForm key={enquiryService} service={enquiryService} /></StudioDialog>}</>;
 }
 
 

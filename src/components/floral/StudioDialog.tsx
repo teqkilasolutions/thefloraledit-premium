@@ -1,8 +1,8 @@
 import { useEffect, useRef, type ReactNode } from 'react';
 import { X } from 'lucide-react';
 
-export function StudioDialog({ title, children, onClose, wide = false, drawer = false }: {
-  title: string; children: ReactNode; onClose: () => void; wide?: boolean; drawer?: boolean;
+export function StudioDialog({ title, children, onClose, wide = false, drawer = false, className = '' }: {
+  title: string; children: ReactNode; onClose: () => void; wide?: boolean; drawer?: boolean; className?: string;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
   useEffect(() => {
@@ -14,10 +14,11 @@ export function StudioDialog({ title, children, onClose, wide = false, drawer = 
     return () => {
       dialog.close();
       document.body.style.overflow = previousOverflow;
-      previousFocus?.focus();
+      if (previousFocus?.isConnected) previousFocus.focus();
+      else document.querySelector<HTMLButtonElement>('.inspiration-button')?.focus();
     };
   }, []);
-  return <dialog ref={ref} className={`studio-dialog ${wide ? 'dialog-wide' : ''} ${drawer ? 'dialog-drawer' : ''}`}
+  return <dialog ref={ref} className={`studio-dialog ${wide ? 'dialog-wide' : ''} ${drawer ? 'dialog-drawer' : ''} ${className}`}
     aria-label={title} onCancel={e => { e.preventDefault(); onClose(); }}
     onKeyDown={event => {
       if (event.key !== 'Tab') return;

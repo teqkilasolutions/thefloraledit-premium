@@ -5,6 +5,9 @@ import { StudioOverlays } from './StudioOverlays';
 import './studio.css';
 import './references.css';
 import './celebration.css';
+import './portfolio.css';
+import { PortfolioProvider } from '../../context/PortfolioContext';
+import { PortfolioOverlays } from './PortfolioOverlays';
 
 export function StudioApp() {
   useEffect(() => {
@@ -13,5 +16,5 @@ export function StudioApp() {
     for (const key of ['concept', 'preview', 'v']) url.searchParams.delete(key);
     window.history.replaceState(null, '', url);
   }, []);
-  return <PresentationProvider><StudioPage /><StudioOverlays /></PresentationProvider>;
+  return <PresentationProvider><PortfolioProvider><StudioPage /><StudioOverlays /><PortfolioOverlays /></PortfolioProvider></PresentationProvider>;
 }

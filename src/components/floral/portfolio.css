@@ -1,0 +1,101 @@
+/* Real projects, quiet framing, and the existing three typographic voices. */
+.portfolio-sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.inspiration-button{position:relative;min-width:44px;min-height:44px}
+.inspiration-count{position:absolute;top:0;right:0;display:grid;place-items:center;min-width:15px;height:15px;padding-inline:3px;background:#536336;color:#faf7f1;border-radius:50%;font-size:9px;line-height:1}
+.portfolio-section{padding-block:105px 90px}
+.portfolio-intro{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:52px}
+.portfolio-intro .eyebrow{display:block;margin-bottom:12px}
+.floral-site.theme-celebration .portfolio-intro h2{font-size:clamp(66px,6.5vw,91px);line-height:1.14}
+.portfolio-intro>p{max-width:340px;font-size:15px;line-height:1.9;padding-bottom:9px}
+.project-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;align-items:start}
+.project-story:nth-child(2){margin-top:58px}
+.project-cover{display:block;position:relative;width:100%;padding:0;border:0;background:#e9e1d4;overflow:hidden;aspect-ratio:3/2;text-align:left}
+.project-cover>img{width:100%;height:100%;object-fit:cover}
+.project-view-label{position:absolute;right:12px;bottom:12px;display:flex;align-items:center;gap:14px;padding:9px 12px;background:#faf7f1ed;color:#3b302c;font-size:12px}
+.project-caption{padding-top:22px}
+.project-mood{display:block;font:13px/1.7 'Lora',Georgia,serif!important;color:#536336;margin-bottom:7px}
+.theme-celebration .project-caption h3{font-size:29px;line-height:1.4}
+.project-caption>p{font-size:14px;line-height:1.9;margin-top:12px;max-width:355px}
+.project-caption>.text-button{margin-top:18px;font-size:13px;min-height:40px}
+.portfolio-note{display:flex;justify-content:center;align-items:center;gap:12px;margin-top:52px;padding-top:28px;border-top:1px solid var(--line);color:#706052;font-size:13px}
+.portfolio-note>svg{flex-shrink:0}
+.closer-section{padding-block:95px;background:#eee3d9}
+.closer-intro{text-align:center;max-width:680px;margin:0 auto 52px}
+.closer-intro .eyebrow{display:block;margin-bottom:16px}
+.floral-site.theme-celebration .closer-intro h2{font-size:clamp(70px,6.3vw,90px);line-height:1.13}
+.closer-intro>p{margin-top:22px;font-size:15px;line-height:1.9}
+.detail-triptych{display:grid;grid-template-columns:1fr 1.18fr 1fr;gap:30px;align-items:center;max-width:1100px;margin:auto}
+.detail-print{margin:0;min-width:0}
+.detail-print>button{position:relative;display:block;width:100%;padding:0;border:0;background:#e2d6c9}
+.detail-print img{width:100%;height:auto}
+.detail-open{position:absolute;right:10px;bottom:10px;width:40px;height:40px;display:grid;place-items:center;background:#faf7f1ed;color:#3b302c}
+.detail-print figcaption{padding-top:16px;font:16px/1.6 'Lora',Georgia,serif;text-align:center}
+.closer-link{text-align:center;margin-top:36px}
+.closer-link>.text-button{font-size:14px;min-height:44px}
+.signature-events-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}
+.signature-event-card>div,.signature-event-card:nth-child(odd)>div{border-radius:1px;aspect-ratio:3/2}
+.signature-event-card img{height:100%;aspect-ratio:3/2;object-fit:cover}
+.signature-event-card>p{max-width:350px}
+.philosophy-image>.portfolio-studio-image{height:560px;width:100%;object-fit:contain;background:#e9e1d4}
+.collection-bag{margin-bottom:28px;font-size:13px;min-height:44px}
+.shop-section{border-top:1px solid var(--line)}
+.portfolio-faq{padding-block:100px;display:grid;grid-template-columns:.85fr 1.3fr;gap:9%;border-top:1px solid var(--line)}
+.faq-intro>.eyebrow{display:block;margin-bottom:16px}
+.floral-site.theme-celebration .faq-intro h2{font-size:clamp(62px,5.5vw,80px);line-height:1.14}
+.faq-intro>p{margin-top:24px;font-size:14px;line-height:1.9;max-width:240px}
+.faq-item{border-top:1px solid var(--line)}
+.faq-item:last-child{border-bottom:1px solid var(--line)}
+.faq-item h3>button{padding:22px 0;width:100%;display:flex;align-items:center;justify-content:space-between;gap:22px;text-align:left;background:none;border:0;font:400 18px/1.65 'Lora',Georgia,serif;color:var(--ink)}
+.faq-item h3 svg{flex-shrink:0}
+.faq-item [role=region]>p{padding:0 30px 24px 0;font-size:14px;line-height:1.95}
+.project-dialog{width:min(1160px,calc(100vw - 40px));max-height:calc(100dvh - 36px);padding:24px 30px 30px}
+.project-dialog .dialog-heading{margin-bottom:18px}
+.project-dialog>.dialog-heading,.inspiration-dialog>.dialog-heading{position:sticky;top:-24px;z-index:3;background:#faf7f1}
+.viewer-intro{display:flex;justify-content:space-between;gap:24px;align-items:center;margin-bottom:16px;color:#74634f;font-size:13px;line-height:1.8}
+.viewer-figure{margin:0}
+.viewer-image{height:min(55dvh,620px);min-height:220px;display:grid;place-items:center;background:#eae4d9}
+.viewer-image>img{height:100%;width:100%;object-fit:contain}
+.viewer-figure figcaption{padding-top:15px;font:18px/1.6 'Lora',Georgia,serif}
+.viewer-controls{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:17px}
+.viewer-arrows{display:flex;gap:9px}
+.viewer-arrows>.icon-button{width:46px;height:46px;border:1px solid #c6c7b5}
+.save-photo-button{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:46px;padding:10px 17px;border:1px solid #536336;background:none;color:#536336;font:13px/1.65 'Manrope',sans-serif}
+.save-photo-button.is-saved{background:#536336;color:#faf7f1}
+.save-photo-button:disabled{opacity:.65}
+.viewer-footer{border-top:1px solid #d9d5c8;margin-top:23px;padding-top:20px;display:flex;align-items:center;justify-content:space-between;gap:32px}
+.viewer-footer>p{max-width:560px;font-size:13px;line-height:1.8}
+.viewer-footer>.text-button{font-size:13px;min-height:44px;flex-shrink:0}
+.portfolio-storage-note{margin-top:16px;font-size:12px;line-height:1.85;color:#6b503e}
+.board-intro{font-size:14px;line-height:1.9;color:#74634f;margin-bottom:28px}
+.saved-photo-list{list-style:none;margin:0;padding:0}
+.saved-photo-list>li{display:grid;grid-template-columns:96px minmax(0,1fr) 40px;gap:16px;padding:18px 0;border-bottom:1px solid #ded7c9;align-items:center}
+.saved-photo-open{border:0;padding:0;background:#e9e1d4;width:96px;height:106px;overflow:hidden}
+.saved-photo-open>img{height:100%;width:100%;object-fit:cover}
+.saved-photo-list li>div>span{font-size:11px;color:#74634f;line-height:1.8}
+.saved-photo-list li h3{font:400 18px/1.6 'Lora',Georgia,serif;margin-top:5px}
+.saved-photo-list .icon-button{min-width:40px;min-height:44px}
+.board-actions{padding-top:26px;display:flex;flex-direction:column;align-items:flex-start;gap:20px}
+.board-actions>p{font-size:13px;line-height:1.85;color:#74634f}
+.board-actions>.studio-button{width:100%;justify-content:center;text-align:center}
+.inspiration-empty{padding:45px 0;display:flex;flex-direction:column;align-items:flex-start;gap:22px}
+.inspiration-empty h3{font:400 30px/1.45 'Lora',Georgia,serif}
+.inspiration-empty>p{max-width:340px;font-size:15px;line-height:1.9}
+.enquiry-inspiration{margin-bottom:26px;padding:20px 0;border-top:1px solid #ded7c9;border-bottom:1px solid #ded7c9}
+.enquiry-inspiration>h4{font:400 18px/1.6 'Lora',Georgia,serif;margin:0 0 7px}
+.enquiry-inspiration>p{font-size:12px;line-height:1.9;margin-bottom:16px}
+.enquiry-inspiration>ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:0;margin:0}
+.enquiry-inspiration li{display:grid;grid-template-columns:54px minmax(0,1fr) 28px;align-items:center;gap:10px}
+.enquiry-inspiration li img{width:54px;height:65px;object-fit:cover}
+.enquiry-inspiration li span{font-size:12px;line-height:1.7}
+.enquiry-inspiration li .icon-button{width:28px;min-height:44px}
+.studio-form :is(input,textarea){font-size:16px;min-height:47px}
+@media(max-width:1050px){
+  .portfolio-intro{gap:28px}.project-grid{gap:22px}.project-story:nth-child(2){margin-top:36px}.theme-celebration .project-caption h3{font-size:24px}.project-caption>p{font-size:13px}.detail-triptych{gap:23px}.portfolio-faq{gap:7%;grid-template-columns:.8fr 1.2fr}.viewer-footer{align-items:flex-start;flex-direction:column;gap:12px}
+}
+@media(max-width:700px){
+  .portfolio-section{padding-block:66px}.portfolio-intro{display:block;margin-bottom:34px}.floral-site.theme-celebration .portfolio-intro h2{font-size:62px}.portfolio-intro>p{margin-top:22px;font-size:14px}.project-grid{grid-template-columns:1fr;gap:40px}.project-story:nth-child(2){margin-top:0}.project-caption{padding-top:18px}.theme-celebration .project-caption h3{font-size:27px}.project-caption>p{font-size:14px}.project-view-label{font-size:11px}.portfolio-note{justify-content:flex-start;align-items:flex-start;margin-top:36px;line-height:1.85}.portfolio-note>svg{margin-top:4px}
+  .closer-section{padding-block:64px}.closer-intro{margin-bottom:32px}.floral-site.theme-celebration .closer-intro h2{font-size:64px}.closer-intro>p{font-size:14px}.detail-triptych{grid-template-columns:1fr 1fr;gap:22px 16px;align-items:start}.detail-print-1{grid-column:1/-1;width:90%;margin-inline:auto}.detail-print figcaption{font-size:14px;padding-top:12px}.detail-open{height:34px;width:34px;right:7px;bottom:7px}.closer-link{margin-top:25px}
+  .signature-events-grid{grid-template-columns:1fr;gap:35px}.signature-events{padding-block:65px}.signature-event-card img{height:auto}.philosophy-image>.portfolio-studio-image{height:470px}.portfolio-faq{grid-template-columns:1fr;gap:32px;padding-block:65px}.floral-site.theme-celebration .faq-intro h2{font-size:64px}.faq-intro>p{max-width:none;margin-top:18px}.faq-item h3>button{font-size:17px;padding-block:20px}.faq-item [role=region]>p{padding-right:0;font-size:14px}
+  .project-dialog{width:calc(100vw - 20px);max-height:calc(100dvh - 20px);padding:20px 16px 24px}.project-dialog .dialog-heading h2{font-size:22px}.viewer-image{height:45dvh;min-height:210px}.viewer-figure figcaption{font-size:17px}.viewer-intro{font-size:12px;gap:12px}.viewer-controls{gap:12px;flex-wrap:wrap}.save-photo-button{font-size:12px;padding-inline:12px}.viewer-arrows{gap:6px}.viewer-arrows>.icon-button{width:42px;height:44px}.viewer-footer>.text-button{white-space:normal;font-size:12px}.saved-photo-list>li{grid-template-columns:78px minmax(0,1fr) 34px;gap:12px}.saved-photo-open{width:78px;height:94px}.saved-photo-list li h3{font-size:17px}.enquiry-inspiration>ul{grid-template-columns:1fr}.enquiry-inspiration li{grid-template-columns:58px minmax(0,1fr) 35px}.enquiry-inspiration li img{width:58px;height:68px}.enquiry-inspiration li .icon-button{width:35px}
+}
+@media(prefers-reduced-motion:reduce){.project-cover img,.detail-print img{transition:none}}
