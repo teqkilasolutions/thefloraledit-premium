@@ -1,0 +1,138 @@
+[
+  {
+    "id": "day-room",
+    "source": "Celebration Lunch-0097.JPG",
+    "sha256": "aeae057e3ab3eef8c0b1a9be62da1a65fc1f14eff0ae552610590ac88cf2e089",
+    "fullBytes": 637078,
+    "smallBytes": 117200,
+    "transformation": "Proportional web encoding only; no crop, retouch or colour filter."
+  },
+  {
+    "id": "day-passage",
+    "source": "Celebration Lunch-0025.JPG",
+    "sha256": "290c49a0660cd93a3b379b276cd20f3698293b1f5026347b1d0941f78851bfbc",
+    "fullBytes": 599956,
+    "smallBytes": 123096,
+    "transformation": "Proportional web encoding only; no crop, retouch or colour filter."
+  },
+  {
+    "id": "day-arch",
+    "source": "Celebration Lunch-0011.JPG",
+    "sha256": "b641ea3ca97f54edda817445364bd8b99d97925a77ac724eeba36952c1fd92bf",
+    "fullBytes": 556234,
+    "smallBytes": 106922,
+    "transformation": "Proportional web encoding only; no crop, retouch or colour filter."
+  },
+  {
+    "id": "day-lounge",
+    "source": "Celebration Lunch-0166.JPG",
+    "sha256": "4882d254d3b60b45feca971cb0c643f845ebdd639daba155d940506705e925b1",
+    "fullBytes": 753258,
+    "smallBytes": 204640,
+    "transformation": "Proportional web encoding only; no crop, retouch or colour filter."
+  },
+  {
+    "id": "day-flowers",
+    "source": "Celebration Lunch-0077.JPG",
+    "sha256": "6ff7885b9a3da4fc0f59497e048d88f42f8e9b02666e6bc808b7cf32e8b6f16c",
+    "fullBytes": 416588,
+    "smallBytes": 118990,
+    "transformation": "Proportional web encoding only; no crop, retouch or colour filter."
+  },
+  {
+    "id": "day-candles",
+    "source": "Celebration Lunch-0161.JPG",
+    "sha256": "15f366bd3231b06ab7af14ca1e98643e7f1612afda88f42a1b4bdd708f5292d6",
+    "fullBytes": 328862,
+    "smallBytes": 100662,
+    "transformation": "Proportional web encoding only; no crop, retouch or colour filter."
+  },
+  {
+    "id": "day-materials",
+    "source": "Celebration Lunch-0142.JPG",
+    "sha256": "33471c0317df3d21793be5d857c4e890701bb76093381dd459ec6010e83eaf64",
+    "fullBytes": 313494,
+    "smallBytes": 85786,
+    "transformation": "Proportional web encoding only; no crop, retouch or colour filter."
+  },
+  {
+    "id": "day-wide",
+    "source": "Celebration Lunch-0072.JPG",
+    "sha256": "cf8fc669ef9f40959fb61b5cb188e79586e7464854ea3cc9b9e03ff21b5aa815",
+    "fullBytes": 652536,
+    "smallBytes": 118166,
+    "transformation": "Proportional web encoding only; no crop, retouch or colour filter."
+  },
+  {
+    "id": "night-room",
+    "source": "DSC00575.jpg",
+    "sha256": "745df82463dc70c09120c8ac03c03ded80470930e539d3324a84786f4da19161",
+    "fullBytes": 775204,
+    "smallBytes": 121990,
+    "transformation": "Proportional web encoding only; no crop, retouch or colour filter."
+  },
+  {
+    "id": "night-arrangement",
+    "source": "DSC00586.jpg",
+    "sha256": "a0693dab4a91286f652edbfe92372d83a24d489497e3376d43ba18b93a912f4a",
+    "fullBytes": 1302154,
+    "smallBytes": 240396,
+    "transformation": "Proportional web encoding only; no crop, retouch or colour filter."
+  },
+  {
+    "id": "night-table",
+    "source": "DSC00562.jpg",
+    "sha256": "b7fdbbc5d6085d1af9ae93531084fb92cc98bd5048423e610f6c2096d31c4ee3",
+    "fullBytes": 278476,
+    "smallBytes": 67816,
+    "transformation": "Proportional web encoding only; no crop, retouch or colour filter."
+  },
+  {
+    "id": "night-detail",
+    "source": "IMG_4241.jpg",
+    "sha256": "e1149436e7313ad6fd18a5c33eaaceda024245a6ccf2e423814ef09c3d9fc22b",
+    "fullBytes": 677588,
+    "smallBytes": 112284,
+    "transformation": "Proportional web encoding only; no crop, retouch or colour filter."
+  },
+  {
+    "id": "heritage-room",
+    "source": "Sindhi Virso-0171.jpg",
+    "sha256": "48f0a5d9a30f076f785eb12374c1de20db608ab61723a88828ab2e6502957d85",
+    "fullBytes": 637198,
+    "smallBytes": 102300,
+    "transformation": "Proportional web encoding only; no crop, retouch or colour filter."
+  },
+  {
+    "id": "heritage-entrance",
+    "source": "Sindhi Virso-0016.jpg",
+    "sha256": "05ee5efce8ab9c84bfebb6d0f1c40e5541830a363e01e3b3a5c3d09c696365f3",
+    "fullBytes": 447696,
+    "smallBytes": 88398,
+    "transformation": "Proportional web encoding only; no crop, retouch or colour filter."
+  },
+  {
+    "id": "heritage-objects",
+    "source": "Sindhi Virso-0115.jpg",
+    "sha256": "fe6537e39cc4643e6a1d36ee190ce8b93acef7b71623f0dfbae36d1051b9d208",
+    "fullBytes": 629964,
+    "smallBytes": 99248,
+    "transformation": "Proportional web encoding only; no crop, retouch or colour filter."
+  },
+  {
+    "id": "heritage-lounge",
+    "source": "Sindhi Virso-0152.jpg",
+    "sha256": "d37ea0a0e7fb7b44ac822ed0962b67af18c54a921d8f2be981a71090bd8ee09d",
+    "fullBytes": 958736,
+    "smallBytes": 203334,
+    "transformation": "Proportional web encoding only; no crop, retouch or colour filter."
+  },
+  {
+    "id": "heritage-stems",
+    "source": "Sindhi Virso-0202.jpg",
+    "sha256": "f2f2e949d5866455e8d799512d01a115002e0b47e29820137aa7e4ca9f5c83fc",
+    "fullBytes": 1103012,
+    "smallBytes": 132298,
+    "transformation": "Proportional web encoding only; no crop, retouch or colour filter."
+  }
+]
