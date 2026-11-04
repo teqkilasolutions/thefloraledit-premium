@@ -1,14 +1,14 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
-const { chromium } = require('C:/Users/Richa/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 
 (async () => {
-  const browser = await chromium.launch({ channel: 'msedge', headless: true });
+  const browser = await chromium.launch({ channel: process.env.PLAYWRIGHT_CHANNEL || (process.platform === 'win32' ? 'msedge' : undefined), headless: true });
   const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, acceptDownloads: true });
   const page = await context.newPage();
   const root = process.env.FLORAL_TEST_URL || 'http://127.0.0.1:5184/';
-  const qa = path.resolve(__dirname, '../../../output/website-portfolio-implementation/qa');
+  const qa = path.resolve(process.env.FLORAL_QA_DIR || path.join(__dirname, '../.qa'));
   fs.mkdirSync(qa, { recursive: true });
   const checks = [];
   const errors = [];
@@ -18,6 +18,7 @@ const { chromium } = require('C:/Users/Richa/.cache/codex-runtimes/codex-primary
     await page.evaluate(() => { localStorage.clear(); });
     await page.reload();
     await page.locator('main').waitFor();
+    assert.doesNotMatch(await page.locator('meta[name="description"]').getAttribute('content'), /Delhi|NCR/i, 'Metadata must not assert an unconfirmed service area');
     await page.evaluate(() => document.fonts.ready);
     const opener = page.getByRole('button', { name: 'Explore A room in bloom', exact: true });
     assert.equal(await opener.count(), 1, 'The real event portfolio is missing');
@@ -28,14 +29,21 @@ const { chromium } = require('C:/Users/Richa/.cache/codex-runtimes/codex-primary
     assert.match(await dialog.locator('figcaption').innerText(), /room/i);
     await page.keyboard.press('ArrowRight');
     assert.match(await dialog.locator('figcaption').innerText(), /passage/i);
+    const imageBounds = await dialog.locator('.viewer-image img').boundingBox();
+    const frameBounds = await dialog.locator('.viewer-image').boundingBox();
+    const captionBounds = await dialog.locator('figcaption').boundingBox();
+    assert.ok(imageBounds.y + imageBounds.height <= frameBounds.y + frameBounds.height + 1, 'The full photograph must stay inside its frame');
+    assert.ok(imageBounds.y + imageBounds.height <= captionBounds.y + 1, 'The photograph must not overlap its caption or controls');
     await dialog.getByRole('button', { name: 'Save photograph', exact: true }).click();
     assert.equal(await dialog.getByRole('button', { name: 'Remove saved photograph', exact: true }).getAttribute('aria-pressed'), 'true');
+    await page.screenshot({ path: path.join(qa, 'project-viewer.png') });
     await page.keyboard.press('Escape');
     assert.equal(await opener.evaluate(element => document.activeElement === element), true, 'Project opener must regain focus');
     await page.reload();
     const savedButton = page.getByRole('button', { name: /^Saved inspiration, 1 photograph/ });
     assert.equal(await savedButton.count(), 1, 'Saved inspiration must survive reload');
     await savedButton.click();
+    await page.screenshot({ path: path.join(qa, 'saved-inspiration.png') });
     await page.getByRole('button', { name: 'Use these in my enquiry', exact: true }).click();
     dialog = page.getByRole('dialog', { name: 'Enquire about your occasion', exact: true });
     await dialog.waitFor();
@@ -58,6 +66,7 @@ const { chromium } = require('C:/Users/Richa/.cache/codex-runtimes/codex-primary
     assert.match(brief, /Saved inspiration/);
     assert.match(brief, /passage/i);
     assert.match(brief, /not yet sent/i);
+    assert.ok(brief.includes(root + 'assets/portfolio/'), 'Downloaded photo URLs must retain the published base path');
     await page.keyboard.press('Escape');
     checks.push('Project viewer, arrow keys, save/reload, focus return and enquiry handoff');
     checks.push('One dialog, enquiry focus trap, selected references and downloaded brief');
@@ -112,6 +121,16 @@ const { chromium } = require('C:/Users/Richa/.cache/codex-runtimes/codex-primary
       });
       assert.ok(result.scrollWidth <= width && result.brandRight <= result.actionsLeft + 1, `Layout collision at ${width}: ${JSON.stringify(result)}`);
       assert.equal(result.script, true, `Main heading font changed at ${width}`);
+      if (width < 500) {
+        await page.getByRole('button', { name: 'Explore After dark', exact: true }).click();
+        const mobileViewer = page.getByRole('dialog', { name: 'After dark', exact: true });
+        await mobileViewer.getByRole('button', { name: 'Next photograph', exact: true }).click();
+        const bounds = await mobileViewer.locator('.viewer-image img').boundingBox();
+        const frame = await mobileViewer.locator('.viewer-image').boundingBox();
+        const caption = await mobileViewer.locator('figcaption').boundingBox();
+        assert.ok(bounds.y + bounds.height <= frame.y + frame.height + 1 && bounds.y + bounds.height <= caption.y + 1, `Portrait image overlaps its controls at ${width}`);
+        await page.keyboard.press('Escape');
+      }
       metrics.push(result);
     }
     await page.setViewportSize({ width: 390, height: 844 });
