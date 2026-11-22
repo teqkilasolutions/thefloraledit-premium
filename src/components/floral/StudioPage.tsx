@@ -1,6 +1,7 @@
 import { BotanicalTypes, ContactPanel, FloralForms, HouseIntroduction, OpeningHero, StudioExtras, StudioListening, StudioNotes, StudioPrinciples, StudioScale } from './ReferenceHome';
 import { ReferenceFooter, ReferenceNavigation } from './ReferenceNavigation';
 import { ScrollGallery } from './ScrollGallery';
+import { SelectedProjects } from './PortfolioSections';
 
 export function StudioPage() {
   return <div className="floral-site theme-celebration reference-home" id="home">
@@ -14,6 +15,7 @@ export function StudioPage() {
       <BotanicalTypes />
       <StudioListening />
       <StudioScale />
+      <SelectedProjects sectionId="celebrations" />
       <StudioPrinciples />
       <StudioNotes />
       <StudioExtras />

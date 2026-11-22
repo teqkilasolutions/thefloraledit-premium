@@ -1,0 +1,141 @@
+{
+  "reference": "https://www.foglia-doro.com/",
+  "purpose": "Decorative reference artwork explicitly requested by the user on 22 November 2026. Not presented as The Floral Edit event portfolio.",
+  "assets": [
+    {
+      "file": "assets/botanicals/hero-flowers.webp",
+      "source": "https://cdn.prod.website-files.com/6072c2f8dd77f04aa2e238ef/6141c1c90062dc89baaea5a0_GOLD%20LEAF%20-%202.webp",
+      "bytes": 233222,
+      "sha256": "dac60dcab838acb1a9085d6c2e633fa06e1bef4b40a93fe40d8fdd504b08fff8",
+      "width": 1436,
+      "height": 1709,
+      "alpha": true
+    },
+    {
+      "file": "assets/botanicals/hero-mobile.webp",
+      "source": "https://cdn.prod.website-files.com/6072c2f8dd77f04aa2e238ef/60e57ef7c9bc42182f57cf66_hero%20photo%20(3)%20(1).webp",
+      "bytes": 115888,
+      "sha256": "72ca68fd58c40b167025b7fd76e6f6f3aa48ec084b16f29be7ba55f38a1426ce",
+      "width": 1410,
+      "height": 1281,
+      "alpha": false
+    },
+    {
+      "file": "assets/botanicals/leaf-up.svg",
+      "source": "https://cdn.prod.website-files.com/6072c2f8dd77f04aa2e238ef/6082fbaca5196c4e747833b8_leaf-up.svg",
+      "bytes": 7664,
+      "sha256": "029c854402e2f932d3c029fbe25c53e8424150b8be7ea2720587f165d82482c9"
+    },
+    {
+      "file": "assets/botanicals/leaf-down.svg",
+      "source": "https://cdn.prod.website-files.com/6072c2f8dd77f04aa2e238ef/6082fbac5d30db2b54e6db7a_lead-down.svg",
+      "bytes": 7583,
+      "sha256": "0f0cdfc19277ac535ac7385613ec9731010ede2eb6afcd71b2263aeeb5028e98"
+    },
+    {
+      "file": "assets/botanicals/panel-centre.webp",
+      "source": "https://cdn.prod.website-files.com/6072c2f8dd77f04aa2e238ef/61251f953eeff46367598151_Top-min.webp",
+      "bytes": 78710,
+      "sha256": "11cb7a11a1bfd26b43477d965f74099f5e17a5a8662371111ffde0da2c53a754",
+      "width": 907,
+      "height": 1301,
+      "alpha": true
+    },
+    {
+      "file": "assets/botanicals/panel-left.webp",
+      "source": "https://cdn.prod.website-files.com/6072c2f8dd77f04aa2e238ef/61251f98ccd7fe637e072568_Left-min.webp",
+      "bytes": 82792,
+      "sha256": "ff7709fe36de3b993a1249aedac8c8688d1ae0889ef0b96c93d83bccabaa253f",
+      "width": 907,
+      "height": 1302,
+      "alpha": true
+    },
+    {
+      "file": "assets/botanicals/panel-right.webp",
+      "source": "https://cdn.prod.website-files.com/6072c2f8dd77f04aa2e238ef/61251f92c4a8076dc731b4a1_Right-min.webp",
+      "bytes": 99962,
+      "sha256": "0f93a4ddd65aae2f3c450e58db297a65706e89450781e75dac5958e5b7b0f47d",
+      "width": 907,
+      "height": 1302,
+      "alpha": true
+    },
+    {
+      "file": "assets/botanicals/peony.webp",
+      "source": "https://cdn.prod.website-files.com/6072c2f8dd77f04aa2e238ef/60e55172dd3f833c42e761df_Half%20Open%20Red%20Peony%201%20(1).webp",
+      "bytes": 31262,
+      "sha256": "807d5895586b7337ae0b3992fb36b26b36c74a18e2f1c7e8dea67a52a293e9ef",
+      "width": 702,
+      "height": 599,
+      "alpha": true
+    },
+    {
+      "file": "assets/botanicals/velvet-flower.webp",
+      "source": "https://cdn.prod.website-files.com/6072c2f8dd77f04aa2e238ef/612f855fe4a7af8447e764d4_Velveteen-Flower-42%201%20(1).webp",
+      "bytes": 36260,
+      "sha256": "4080c73abeb2d321b30882ec418d3be53a4f27803ccae8a0a309e2a7057bc741",
+      "width": 436,
+      "height": 454,
+      "alpha": true
+    },
+    {
+      "file": "assets/botanicals/foliage.webp",
+      "source": "https://cdn.prod.website-files.com/6072c2f8dd77f04aa2e238ef/612f8562a3e5106d6fcc4b52_Velveteen-Leaves-12%201%20(1).webp",
+      "bytes": 38776,
+      "sha256": "ad0d9bd7fbf8dae803b7b6b619f6ce539152cf0a5c6fc64c3f81fe4391624aee",
+      "width": 506,
+      "height": 556,
+      "alpha": true
+    },
+    {
+      "file": "assets/botanicals/roses-background.webp",
+      "source": "https://cdn.prod.website-files.com/6072c2f8dd77f04aa2e238ef/60e0a68bb86c0b4ddf2eaec9_image%202%20(3)%20(1).webp",
+      "bytes": 40530,
+      "sha256": "86cb8636e7c892126a659b0babb777aa27966e7b35c368471ad580631dd76f52",
+      "width": 2880,
+      "height": 1428,
+      "alpha": false
+    },
+    {
+      "file": "assets/botanicals/botanical-sketch.svg",
+      "source": "https://cdn.prod.website-files.com/6072c2f8dd77f04aa2e238ef/60e0a67c782f33901373df6f_Group%20(21).svg",
+      "bytes": 53472,
+      "sha256": "d617dd10d3c3417393b6310f2f4dcc62780f9d61a797f498e57fdbe48869b075"
+    },
+    {
+      "file": "assets/botanicals/study-one.webp",
+      "source": "https://cdn.prod.website-files.com/6072c2f8dd77f04aa2e238ef/6138716082ad595540f5c776_Web-images---1.webp",
+      "bytes": 12378,
+      "sha256": "851c87955b93afbfd927ccf5a1173434667dacb3376849caa8a32809d8d31048",
+      "width": 432,
+      "height": 651,
+      "alpha": false
+    },
+    {
+      "file": "assets/botanicals/study-two.webp",
+      "source": "https://cdn.prod.website-files.com/6072c2f8dd77f04aa2e238ef/613871a931b6f8e8ad6cfe98_Web-images---2.webp",
+      "bytes": 30538,
+      "sha256": "3c1baedc32b8d1c2d8f816ef725cc5a86d4ae06a018162ce357ea611577c8648",
+      "width": 432,
+      "height": 651,
+      "alpha": false
+    },
+    {
+      "file": "assets/botanicals/study-three.webp",
+      "source": "https://cdn.prod.website-files.com/6072c2f8dd77f04aa2e238ef/613871b731dff05d42e67428_Web-images---3.webp",
+      "bytes": 19234,
+      "sha256": "50894f2f01a9d8b54e7129a56461a84271d55f966e50b29b1e2251dcb2daeb62",
+      "width": 432,
+      "height": 651,
+      "alpha": false
+    },
+    {
+      "file": "assets/botanicals/study-four.webp",
+      "source": "https://cdn.prod.website-files.com/6072c2f8dd77f04aa2e238ef/613871c3f5eab43d997e8988_Web-images---4.webp",
+      "bytes": 32538,
+      "sha256": "8112def9bda9ee379acad26e30e408ae05277d5bd4bac983e6277427a219eb2f",
+      "width": 432,
+      "height": 651,
+      "alpha": false
+    }
+  ]
+}

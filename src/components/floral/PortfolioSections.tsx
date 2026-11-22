@@ -12,9 +12,9 @@ export function InspirationButton({ onBeforeOpen }: { onBeforeOpen?: () => void 
   return <button className="icon-button inspiration-button" onClick={() => { onBeforeOpen?.(); openBoard(); }} aria-label={`Saved inspiration, ${savedIds.length} ${savedIds.length === 1 ? 'photograph' : 'photographs'}`}><Heart size={20} strokeWidth={1.4} /><span className="inspiration-count" aria-hidden="true">{savedIds.length}</span></button>;
 }
 
-export function SelectedProjects() {
+export function SelectedProjects({ sectionId = 'work' }: { sectionId?: string } = {}) {
   const { openProject } = usePortfolio();
-  return <section id="work" className="section-shell portfolio-section" aria-labelledby="portfolio-heading">
+  return <section id={sectionId} className="section-shell portfolio-section celebration-projects" aria-labelledby="portfolio-heading">
     <div className="portfolio-intro"><div><span className="eyebrow">The celebrations we create</span><h2 id="portfolio-heading">A feeling, made floral.</h2></div><p>Different places. Different palettes.<br />A few of the settings we’ve brought into bloom.</p></div>
     <div className="project-grid">{PORTFOLIO_PROJECTS.map(project => <article className={`project-story project-${project.id}`} key={project.id}>
       <button className="project-cover" onClick={() => openProject(project.id)} aria-label={`Explore ${project.title}`}><PortfolioImage photo={PHOTO_BY_ID[project.coverId]} sizes="(max-width: 700px) 100vw, 34vw" /><span className="project-view-label">Step inside <ArrowUpRight size={17} /></span></button>

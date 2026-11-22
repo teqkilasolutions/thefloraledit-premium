@@ -1,0 +1,168 @@
+/* The approved opening stays fixed while original event photographs glide right. */
+.reference-home .opening-carousel{position:absolute;inset:0;z-index:-3;overflow:hidden}
+.reference-home .hero-track{height:100%;width:500%;display:flex;transform:translateX(-80%);animation:hero-glide-right 44s linear infinite;will-change:transform}
+.reference-home .hero-track.is-paused{animation-play-state:paused}
+.hero-slide{position:relative;flex:0 0 20%;width:20%;height:100%;display:block;overflow:hidden}
+.reference-home .hero-slide .opening-photo{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover}
+@keyframes hero-glide-right{from{transform:translateX(-80%)}to{transform:translateX(0)}}
+.hero-motion-toggle{position:absolute;right:28px;bottom:25px;min-width:44px;height:44px;border:1px solid #faf7f170;border-radius:50%;background:#29362b26;color:#faf7f1;display:grid;place-items:center;padding:10px}
+.hero-motion-toggle:hover{background:#29362b80}
+
+/* A complete, carefully spaced set of prints before the photographic expansion. */
+.reference-home .scroll-intro{max-width:1360px;padding:105px 56px 25px;gap:50px}
+.reference-home .scroll-intro h2{font-size:clamp(72px,7vw,102px);line-height:1.07}
+.reference-home .scroll-intro>div{padding-bottom:12px;max-width:260px}
+.reference-home .scroll-intro p{font-size:14px;line-height:1.9}
+.reference-home .tile-one{width:18%;height:50%;left:5%;top:21%}
+.reference-home .tile-two{width:14%;height:25%;left:18%;top:67%}
+.reference-home .tile-three{width:18%;height:53%;right:5%;top:15%}
+.reference-home .tile-four{width:14%;height:24%;right:18%;top:70%}
+.reference-home .scroll-tile{border-radius:2px}
+.reference-home .scroll-gallery-focus{border-radius:2px}
+
+.botanical-section-shell{width:min(100% - 80px,1372px);margin-inline:auto}
+.botanical-copy-shell{width:min(100%,1170px);margin-inline:auto}
+.reference-leaf-art{height:29px;margin:0 auto 40px;display:flex;align-items:center;justify-content:center}
+.reference-leaf-art img{width:92px;height:29px;object-fit:contain}
+.reference-leaf-art.leaf-art-down{margin:64px auto 0}
+.botanical-enter{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform .8s ease}
+.botanical-enter.has-entered{opacity:1;transform:translateY(0)}
+
+/* Full transparent cutout; no photographic rectangle or feathered edge. */
+.reference-home .exact-house{min-height:1095px;padding:350px 40px 210px;display:block;isolation:isolate;overflow:hidden}
+.reference-home .exact-house .house-flower{left:0;top:0;bottom:auto;width:58.33%;max-width:1000px;height:auto;mask-image:none;opacity:1;overflow:visible}
+.reference-home .exact-house .house-flower img{display:block;width:100%;height:auto;object-fit:initial;object-position:initial;max-width:none}
+.reference-home .exact-house .house-copy{width:60%;max-width:900px;margin:0 0 0 41.5%;padding:0}
+.reference-home .exact-house .house-copy h2{font-size:clamp(76px,6.5vw,94px);line-height:1.04;max-width:710px;text-shadow:none}
+.reference-home .exact-house .house-copy>div{margin:38px 0 0 140px;max-width:383px}
+.reference-home .exact-house .house-copy p{font-size:17px;line-height:1.65}
+.reference-home .exact-house .round-link{margin-top:40px;min-height:51px;padding:12px 25px;gap:20px;font-size:12px}
+
+/* The actual artwork contains its own mint panel and overflowing petals. */
+.reference-home .exact-forms{padding:140px 0 72px;text-align:center;overflow:visible}
+.reference-home .exact-forms h2{font-size:clamp(70px,6.7vw,96px);line-height:1.1;margin:0}
+.botanical-fan{position:relative;margin:80px 0 32px;padding-bottom:80px;--fan-progress:0;isolation:isolate}
+.fan-panel{width:30%;margin:0;left:50%;top:0;line-height:0;background:none;transform-origin:50% 50%}
+.fan-panel>img{width:100%;height:auto;object-fit:contain}
+.fan-centre{position:relative;z-index:3;transform:translateX(-50%)}
+.fan-left,.fan-right{position:absolute;z-index:1;opacity:var(--fan-progress)}
+.fan-left{transform:translateX(-50%) translate(calc(-95% * var(--fan-progress)),calc(10% * var(--fan-progress))) rotate(calc(-10deg * var(--fan-progress)))}
+.fan-right{transform:translateX(-50%) translate(calc(95% * var(--fan-progress)),calc(10% * var(--fan-progress))) rotate(calc(10deg * var(--fan-progress)))}
+.botanical-mobile-fan{display:none}
+.reference-home .exact-forms .forms-note{max-width:604px;margin:0 auto}
+.reference-home .exact-forms .forms-note p{font-size:17px;line-height:1.6}
+.reference-home .exact-forms .forms-note .round-link{margin-top:40px;font-size:12px;gap:22px}
+
+/* Flowers appear beside their own type, following scroll, hover and focus. */
+.reference-home .exact-flower-types{padding:140px 40px 72px}
+.reference-home .exact-flower-types .botanical-heading{max-width:720px;display:block;margin:0 0 148px}
+.reference-home .exact-flower-types .botanical-heading h2{font-size:clamp(70px,6.7vw,96px);line-height:1.1}
+.reference-home .exact-flower-types .botanical-heading p{max-width:720px;font-size:18px;line-height:1.7;margin-top:26px;padding:0}
+.flower-category-list{margin:0 0 72px 20%;width:80%}
+.flower-category{width:100%;position:relative}
+.flower-category:not(:last-child)::after{content:'';width:80px;height:1px;display:block;background:#faf7f17d;margin:40px 0}
+.flower-category>button{position:relative;display:block;width:max-content;max-width:calc(100% - 210px);min-height:88px;text-align:left;padding:0;border:0;background:none;color:var(--paper);isolation:isolate}
+.reference-home .flower-category h3{font:400 clamp(38px,4.5vw,68px)/1.3 'Lora',Georgia,serif;letter-spacing:0;position:relative;z-index:2}
+.flower-category-visual{position:absolute;display:block;left:calc(100% - 25px);top:50%;width:300px;pointer-events:none;opacity:0;transform:translateY(-60%) scale(.8) rotate(-15deg);transition:opacity .35s ease,transform .45s ease;z-index:1}
+.flower-category-visual>img{width:100%;height:auto;object-fit:contain}
+.flower-category.is-active .flower-category-visual{opacity:1;transform:translateY(-60%) scale(1) rotate(15deg)}
+.flower-category-arrow{position:absolute;right:-45px;top:calc(50% - 11px);opacity:0;transition:opacity .2s;z-index:3}
+.flower-category button:focus-visible .flower-category-arrow{opacity:1}
+
+/* Original roses and fine botanical illustration, with the copy raised alongside. */
+.reference-home .exact-listening{display:block;min-height:798px;padding:140px 40px 72px}
+.reference-home .exact-listening .listening-photo{object-fit:cover;object-position:center;opacity:1}
+.reference-home .exact-listening .listening-overlay{background:#13221845}
+.reference-home .exact-listening .listening-content{width:min(100%,1170px);margin:72px auto;display:grid;grid-template-columns:18% 60%;gap:0;padding:0}
+.listening-sketch{width:110px;height:217px;object-fit:contain;object-position:top left;display:block}
+.reference-home .exact-listening h2{font-size:clamp(74px,6.4vw,94px);line-height:1.04;max-width:720px}
+.reference-home .exact-listening .listening-body{width:100%;max-width:700px;margin:40px 0 0 70px}
+.reference-home .exact-listening .listening-body p{font-size:18px;line-height:1.7}
+.reference-home .exact-listening .listening-body p+p{margin-top:30px}
+
+/* Four equal frames after the omitted founder block; the reveal is sequential. */
+.reference-home .exact-scale{padding:140px 40px 72px}
+.reference-home .exact-scale .scale-photo-rail{grid-template-columns:repeat(4,minmax(0,1fr));gap:1%;min-height:0;margin:72px 0;align-items:start}
+.exact-scale .scale-photo-rail>figure{display:block;margin:0;overflow:hidden;aspect-ratio:432/651;opacity:0;transform:translateY(50px);transition:opacity .8s ease,transform .8s ease}
+.exact-scale .scale-photo-rail>figure:nth-child(2){transition-delay:.12s}
+.exact-scale .scale-photo-rail>figure:nth-child(3){transition-delay:.24s}
+.exact-scale .scale-photo-rail>figure:nth-child(4){transition-delay:.36s}
+.exact-scale .scale-photo-rail.has-entered>figure{opacity:1;transform:translateY(0)}
+.reference-home .exact-scale .scale-photo-rail img{width:100%;height:100%;object-fit:contain;transform:none}
+.reference-home .exact-scale .scale-copy{max-width:none;margin:0;text-align:left;padding:0}
+.reference-home .exact-scale .scale-copy h2{font-size:clamp(74px,6.5vw,96px);line-height:1.04}
+.scale-indent{max-width:470px;margin:40px 0 0 20%}
+.reference-home .exact-scale .scale-indent p{font-size:17px;line-height:1.7;margin:0}
+.reference-home .exact-scale .scale-indent .round-link{margin-top:40px;font-size:12px}
+.outline-link{background:none;color:var(--paper)!important;border-color:var(--paper)}
+.outline-link:hover{background:var(--paper);color:var(--ink)!important}
+.reference-home .celebration-projects{padding-top:110px;padding-bottom:95px}
+
+@media(min-width:1700px){.reference-home .exact-house{padding-top:400px;min-height:1200px}.reference-home .exact-house .house-copy{margin-left:42%;max-width:1000px}.reference-home .exact-house .house-copy h2{font-size:112px;max-width:900px}}
+@media(max-width:1100px){.reference-home .exact-house{min-height:940px;padding-top:280px}.reference-home .exact-house .house-copy{margin-left:42%;width:58%}.reference-home .exact-house .house-copy h2{font-size:82px}.reference-home .exact-house .house-copy>div{margin-left:70px;max-width:340px}.reference-home .exact-house .house-copy p{font-size:16px}.reference-home .exact-listening h2{font-size:78px}.reference-home .exact-listening .listening-body{margin-left:40px}.reference-home .flower-category h3{font-size:46px}.flower-category-visual{width:245px}.flower-category>button{max-width:calc(100% - 160px)}.reference-home .exact-scale .scale-copy h2{font-size:82px}}
+@media(max-width:800px) and (min-width:701px){.reference-home .exact-house{padding:260px 32px 140px;min-height:830px}.reference-home .exact-house .house-copy{width:60%;margin-left:40%}.reference-home .exact-house .house-copy h2{font-size:70px}.reference-home .exact-house .house-copy>div{margin-left:40px}.reference-home .exact-house .house-copy p{font-size:14px}.reference-home .exact-flower-types{padding-inline:32px}.reference-home .flower-category h3{font-size:38px}.flower-category-visual{width:210px}.flower-category>button{max-width:calc(100% - 150px)}.reference-home .exact-listening{padding-inline:32px}.reference-home .exact-listening h2{font-size:68px}.reference-home .exact-listening .listening-body p{font-size:16px}.listening-sketch{width:80px;height:158px}.reference-home .exact-scale .scale-copy h2{font-size:74px}}
+@media(max-width:700px){
+  .hero-motion-toggle{right:18px;bottom:21px;background:#29362b40}
+  .reference-home .scroll-intro{display:block;padding:80px 24px 18px}
+  .reference-home .scroll-intro h2{font-size:clamp(59px,15.5vw,86px);line-height:1.08}
+  .reference-home .scroll-intro>div{display:block;max-width:320px;margin-top:24px;padding:0}
+  .reference-home .scroll-intro p{font-size:13px}
+  .reference-home .scroll-intro a{margin-top:17px;max-width:none;font-size:11px;gap:20px}
+  .reference-home .tile-one{width:17%;left:3%;height:37%;top:21%}
+  .reference-home .tile-three{width:17%;right:3%;height:43%;top:31%}
+  .reference-home .tile-two,.reference-home .tile-four{display:none}
+  .reference-home .exact-house{padding:300px 24px 80px;min-height:0}
+  .reference-home .exact-house .house-flower{width:92%;max-width:none;left:-14%;top:-57px;height:auto;overflow:visible;mask-image:none}
+  .reference-home .exact-house .house-copy{width:100%;margin:0;padding:0;max-width:550px}
+  .reference-home .exact-house .house-copy h2{font-size:clamp(60px,16.2vw,88px);line-height:1.07;max-width:500px}
+  .reference-home .exact-house .house-copy>div{margin:32px 0 0;max-width:450px}
+  .reference-home .exact-house .house-copy p{font-size:16px;line-height:1.8}
+  .reference-home .exact-house .round-link{margin-top:30px;font-size:11px;min-height:51px}
+  .botanical-section-shell{width:100%}
+  .reference-home .exact-forms{padding:72px 0 64px}
+  .reference-home .exact-forms h2{font-size:clamp(62px,16.7vw,88px);line-height:1.1;margin-inline:24px}
+  .reference-leaf-art{margin-bottom:32px}
+  .botanical-fan{display:none}
+  .botanical-mobile-fan{display:block;margin-top:38px}
+  .mobile-fan-rail{display:flex;position:relative;gap:16px;padding:0 10%;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x mandatory;scroll-padding-inline:10%}
+  .mobile-fan-rail::-webkit-scrollbar{display:none}
+  .mobile-fan-panel{flex:0 0 100%;width:100%;margin:0;scroll-snap-align:center;scroll-snap-stop:always}
+  .mobile-fan-panel img{width:100%;height:auto;object-fit:contain;max-width:none}
+  .reference-home .exact-forms .form-pagination{display:flex;margin:8px 0 22px;gap:0}
+  .reference-home .exact-forms .form-pagination button{width:44px;height:44px;padding:10px}
+  .reference-home .exact-forms .forms-note{margin:0 24px;max-width:none}
+  .reference-home .exact-forms .forms-note p{font-size:16px;line-height:1.7}
+  .reference-home .exact-forms .forms-note p br{display:none}
+  .reference-home .exact-forms .forms-note .round-link{margin-top:30px;font-size:11px}
+  .reference-leaf-art.leaf-art-down{margin-top:55px}
+  .reference-home .exact-flower-types{padding:70px 24px 72px}
+  .reference-home .exact-flower-types .botanical-heading{margin:0 0 90px;max-width:500px}
+  .reference-home .exact-flower-types .botanical-heading h2{font-size:clamp(68px,18vw,96px);line-height:1.08}
+  .reference-home .exact-flower-types .botanical-heading p{font-size:16px;line-height:1.8;max-width:450px;margin-top:26px}
+  .flower-category-list{margin:0 0 10px 32px;width:calc(100% - 32px)}
+  .flower-category>button{max-width:100%;width:max-content;min-height:100px}
+  .reference-home .flower-category h3{font-size:clamp(31px,8.9vw,45px);line-height:1.45;max-width:265px}
+  .flower-category:not(:last-child)::after{margin:60px 0;width:80px}
+  .flower-category-visual{width:200px;left:-66px;top:35%;transform:translateY(-58%) scale(.8) rotate(-15deg)}
+  .flower-category.is-active .flower-category-visual{transform:translateY(-58%) scale(1) rotate(15deg)}
+  .flower-category-arrow{right:0;top:100%;width:17px;height:17px}
+  .reference-home .exact-listening{padding:72px 24px;min-height:815px}
+  .reference-home .exact-listening .listening-content{display:block;width:100%;margin:0;padding:0}
+  .listening-sketch{width:90px;height:177px;margin:0 0 32px}
+  .reference-home .exact-listening h2{font-size:clamp(58px,15.6vw,84px);line-height:1.06}
+  .reference-home .exact-listening .listening-body{width:100%;margin:30px 0 0;max-width:500px}
+  .reference-home .exact-listening .listening-body p{font-size:17px;line-height:1.8}
+  .reference-home .exact-listening .listening-body p+p{margin-top:30px}
+  .reference-home .exact-scale{padding:72px 24px}
+  .reference-home .exact-scale .scale-photo-rail{grid-template-columns:1fr 1fr;gap:8px;margin:0 0 52px;min-height:0}
+  .reference-home .exact-scale .scale-copy h2{font-size:clamp(60px,16.2vw,85px);line-height:1.08}
+  .scale-indent{margin:32px 0 0;max-width:450px}
+  .reference-home .exact-scale .scale-indent p{font-size:16px;line-height:1.8}
+  .reference-home .exact-scale .scale-indent .round-link{margin-top:30px;font-size:11px}
+  .reference-home .celebration-projects{padding-block:80px}
+}
+@media(prefers-reduced-motion:reduce){
+  .reference-home .hero-track{animation:none;transform:translateX(-80%);will-change:auto}
+  .botanical-enter,.exact-scale .scale-photo-rail>figure{opacity:1;transform:none;transition:none}
+  .flower-category-visual,.flower-category-arrow{transition:none}
+}

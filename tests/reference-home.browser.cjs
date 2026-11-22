@@ -56,7 +56,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
     }
     await page.setViewportSize({ width: 390, height: 844 });
     assert.match(await page.locator('.scale-copy h2').innerText(), /stem\s+to/, 'The mobile scale heading must keep a word boundary');
-    assert.match(await page.locator('.forms-note p').innerText(), /together\.\s+Floral/, 'Hidden line breaks must preserve sentence spacing');
+    assert.match(await page.locator('.forms-note p').innerText(), /arrangements\.\s+Flowers/, 'Hidden line breaks must preserve sentence spacing');
     await page.evaluate(() => scrollTo({ top: 0, behavior: 'instant' }));
     await page.getByRole('button', { name: 'Open menu', exact: true }).click();
     for (let i = 0; i < 12; i++) {
@@ -72,8 +72,9 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
     await page.getByRole('button', { name: 'Open menu', exact: true }).click();
     await page.keyboard.press('Escape');
     assert.equal(await page.getByRole('button', { name: 'Open menu', exact: true }).getAttribute('aria-expanded'), 'false');
-    await page.getByRole('button', { name: 'Show After dark', exact: true }).click();
+    await page.getByRole('button', { name: 'Show botanical panel 2', exact: true }).click();
     await page.waitForTimeout(600);
+    await page.getByRole('button', { name: 'Explore After dark', exact: true }).scrollIntoViewIfNeeded();
     const night = await page.getByRole('button', { name: 'Explore After dark', exact: true }).boundingBox();
     assert.ok(night.x >= 0 && night.x + night.width <= 395, 'Mobile carousel control must reveal its target');
     await page.getByRole('button', { name: 'Explore After dark', exact: true }).click();
