@@ -15,6 +15,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
   page.on('pageerror', error => errors.push(error.message));
   try {
     await page.goto(root);
+    await page.locator('html[data-studio-ready="true"]').waitFor();
     await page.evaluate(() => document.fonts.ready);
     assert.equal(await page.locator('.scroll-gallery').count(), 1, 'The post-hero expanding image section is missing');
     for (const width of [320, 390, 768, 1024, 1440]) {
@@ -37,14 +38,14 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
       if (width === 390) {
         assert.ok(Math.abs(geometry.header.height - 137.1) < 2, 'Mobile header proportion');
         assert.ok(Math.abs(geometry.hero.height - 594.14) < 2, 'Mobile hero proportion');
-        assert.ok(Math.abs(geometry.footer.height - 1125) < 3, 'Mobile footer proportion');
+        assert.ok(geometry.footer.height < 600, 'Mobile footer must fit its content without the old fixed-height blank space');
       }
       const range = await page.locator('.scroll-gallery').evaluate(el => ({ top: el.getBoundingClientRect().top + scrollY, height: el.offsetHeight, viewport: innerHeight }));
       await page.evaluate(y => scrollTo({ top: y, behavior: 'instant' }), range.top);
-      await page.waitForTimeout(100);
+      await page.waitForFunction(() => document.querySelector('.scroll-gallery').style.getPropertyValue('--gallery-progress') !== '');
       const initial = await page.locator('.scroll-gallery-focus').boundingBox();
       await page.evaluate(y => scrollTo({ top: y, behavior: 'instant' }), range.top + range.height - range.viewport - 2);
-      await page.waitForTimeout(100);
+      await page.waitForFunction(() => Number(document.querySelector('.scroll-gallery').style.getPropertyValue('--gallery-progress')) > .98);
       const expanded = await page.locator('.scroll-gallery-focus').boundingBox();
       assert.ok(expanded.width >= width - 10 && expanded.height >= range.viewport - 10, 'The photograph must cover the viewport');
       await page.screenshot({ path: path.join(qa, `expanded-${width}.png`) });
@@ -54,9 +55,29 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
       assert.ok(Math.abs(reversed.width - initial.width) < 2, 'Scroll reversal must restore the inset image');
       metrics.push({ ...geometry, initial, expanded });
     }
+    // Reproduce mobile browser chrome: CSS 100vh can be larger than the
+    // visible viewport. The expanded image must cover that measured viewport.
     await page.setViewportSize({ width: 390, height: 844 });
-    assert.match(await page.locator('.scale-copy h2').innerText(), /stem\s+to/, 'The mobile scale heading must keep a word boundary');
-    assert.match(await page.locator('.forms-note p').innerText(), /arrangements\.\s+Flowers/, 'Hidden line breaks must preserve sentence spacing');
+    await page.evaluate(() => { window.originalHeightDescriptor = Object.getOwnPropertyDescriptor(window, 'innerHeight'); Object.defineProperty(window, 'innerHeight', { configurable: true, value: 700 }); dispatchEvent(new Event('resize')); });
+    const rangeWithChrome = await page.locator('.scroll-gallery').evaluate(el => ({ top: el.getBoundingClientRect().top + scrollY, height: el.offsetHeight }));
+    await page.evaluate(y => scrollTo({ top: y, behavior: 'instant' }), rangeWithChrome.top + rangeWithChrome.height - 700 + 1);
+    await page.waitForTimeout(150);
+    const phoneExpanded = await page.locator('.scroll-gallery-focus').boundingBox();
+    assert.ok(Math.abs(phoneExpanded.height - 700) < 2, 'Expansion must match the visible mobile viewport');
+    const expandedTransform = await page.locator('.scroll-gallery-focus').evaluate(el => getComputedStyle(el).transform);
+    // Change dimensions while already fully expanded; the scale is unchanged,
+    // but the underlying photo still needs its new cover dimensions.
+    await page.setViewportSize({ width: 700, height: 900 });
+    await page.evaluate(() => { Object.defineProperty(window, 'innerHeight', window.originalHeightDescriptor); delete window.originalHeightDescriptor; dispatchEvent(new Event('resize')); });
+    const resizedRange = await page.locator('.scroll-gallery').evaluate(el => ({ top: el.getBoundingClientRect().top + scrollY, height: el.offsetHeight }));
+    await page.evaluate(y => scrollTo({ top: y, behavior: 'instant' }), resizedRange.top + resizedRange.height - 900 + 1);
+    await page.waitForTimeout(150);
+    const resizedCover = await page.locator('.scroll-gallery-focus').evaluate(el => ({ frame: el.getBoundingClientRect().toJSON(), photo: el.querySelector('img').getBoundingClientRect().toJSON() }));
+    assert.equal(await page.locator('.scroll-gallery-focus').evaluate(el => getComputedStyle(el).transform), expandedTransform, 'This regression must exercise an unchanged fully expanded transform');
+    assert.ok(resizedCover.photo.width >= resizedCover.frame.width - 1 && resizedCover.photo.height >= resizedCover.frame.height - 1, 'Viewport enlargement must never expose the gallery background');
+    await page.setViewportSize({ width: 390, height: 844 });
+    assert.match(await page.locator('.scale-copy h2').textContent(), /stem\s+to/, 'The mobile scale heading must keep a word boundary');
+    assert.match(await page.locator('.forms-note p').textContent(), /arrangements\.\s+Flowers/, 'Hidden line breaks must preserve sentence spacing');
     await page.evaluate(() => scrollTo({ top: 0, behavior: 'instant' }));
     await page.getByRole('button', { name: 'Open menu', exact: true }).click();
     for (let i = 0; i < 12; i++) {

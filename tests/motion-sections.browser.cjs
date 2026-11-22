@@ -14,7 +14,9 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
   page.on('pageerror', error => errors.push(error.message));
   try {
     await page.goto(root);
+    await page.locator('html[data-studio-ready="true"]').waitFor();
     await page.evaluate(() => document.fonts.ready);
+    await page.locator('.hero-track[data-ready="true"]').waitFor();
     assert.equal(await page.locator('.hero-track').count(), 1, 'The running multi-photo hero is missing');
     const movement = await page.locator('.hero-track').evaluate(el => { const animation = el.getAnimations()[0]; animation.pause(); animation.currentTime = 0; const start = new DOMMatrix(getComputedStyle(el).transform).m41; animation.currentTime = 2000; const end = new DOMMatrix(getComputedStyle(el).transform).m41; animation.play(); return { start, end }; });
     assert.ok(movement.end > movement.start, 'Hero photos must move from left to right');

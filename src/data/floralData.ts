@@ -1,3 +1,5 @@
+import { base } from './studio';
+
 export interface FloralProduct {
   id: string;
   name: string;
@@ -42,7 +44,7 @@ export const FLORAL_PRODUCTS: FloralProduct[] = [
     dimensions: 'H 32 cm · Ø 16 cm',
     material: 'Hand-glazed matt stoneware, gold-lustre bands',
     description: 'A tall two-handled amphora in a soft ivory glaze with delicate gold-lustre bands. Holds long architectural branches, delphiniums and wild foliage without needing a frog.',
-    image: `${import.meta.env.BASE_URL}assets/floral/amphora.jpg`,
+    image: `${base}assets/floral/amphora.jpg`,
     tags: ['Amphora', 'Gold Lustre', 'Ceramic', 'Editorial'],
     inStock: true
   },
@@ -55,7 +57,7 @@ export const FLORAL_PRODUCTS: FloralProduct[] = [
     dimensions: 'H 18 cm · Ø 9 cm',
     material: 'Wheel-thrown stoneware, satin sage glaze',
     description: 'A slim sage bottle designed for a single stem or delicate botanical sprig. Lives comfortably on bedside tables, writing desks, and minimal architectural consoles.',
-    image: `${import.meta.env.BASE_URL}assets/floral/bud-vase.jpg`,
+    image: `${base}assets/floral/bud-vase.jpg`,
     tags: ['Bud Vase', 'Minimalist', 'Sage'],
     inStock: true
   },
@@ -68,7 +70,7 @@ export const FLORAL_PRODUCTS: FloralProduct[] = [
     dimensions: 'H 36 cm · Ø 24 cm',
     material: 'Matt pearl stoneware',
     description: 'A round, quiet jar with a soft pearl glaze. Striking with dried pampas, flowering quince branches, or standing alone as a sculptural ceramic presence.',
-    image: `${import.meta.env.BASE_URL}assets/floral/moon-jar.jpg`,
+    image: `${base}assets/floral/moon-jar.jpg`,
     tags: ['Sculptural', 'Moon Jar', 'Pearl'],
     inStock: true
   },
@@ -81,7 +83,7 @@ export const FLORAL_PRODUCTS: FloralProduct[] = [
     dimensions: 'H 14 cm · Ø 30 cm',
     material: 'Warm blush unglazed exterior, glazed reservoir',
     description: 'A low blush bowl sculpted specifically for dinner tables, allowing guests to converse freely across the floral dome. Ideal for garden roses, ranunculus and water blooms.',
-    image: `${import.meta.env.BASE_URL}assets/floral/blush-bowl.jpg`,
+    image: `${base}assets/floral/blush-bowl.jpg`,
     tags: ['Tablescape', 'Low Bowl', 'Dining'],
     inStock: true
   },

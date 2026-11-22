@@ -1,39 +1,40 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { ArrowDown } from 'lucide-react';
 import { PHOTO_BY_ID } from '../../data/portfolio';
-import { scrollGalleryFrame } from '../../lib/scrollGallery';
+import { scrollGalleryTransform } from '../../lib/scrollGallery';
+import { observeVisibleScroll } from '../../lib/visibleScroll';
 import { PortfolioImage } from './PortfolioSections';
+import { useReducedMotion } from './useStudioMotion';
 
 export function ScrollGallery() {
   const section = useRef<HTMLDivElement>(null);
   const focus = useRef<HTMLDivElement>(null);
-  const [reduced, setReduced] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  const reduced = useReducedMotion();
   useEffect(() => {
-    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const changed = () => setReduced(media.matches);
-    media.addEventListener('change', changed);
-    return () => media.removeEventListener('change', changed);
-  }, []);
-  useEffect(() => {
-    if (reduced) { focus.current?.removeAttribute('style'); section.current?.style.removeProperty('--gallery-progress'); return; }
-    let frame = 0;
+    const root = section.current;
+    const image = focus.current;
+    const photograph = image?.querySelector('img');
+    if (!root || !image || !photograph) return;
+    if (reduced) { image.removeAttribute('style'); photograph.removeAttribute('style'); root.style.removeProperty('--gallery-progress'); root.style.removeProperty('--gallery-height'); return; }
+    let previous = '';
+    let imageDimensions = '';
     const draw = () => {
-      frame = 0;
-      const root = section.current;
-      const image = focus.current;
-      if (!root || !image) return;
       const bounds = root.getBoundingClientRect();
       const height = window.innerHeight;
       const progress = Math.min(1, Math.max(0, -bounds.top / Math.max(1, bounds.height - height)));
-      const value = scrollGalleryFrame(progress, root.clientWidth, height);
-      image.style.cssText = `width:${value.width}px;height:${value.height}px;left:${value.x}px;top:${value.y}px;border-radius:${value.radius}px`;
+      const photo = PHOTO_BY_ID['day-flowers'];
+      const value = scrollGalleryTransform(progress, bounds.width, height, photo.width, photo.height);
+      // Mobile browser controls can make 100vh differ from the visible height.
+      root.style.setProperty('--gallery-height', `${height}px`);
+      const dimensions = `width:${value.imageWidth}px;height:${value.imageHeight}px`;
+      if (dimensions !== imageDimensions) { photograph.style.cssText = dimensions; imageDimensions = dimensions; }
+      const transform = `--focus-x:${value.scaleX};--focus-y:${value.scaleY};--photo-x:${value.imageScaleX};--photo-y:${value.imageScaleY}`;
+      if (transform === previous) return;
+      previous = transform;
+      image.style.cssText = transform;
       root.style.setProperty('--gallery-progress', String(progress));
     };
-    const schedule = () => { if (!frame) frame = requestAnimationFrame(draw); };
-    draw();
-    window.addEventListener('scroll', schedule, { passive: true });
-    window.addEventListener('resize', schedule);
-    return () => { cancelAnimationFrame(frame); window.removeEventListener('scroll', schedule); window.removeEventListener('resize', schedule); };
+    return observeVisibleScroll(root, draw);
   }, [reduced]);
   return <section className="immersive-story" aria-labelledby="immersive-title">
     <div className="scroll-intro"><h2 id="immersive-title">A world of flowers.<br />A feeling all your own.</h2><div><p>Floral design, thoughtful spaces<br />and the joy of gathering.</p><a href="#services">Step into our world <ArrowDown size={17} /></a></div></div>

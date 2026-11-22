@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react';
+import { createContext, useCallback, useContext, useEffect, useRef, useState, startTransition, type ReactNode } from 'react';
 import { PHOTO_BY_ID, PHOTO_IDS, PORTFOLIO_PROJECTS } from '../data/portfolio';
 import { INSPIRATION_KEY, INSPIRATION_LIMIT, readInspiration, toggleInspiration } from '../lib/inspiration';
 
@@ -12,23 +12,36 @@ type PortfolioState = {
 const PortfolioContext = createContext<PortfolioState | null>(null);
 
 export function PortfolioProvider({ children }: { children: ReactNode }) {
-  const [initial] = useState(() => {
-    try { return { ids: readInspiration(localStorage.getItem(INSPIRATION_KEY), PHOTO_IDS), unavailable: false }; }
-    catch { return { ids: [], unavailable: true }; }
-  });
-  const [savedIds, setSavedIds] = useState<string[]>(initial.ids);
-  const [storageUnavailable, setStorageUnavailable] = useState(initial.unavailable);
+  // The first browser render matches the static HTML. Restore this device's
+  // edit after hydration, without replacing the already visible page.
+  const [savedIds, setSavedIds] = useState<string[]>([]);
+  const [storageUnavailable, setStorageUnavailable] = useState(false);
   const [viewer, setViewer] = useState<Viewer>(null);
   const [boardOpen, setBoardOpen] = useState(false);
   const [announcement, setAnnouncement] = useState('');
+  const edit = useRef<string[] | null>(null);
+  const restore = () => {
+    if (edit.current) return edit.current;
+    try { edit.current = readInspiration(localStorage.getItem(INSPIRATION_KEY), PHOTO_IDS); }
+    catch { edit.current = []; }
+    return edit.current;
+  };
   const persist = (ids: string[]) => {
+    edit.current = ids;
     setSavedIds(ids);
     try { localStorage.setItem(INSPIRATION_KEY, JSON.stringify(ids)); setStorageUnavailable(false); }
     catch { setStorageUnavailable(true); }
   };
   useEffect(() => {
+    if (!edit.current) {
+      let unavailable = false;
+      try { edit.current = readInspiration(localStorage.getItem(INSPIRATION_KEY), PHOTO_IDS); }
+      catch { edit.current = []; unavailable = true; }
+      const ids = edit.current;
+      startTransition(() => { if (ids.length) setSavedIds(ids); setStorageUnavailable(unavailable); });
+    }
     const sync = (event: StorageEvent) => {
-      if (event.key === INSPIRATION_KEY || event.key === null) setSavedIds(readInspiration(event.newValue, PHOTO_IDS));
+      if (event.key === INSPIRATION_KEY || event.key === null) { edit.current = readInspiration(event.newValue, PHOTO_IDS); setSavedIds(edit.current); }
     };
     window.addEventListener('storage', sync);
     return () => window.removeEventListener('storage', sync);
@@ -46,9 +59,10 @@ export function PortfolioProvider({ children }: { children: ReactNode }) {
   }), []);
   const toggleSaved = (id: string) => {
     if (!PHOTO_BY_ID[id]) return;
-    const removing = savedIds.includes(id);
-    if (!removing && savedIds.length >= INSPIRATION_LIMIT) { setAnnouncement('Your edit holds eight photographs. Remove one to make room for another.'); return; }
-    persist(toggleInspiration(savedIds, id, PHOTO_IDS));
+    const current = restore();
+    const removing = current.includes(id);
+    if (!removing && current.length >= INSPIRATION_LIMIT) { setAnnouncement('Your edit holds eight photographs. Remove one to make room for another.'); return; }
+    persist(toggleInspiration(current, id, PHOTO_IDS));
     setAnnouncement(removing ? 'Photograph removed from your inspiration.' : 'Photograph saved to your inspiration.');
   };
   const replaceSaved = (ids: readonly string[]) => persist(readInspiration(JSON.stringify(ids), PHOTO_IDS));

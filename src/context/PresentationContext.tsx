@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, startTransition } from 'react';
 import { type FloralProduct, FLORAL_PRODUCTS } from '../data/floralData';
 import { CART_KEY, readBag } from '../lib/floralStorage';
 
@@ -46,13 +46,19 @@ export const PresentationProvider: React.FC<{ children: React.ReactNode }> = ({ 
   const [enquiryService, setEnquiryService] = useState('Event Florals & Celebrations');
   const [enquiryEmail, setEnquiryEmail] = useState('');
   const [quickViewProduct, setQuickViewProduct] = useState<FloralProduct | null>(null);
-  const [cartItems, setCartItems] = useState<CartItem[]>(() => {
-    try { return readBag(localStorage.getItem(CART_KEY)).map(item => ({ product: FLORAL_PRODUCTS.find(p => p.id === item.id)!, quantity: item.quantity })); } catch { return []; }
-  });
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [storageReady, setStorageReady] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   useEffect(() => {
+    startTransition(() => {
+      try { const items = readBag(localStorage.getItem(CART_KEY)).map(item => ({ product: FLORAL_PRODUCTS.find(p => p.id === item.id)!, quantity: item.quantity })); if (items.length) setCartItems(items); } catch { /* Use an empty bag when storage is unavailable. */ }
+      setStorageReady(true);
+    });
+  }, []);
+  useEffect(() => {
+    if (!storageReady) return;
     try { localStorage.setItem(CART_KEY, JSON.stringify(cartItems.map(item => ({ id: item.product.id, quantity: item.quantity })))); } catch { /* Keep shopping usable when browser storage is unavailable. */ }
-  }, [cartItems]);
+  }, [cartItems, storageReady]);
   useEffect(() => {
     function sync(event: StorageEvent) {
       if (event.key === CART_KEY || event.key === null) setCartItems(readBag(event.newValue).map(item => ({ product: FLORAL_PRODUCTS.find(p => p.id === item.id)!, quantity: item.quantity })));

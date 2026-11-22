@@ -2,6 +2,7 @@ import { BotanicalTypes, ContactPanel, FloralForms, HouseIntroduction, OpeningHe
 import { ReferenceFooter, ReferenceNavigation } from './ReferenceNavigation';
 import { ScrollGallery } from './ScrollGallery';
 import { SelectedProjects } from './PortfolioSections';
+import { Suspense } from 'react';
 
 export function StudioPage() {
   return <div className="floral-site theme-celebration reference-home" id="home">
@@ -9,17 +10,17 @@ export function StudioPage() {
     <ReferenceNavigation />
     <main id="main-content">
       <OpeningHero />
-      <ScrollGallery />
-      <HouseIntroduction />
-      <FloralForms />
-      <BotanicalTypes />
-      <StudioListening />
-      <StudioScale />
-      <SelectedProjects sectionId="celebrations" />
-      <StudioPrinciples />
-      <StudioNotes />
-      <StudioExtras />
-      <ContactPanel />
+      <Suspense fallback={null}><ScrollGallery /></Suspense>
+      <Suspense fallback={null}><HouseIntroduction /></Suspense>
+      <Suspense fallback={null}><FloralForms /></Suspense>
+      <Suspense fallback={null}><BotanicalTypes /></Suspense>
+      <Suspense fallback={null}><StudioListening /></Suspense>
+      <Suspense fallback={null}><StudioScale /></Suspense>
+      <Suspense fallback={null}><SelectedProjects sectionId="celebrations" /></Suspense>
+      <Suspense fallback={null}><StudioPrinciples /></Suspense>
+      <Suspense fallback={null}><StudioNotes /></Suspense>
+      <Suspense fallback={null}><StudioExtras /></Suspense>
+      <Suspense fallback={null}><ContactPanel /></Suspense>
     </main>
     <ReferenceFooter />
   </div>;

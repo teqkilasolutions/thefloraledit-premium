@@ -1,0 +1,32 @@
+/* Let the browser render long-page sections as they approach the viewport.
+   Estimates reserve the existing layout; auto remembers each measured height.
+   The sticky photographic expansion is deliberately outside containment. */
+::selection{background:#536336;color:#f8f6ef}
+.interaction-recovery{position:fixed;z-index:120;inset:auto 20px 20px auto;max-width:360px;padding:24px;background:#faf7f1;color:#29362b;border:1px solid #53633655;box-shadow:0 8px 40px #17231a22;font:13px/1.8 'Manrope',sans-serif}
+.interaction-recovery>div{display:flex;gap:20px;margin-top:14px}
+.interaction-recovery button{background:none;border:0;border-bottom:1px solid currentColor;min-height:44px;color:inherit}
+@supports(content-visibility:auto){
+  .reference-home main>:is(.house-intro,.forms-section,.botanical-types,.studio-listening,.studio-scale,.celebration-projects,.studio-principles,.studio-notes,.studio-extras,.contact-panel){content-visibility:auto;contain-intrinsic-block-size:auto var(--content-estimate,800px)}
+  .house-intro{--content-estimate:535px}
+  .forms-section{--content-estimate:1217px}
+  .botanical-types{--content-estimate:839px}
+  .studio-listening{--content-estimate:624px}
+  .studio-scale{--content-estimate:1083px}
+  .celebration-projects{--content-estimate:853px}
+  .studio-principles{--content-estimate:302px}
+  .studio-notes{--content-estimate:540px}
+  .studio-extras{--content-estimate:149px}
+  .contact-panel{--content-estimate:750px}
+  @media(max-width:700px){
+    .house-intro{--content-estimate:432px}
+    .forms-section{--content-estimate:1033px}
+    .botanical-types{--content-estimate:860px}
+    .studio-listening{--content-estimate:708px}
+    .studio-scale{--content-estimate:1262px}
+    .celebration-projects{--content-estimate:1834px}
+    .studio-principles{--content-estimate:827px}
+    .studio-notes{--content-estimate:768px}
+    .studio-extras{--content-estimate:138px}
+    .contact-panel{--content-estimate:395px}
+  }
+}

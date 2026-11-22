@@ -8,13 +8,14 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
   const root = process.env.FLORAL_TEST_URL || 'http://127.0.0.1:5184/';
   const issues = [];
   const heroRequests = [];
-  page.on('request', request => { if (/assets\/portfolio\/day-(room|lounge)(-small)?\.webp(?:\?|$)/.test(request.url())) heroRequests.push(request.url()); });
+  page.on('request', request => { if (/assets\/optimized\/day-(room|lounge)-\d+\.(avif|webp)(?:\?|$)/.test(request.url())) heroRequests.push(request.url()); });
   try {
     await page.goto(root);
+    await page.locator('html[data-studio-ready="true"]').waitFor();
     await page.evaluate(() => document.fonts.ready);
-    if (heroRequests.some(url => /day-room(?:-small)?\.webp/.test(url))) issues.push('A phone downloads the hidden desktop hero');
-    if (!/stem\s+to/.test(await page.locator('.scale-copy h2').innerText())) issues.push('Mobile scale heading joins stem and to');
-    if (!/arrangements\.\s+Flowers/.test(await page.locator('.forms-note p').innerText())) issues.push('Mobile story copy joins two sentences');
+    if (heroRequests.some(url => /day-room-\d+\.avif/.test(url))) issues.push('A phone downloads the hidden desktop hero');
+    if (!/stem\s+to/.test(await page.locator('.scale-copy h2').textContent())) issues.push('Mobile scale heading joins stem and to');
+    if (!/arrangements\.\s+Flowers/.test(await page.locator('.forms-note p').textContent())) issues.push('Mobile story copy joins two sentences');
     const titleOffset = await page.evaluate(() => { const hero = document.querySelector('.opening-hero').getBoundingClientRect(); const title = document.querySelector('.opening-hero h1').getBoundingClientRect(); return title.top + title.height / 2 - hero.top - hero.height / 2; });
     if (Math.abs(titleOffset) > 24) issues.push('The responsive picture shifts the hero title off centre');
     await page.getByRole('button', { name: 'Open menu', exact: true }).tap();

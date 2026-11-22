@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { ArrowRight, ArrowUpRight, Heart, Minus, Plus } from 'lucide-react';
-import { PHOTO_BY_ID, PORTFOLIO_PROJECTS, photoUrl, type PortfolioPhoto } from '../../data/portfolio';
+import { PHOTO_BY_ID, PORTFOLIO_PROJECTS, type PortfolioPhoto } from '../../data/portfolio';
 import { usePortfolio } from '../../context/PortfolioContext';
+import { base } from '../../data/studio';
+import { responsivePhotoSet, responsivePhotoUrl } from '../../lib/responsiveImages';
 
 export function PortfolioImage({ photo, className = '', priority = false, sizes = '(max-width: 700px) 100vw, 40vw' }: { photo: PortfolioPhoto; className?: string; priority?: boolean; sizes?: string }) {
-  return <img className={className} src={photoUrl(photo)} srcSet={`${photoUrl(photo, true)} ${photo.smallWidth}w, ${photoUrl(photo)} ${photo.width}w`} sizes={sizes} alt={photo.alt} width={photo.width} height={photo.height} loading={priority ? 'eager' : 'lazy'} fetchPriority={priority ? 'high' : 'auto'} />;
+  return <img className={className} src={responsivePhotoUrl(base, photo.id)} srcSet={responsivePhotoSet(base, photo.id)} sizes={sizes} alt={photo.alt} width={photo.width} height={photo.height} loading={priority ? 'eager' : 'lazy'} fetchPriority={priority ? 'high' : 'auto'} decoding="async" />;
 }
 
 export function InspirationButton({ onBeforeOpen }: { onBeforeOpen?: () => void } = {}) {

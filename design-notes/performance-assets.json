@@ -1,0 +1,625 @@
+{
+  "source": "Existing approved portfolio WebP derivatives; original source files preserved.",
+  "widths": [
+    480,
+    800,
+    1200,
+    1600
+  ],
+  "webpQuality": 74,
+  "avifQuality": 50,
+  "logo": {
+    "sourceSha256": "c32e29173190097a0839d86e9ae437961f440aa3440997f58f9fc32ed56c2791",
+    "crop": [
+      805,
+      735,
+      1970,
+      1710
+    ],
+    "width": 320,
+    "height": 278,
+    "bytes": 10476
+  },
+  "photographs": [
+    {
+      "name": "day-arch-480.webp",
+      "width": 480,
+      "height": 320,
+      "bytes": 29190
+    },
+    {
+      "name": "day-arch-480.avif",
+      "width": 480,
+      "height": 320,
+      "bytes": 17920
+    },
+    {
+      "name": "day-arch-800.webp",
+      "width": 800,
+      "height": 533,
+      "bytes": 68960
+    },
+    {
+      "name": "day-arch-800.avif",
+      "width": 800,
+      "height": 533,
+      "bytes": 42977
+    },
+    {
+      "name": "day-arch-1200.webp",
+      "width": 1200,
+      "height": 800,
+      "bytes": 129858
+    },
+    {
+      "name": "day-arch-1200.avif",
+      "width": 1200,
+      "height": 800,
+      "bytes": 82649
+    },
+    {
+      "name": "day-arch-1600.webp",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 191876
+    },
+    {
+      "name": "day-arch-1600.avif",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 127333
+    },
+    {
+      "name": "day-candles-480.webp",
+      "width": 480,
+      "height": 720,
+      "bytes": 33152
+    },
+    {
+      "name": "day-candles-800.webp",
+      "width": 800,
+      "height": 1200,
+      "bytes": 62034
+    },
+    {
+      "name": "day-candles-1200.webp",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 102356
+    },
+    {
+      "name": "day-candles-1600.webp",
+      "width": 1600,
+      "height": 2400,
+      "bytes": 140486
+    },
+    {
+      "name": "day-flowers-480.webp",
+      "width": 480,
+      "height": 720,
+      "bytes": 37592
+    },
+    {
+      "name": "day-flowers-800.webp",
+      "width": 800,
+      "height": 1200,
+      "bytes": 73110
+    },
+    {
+      "name": "day-flowers-1200.webp",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 121606
+    },
+    {
+      "name": "day-flowers-1600.webp",
+      "width": 1600,
+      "height": 2400,
+      "bytes": 167096
+    },
+    {
+      "name": "day-lounge-480.webp",
+      "width": 480,
+      "height": 720,
+      "bytes": 58992
+    },
+    {
+      "name": "day-lounge-480.avif",
+      "width": 480,
+      "height": 720,
+      "bytes": 36851
+    },
+    {
+      "name": "day-lounge-800.webp",
+      "width": 800,
+      "height": 1200,
+      "bytes": 128184
+    },
+    {
+      "name": "day-lounge-800.avif",
+      "width": 800,
+      "height": 1200,
+      "bytes": 82298
+    },
+    {
+      "name": "day-lounge-1200.webp",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 222710
+    },
+    {
+      "name": "day-lounge-1200.avif",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 147285
+    },
+    {
+      "name": "day-lounge-1600.webp",
+      "width": 1600,
+      "height": 2400,
+      "bytes": 314422
+    },
+    {
+      "name": "day-lounge-1600.avif",
+      "width": 1600,
+      "height": 2400,
+      "bytes": 214848
+    },
+    {
+      "name": "day-materials-480.webp",
+      "width": 480,
+      "height": 720,
+      "bytes": 28774
+    },
+    {
+      "name": "day-materials-800.webp",
+      "width": 800,
+      "height": 1200,
+      "bytes": 54228
+    },
+    {
+      "name": "day-materials-1200.webp",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 89358
+    },
+    {
+      "name": "day-materials-1600.webp",
+      "width": 1600,
+      "height": 2400,
+      "bytes": 122546
+    },
+    {
+      "name": "day-passage-480.webp",
+      "width": 480,
+      "height": 320,
+      "bytes": 35234
+    },
+    {
+      "name": "day-passage-800.webp",
+      "width": 800,
+      "height": 533,
+      "bytes": 79816
+    },
+    {
+      "name": "day-passage-1200.webp",
+      "width": 1200,
+      "height": 800,
+      "bytes": 144876
+    },
+    {
+      "name": "day-passage-1600.webp",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 208758
+    },
+    {
+      "name": "day-room-480.webp",
+      "width": 480,
+      "height": 320,
+      "bytes": 32384
+    },
+    {
+      "name": "day-room-480.avif",
+      "width": 480,
+      "height": 320,
+      "bytes": 20364
+    },
+    {
+      "name": "day-room-800.webp",
+      "width": 800,
+      "height": 533,
+      "bytes": 77640
+    },
+    {
+      "name": "day-room-800.avif",
+      "width": 800,
+      "height": 533,
+      "bytes": 48212
+    },
+    {
+      "name": "day-room-1200.webp",
+      "width": 1200,
+      "height": 800,
+      "bytes": 149678
+    },
+    {
+      "name": "day-room-1200.avif",
+      "width": 1200,
+      "height": 800,
+      "bytes": 92221
+    },
+    {
+      "name": "day-room-1600.webp",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 226820
+    },
+    {
+      "name": "day-room-1600.avif",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 142997
+    },
+    {
+      "name": "day-wide-480.webp",
+      "width": 480,
+      "height": 320,
+      "bytes": 32168
+    },
+    {
+      "name": "day-wide-480.avif",
+      "width": 480,
+      "height": 320,
+      "bytes": 19902
+    },
+    {
+      "name": "day-wide-800.webp",
+      "width": 800,
+      "height": 533,
+      "bytes": 77374
+    },
+    {
+      "name": "day-wide-800.avif",
+      "width": 800,
+      "height": 533,
+      "bytes": 47832
+    },
+    {
+      "name": "day-wide-1200.webp",
+      "width": 1200,
+      "height": 800,
+      "bytes": 148790
+    },
+    {
+      "name": "day-wide-1200.avif",
+      "width": 1200,
+      "height": 800,
+      "bytes": 92258
+    },
+    {
+      "name": "day-wide-1600.webp",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 225060
+    },
+    {
+      "name": "day-wide-1600.avif",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 142557
+    },
+    {
+      "name": "heritage-entrance-480.webp",
+      "width": 480,
+      "height": 320,
+      "bytes": 23182
+    },
+    {
+      "name": "heritage-entrance-800.webp",
+      "width": 800,
+      "height": 533,
+      "bytes": 53876
+    },
+    {
+      "name": "heritage-entrance-1200.webp",
+      "width": 1200,
+      "height": 800,
+      "bytes": 101958
+    },
+    {
+      "name": "heritage-entrance-1600.webp",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 151770
+    },
+    {
+      "name": "heritage-lounge-480.webp",
+      "width": 480,
+      "height": 720,
+      "bytes": 52428
+    },
+    {
+      "name": "heritage-lounge-480.avif",
+      "width": 480,
+      "height": 720,
+      "bytes": 33097
+    },
+    {
+      "name": "heritage-lounge-800.webp",
+      "width": 800,
+      "height": 1200,
+      "bytes": 130172
+    },
+    {
+      "name": "heritage-lounge-800.avif",
+      "width": 800,
+      "height": 1200,
+      "bytes": 81549
+    },
+    {
+      "name": "heritage-lounge-1200.webp",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 257030
+    },
+    {
+      "name": "heritage-lounge-1200.avif",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 160272
+    },
+    {
+      "name": "heritage-lounge-1600.webp",
+      "width": 1600,
+      "height": 2400,
+      "bytes": 389902
+    },
+    {
+      "name": "heritage-lounge-1600.avif",
+      "width": 1600,
+      "height": 2400,
+      "bytes": 248863
+    },
+    {
+      "name": "heritage-objects-480.webp",
+      "width": 480,
+      "height": 320,
+      "bytes": 24578
+    },
+    {
+      "name": "heritage-objects-800.webp",
+      "width": 800,
+      "height": 533,
+      "bytes": 62870
+    },
+    {
+      "name": "heritage-objects-1200.webp",
+      "width": 1200,
+      "height": 800,
+      "bytes": 125488
+    },
+    {
+      "name": "heritage-objects-1600.webp",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 196770
+    },
+    {
+      "name": "heritage-room-480.webp",
+      "width": 480,
+      "height": 320,
+      "bytes": 26812
+    },
+    {
+      "name": "heritage-room-480.avif",
+      "width": 480,
+      "height": 320,
+      "bytes": 17491
+    },
+    {
+      "name": "heritage-room-800.webp",
+      "width": 800,
+      "height": 533,
+      "bytes": 68728
+    },
+    {
+      "name": "heritage-room-800.avif",
+      "width": 800,
+      "height": 533,
+      "bytes": 44054
+    },
+    {
+      "name": "heritage-room-1200.webp",
+      "width": 1200,
+      "height": 800,
+      "bytes": 142584
+    },
+    {
+      "name": "heritage-room-1200.avif",
+      "width": 1200,
+      "height": 800,
+      "bytes": 88484
+    },
+    {
+      "name": "heritage-room-1600.webp",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 224172
+    },
+    {
+      "name": "heritage-room-1600.avif",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 140506
+    },
+    {
+      "name": "heritage-stems-480.webp",
+      "width": 480,
+      "height": 720,
+      "bytes": 18698
+    },
+    {
+      "name": "heritage-stems-800.webp",
+      "width": 800,
+      "height": 1200,
+      "bytes": 46068
+    },
+    {
+      "name": "heritage-stems-1200.webp",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 146444
+    },
+    {
+      "name": "heritage-stems-1600.webp",
+      "width": 1600,
+      "height": 2400,
+      "bytes": 299924
+    },
+    {
+      "name": "night-arrangement-480.webp",
+      "width": 480,
+      "height": 720,
+      "bytes": 67050
+    },
+    {
+      "name": "night-arrangement-480.avif",
+      "width": 480,
+      "height": 720,
+      "bytes": 42760
+    },
+    {
+      "name": "night-arrangement-800.webp",
+      "width": 800,
+      "height": 1200,
+      "bytes": 150254
+    },
+    {
+      "name": "night-arrangement-800.avif",
+      "width": 800,
+      "height": 1200,
+      "bytes": 95892
+    },
+    {
+      "name": "night-arrangement-1200.webp",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 272470
+    },
+    {
+      "name": "night-arrangement-1200.avif",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 173523
+    },
+    {
+      "name": "night-arrangement-1600.webp",
+      "width": 1600,
+      "height": 2400,
+      "bytes": 394204
+    },
+    {
+      "name": "night-arrangement-1600.avif",
+      "width": 1600,
+      "height": 2400,
+      "bytes": 266226
+    },
+    {
+      "name": "night-detail-480.webp",
+      "width": 480,
+      "height": 720,
+      "bytes": 37308
+    },
+    {
+      "name": "night-detail-800.webp",
+      "width": 800,
+      "height": 1200,
+      "bytes": 70822
+    },
+    {
+      "name": "night-detail-1200.webp",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 118848
+    },
+    {
+      "name": "night-detail-1600.webp",
+      "width": 1600,
+      "height": 2400,
+      "bytes": 170648
+    },
+    {
+      "name": "night-room-480.webp",
+      "width": 480,
+      "height": 320,
+      "bytes": 33222
+    },
+    {
+      "name": "night-room-480.avif",
+      "width": 480,
+      "height": 320,
+      "bytes": 20939
+    },
+    {
+      "name": "night-room-800.webp",
+      "width": 800,
+      "height": 533,
+      "bytes": 83480
+    },
+    {
+      "name": "night-room-800.avif",
+      "width": 800,
+      "height": 533,
+      "bytes": 51238
+    },
+    {
+      "name": "night-room-1200.webp",
+      "width": 1200,
+      "height": 800,
+      "bytes": 169446
+    },
+    {
+      "name": "night-room-1200.avif",
+      "width": 1200,
+      "height": 800,
+      "bytes": 101449
+    },
+    {
+      "name": "night-room-1600.webp",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 262056
+    },
+    {
+      "name": "night-room-1600.avif",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 159840
+    },
+    {
+      "name": "night-table-480.webp",
+      "width": 480,
+      "height": 320,
+      "bytes": 21242
+    },
+    {
+      "name": "night-table-800.webp",
+      "width": 800,
+      "height": 533,
+      "bytes": 45228
+    },
+    {
+      "name": "night-table-1200.webp",
+      "width": 1200,
+      "height": 800,
+      "bytes": 76970
+    },
+    {
+      "name": "night-table-1600.webp",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 107088
+    }
+  ]
+}

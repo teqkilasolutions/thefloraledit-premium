@@ -1,18 +1,12 @@
-import { useEffect, useId, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
 import { base, YEAR } from '../../data/studio';
 import { usePresentation } from '../../context/PresentationContext';
 import { InspirationButton } from './PortfolioSections';
 
 export function FloralIdentity({ footer = false, onNavigate }: { footer?: boolean; onNavigate?: () => void }) {
-  const filterId = `logo-${useId().replace(/:/g, '')}`;
   return <a className={`studio-brand floral-identity${footer ? ' identity-footer' : ''}`} href="#home" onClick={onNavigate} aria-label="The Floral Edit home">
-    <svg className="identity-monogram" viewBox="805 735 1970 1710" aria-hidden="true" focusable="false">
-      <defs><filter id={filterId} colorInterpolationFilters="sRGB" x="0" y="0" width="100%" height="100%">
-        <feColorMatrix type="matrix" values="0 0 0 0 .32549 0 0 0 0 .38824 0 0 0 0 .21176 .34016 1.14432 .11552 0 -.6" />
-      </filter></defs>
-      <image href={`${base}assets/brand/the-floral-edit-master-logo.jpg`} width="3601" height="3601" filter={`url(#${filterId})`} />
-    </svg>
+    <img className="identity-monogram" src={`${base}assets/brand/floral-monogram.webp`} width="320" height="278" alt="" loading={footer ? 'lazy' : 'eager'} fetchPriority={footer ? 'auto' : 'high'} decoding="async" />
     <span className="identity-wordmark">The Floral Edit<small>Where floral meets design</small></span>
   </a>;
 }

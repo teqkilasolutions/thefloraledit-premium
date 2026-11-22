@@ -1,10 +1,12 @@
 import { useEffect, useState, type RefObject } from 'react';
+import { observeVisibleScroll } from '../../lib/visibleScroll';
 
 export function useReducedMotion() {
-  const [reduced, setReduced] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  const [reduced, setReduced] = useState(false);
   useEffect(() => {
     const media = window.matchMedia('(prefers-reduced-motion: reduce)');
     const change = () => setReduced(media.matches);
+    change();
     media.addEventListener('change', change);
     return () => media.removeEventListener('change', change);
   }, []);
@@ -13,21 +15,16 @@ export function useReducedMotion() {
 
 export function useFanProgress(ref: RefObject<HTMLDivElement | null>, reduced: boolean) {
   useEffect(() => {
-    let frame = 0;
+    const element = ref.current;
+    if (!element) return;
+    if (reduced) { element.style.setProperty('--fan-progress', '1'); return; }
     const draw = () => {
-      frame = 0;
-      const element = ref.current;
-      if (!element) return;
       const top = element.getBoundingClientRect().top;
-      const progress = reduced ? 1 : Math.min(1, Math.max(0, (innerHeight * .6 - top) / (innerHeight * .3)));
+      const progress = Math.min(1, Math.max(0, (innerHeight * .6 - top) / (innerHeight * .3)));
       const eased = progress * progress * (3 - 2 * progress);
       element.style.setProperty('--fan-progress', String(eased));
     };
-    const schedule = () => { if (!frame) frame = requestAnimationFrame(draw); };
-    draw();
-    addEventListener('scroll', schedule, { passive: true });
-    addEventListener('resize', schedule);
-    return () => { cancelAnimationFrame(frame); removeEventListener('scroll', schedule); removeEventListener('resize', schedule); };
+    return observeVisibleScroll(element, draw);
   }, [ref, reduced]);
 }
 
