@@ -21,7 +21,8 @@ interface PresentationContextType {
   setIsComparisonOpen: (open: boolean) => void;
   isEnquiryModalOpen: boolean;
   enquiryService: string;
-  openEnquiry: (serviceName?: string) => void;
+  enquiryEmail: string;
+  openEnquiry: (serviceName?: string, email?: string) => void;
   closeEnquiry: () => void;
   quickViewProduct: FloralProduct | null;
   openQuickView: (product: FloralProduct) => void;
@@ -43,6 +44,7 @@ export const PresentationProvider: React.FC<{ children: React.ReactNode }> = ({ 
   const [isComparisonOpen, setIsComparisonOpen] = useState(false);
   const [isEnquiryModalOpen, setIsEnquiryModalOpen] = useState(false);
   const [enquiryService, setEnquiryService] = useState('Event Florals & Celebrations');
+  const [enquiryEmail, setEnquiryEmail] = useState('');
   const [quickViewProduct, setQuickViewProduct] = useState<FloralProduct | null>(null);
   const [cartItems, setCartItems] = useState<CartItem[]>(() => {
     try { return readBag(localStorage.getItem(CART_KEY)).map(item => ({ product: FLORAL_PRODUCTS.find(p => p.id === item.id)!, quantity: item.quantity })); } catch { return []; }
@@ -59,8 +61,9 @@ export const PresentationProvider: React.FC<{ children: React.ReactNode }> = ({ 
     return () => window.removeEventListener('storage', sync);
   }, []);
 
-  const openEnquiry = (serviceName?: string) => {
+  const openEnquiry = (serviceName?: string, email?: string) => {
     setEnquiryService(serviceName || 'Event flowers & celebrations');
+    setEnquiryEmail(email || '');
     setIsEnquiryModalOpen(true);
   };
 
@@ -111,6 +114,7 @@ export const PresentationProvider: React.FC<{ children: React.ReactNode }> = ({ 
         setIsComparisonOpen,
         isEnquiryModalOpen,
         enquiryService,
+        enquiryEmail,
         openEnquiry,
         closeEnquiry,
         quickViewProduct,

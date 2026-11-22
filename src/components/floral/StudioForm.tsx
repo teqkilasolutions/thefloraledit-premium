@@ -11,7 +11,7 @@ function EnquiryInspiration({ ids, onRemove }: { ids: string[]; onRemove?: (id: 
 
 const STORAGE_KEY = 'floral-edit-enquiry-v1';
 type EnquiryDraft = { name: string; email: string; phone: string; service: string; date: string; location: string; notes: string; inspirationIds?: string[] };
-export function StudioForm({ service = 'Event flowers', compact = false }: { service?: string; compact?: boolean }) {
+export function StudioForm({ service = 'Event flowers', compact = false, email = '' }: { service?: string; compact?: boolean; email?: string }) {
   const { savedIds, toggleSaved, replaceSaved } = usePortfolio();
   const [saved, setSaved] = useState(false);
   const [storageError, setStorageError] = useState(false);
@@ -27,7 +27,7 @@ export function StudioForm({ service = 'Event flowers', compact = false }: { ser
     } catch { return null; }
   });
   const [restored, setRestored] = useState(false);
-  const [form, setForm] = useState<EnquiryDraft>(() => ({ name: savedDraft?.name || '', email: savedDraft?.email || '', phone: savedDraft?.phone || '', service, date: '', location: '', notes: '' }));
+  const [form, setForm] = useState<EnquiryDraft>(() => ({ name: savedDraft?.name || '', email: email || savedDraft?.email || '', phone: savedDraft?.phone || '', service, date: '', location: '', notes: '' }));
   const change = (key: Exclude<keyof EnquiryDraft, 'inspirationIds'>, value: string) => { setForm(p => ({ ...p, [key]: value })); setSaved(false); };
   const draft = savedSnapshot || { ...form, inspirationIds: savedIds };
   const referenceLines = (draft.inspirationIds || []).filter(id => PHOTO_BY_ID[id]).map((id, index) => `${index + 1}. ${projectForPhoto(id)?.title}: ${PHOTO_BY_ID[id].caption}\n${new URL(photoUrl(PHOTO_BY_ID[id]), window.location.href).href}`);

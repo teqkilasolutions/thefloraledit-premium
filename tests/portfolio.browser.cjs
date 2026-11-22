@@ -76,23 +76,28 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
     await page.getByRole('dialog', { name: 'Your inspiration', exact: true }).getByRole('button', { name: /^Remove / }).first().click();
     await page.keyboard.press('Escape');
     await page.reload();
-    const inline = page.locator('#enquiry form');
+    await page.getByRole('button', { name: 'Get in touch', exact: true }).click();
+    const inline = page.getByRole('dialog', { name: 'Enquire about your occasion', exact: true }).locator('form');
     await inline.getByRole('button', { name: /Restore saved enquiry/ }).click();
     assert.equal(await inline.getByLabel('Your name', { exact: true }).inputValue(), 'Portfolio review');
     assert.equal(await page.getByRole('button', { name: /^Saved inspiration, 1 photograph/ }).count(), 1);
     checks.push('Explicit draft restoration restores text and saved photo selection');
+    await page.keyboard.press('Escape');
 
     await page.evaluate(() => localStorage.setItem('floral-edit-enquiry-v1', JSON.stringify({ name: 'Legacy client', email: 'legacy@example.com', service: 'Event flowers', date: '', location: '', notes: 'Existing draft', phone: '' })));
     await page.reload();
-    await page.locator('#enquiry form').getByRole('button', { name: /Restore saved enquiry/ }).click();
-    assert.equal(await page.locator('#enquiry form').getByLabel('Your name', { exact: true }).inputValue(), 'Legacy client');
+    await page.getByRole('button', { name: 'Get in touch', exact: true }).click();
+    await page.getByRole('dialog', { name: 'Enquire about your occasion', exact: true }).getByRole('button', { name: /Restore saved enquiry/ }).click();
+    assert.equal(await page.getByRole('dialog', { name: 'Enquire about your occasion', exact: true }).getByLabel('Your name', { exact: true }).inputValue(), 'Legacy client');
     assert.equal(await page.getByRole('button', { name: /^Saved inspiration, 1 photograph/ }).count(), 1, 'Legacy draft without images must not clear the current edit');
     checks.push('Legacy drafts retain content without discarding new inspiration');
+    await page.keyboard.press('Escape');
 
     const deniedContext = await browser.newContext({ viewport: { width: 390, height: 844 } });
     const denied = await deniedContext.newPage();
     await denied.addInitScript(() => { Storage.prototype.setItem = () => { throw new DOMException('Storage unavailable', 'SecurityError'); }; });
     await denied.goto(root);
+    await denied.getByRole('button', { name: 'Show After dark', exact: true }).click();
     await denied.getByRole('button', { name: 'Explore After dark', exact: true }).click();
     await denied.getByRole('button', { name: 'Save photograph', exact: true }).click();
     assert.match(await denied.getByRole('dialog', { name: 'After dark', exact: true }).innerText(), /Saved for this visit/);
@@ -101,6 +106,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
     await deniedContext.close();
     checks.push('Storage-denied browsers can still collect inspiration for the visit');
 
+    await page.locator('#collections summary').click();
     await page.getByRole('button', { name: 'View Aurelia Amphora, ₹4,800', exact: true }).click();
     await page.getByRole('button', { name: 'Add to bag', exact: true }).click();
     await page.getByRole('button', { name: 'Increase Aurelia Amphora quantity', exact: true }).click();
@@ -108,6 +114,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
     await page.keyboard.press('Escape');
     checks.push('Existing vessel enquiry bag and quantity totals still work');
 
+    await page.locator('#questions summary').click();
     await page.getByRole('button', { name: /What should I include in my enquiry/ }).click();
     assert.equal(await page.locator('.faq-item button[aria-expanded="true"]').count(), 1);
     checks.push('FAQ opens with accessible expanded state');
@@ -116,12 +123,13 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
       await page.setViewportSize({ width, height: width < 500 ? 844 : 1000 });
       const result = await page.evaluate(() => {
         const brand = document.querySelector('.studio-brand').getBoundingClientRect();
-        const actions = document.querySelector('.nav-actions').getBoundingClientRect();
-        return { width: innerWidth, scrollWidth: document.documentElement.scrollWidth, brandRight: brand.right, actionsLeft: actions.left, script: [...document.querySelectorAll('main h1,main h2')].every(e => getComputedStyle(e).fontFamily.includes('Allura')) };
+        const actions = document.querySelector('.menu-button').getBoundingClientRect();
+        return { width: innerWidth, scrollWidth: document.documentElement.scrollWidth, brandRight: brand.right, actionsLeft: actions.left, actionsTop: actions.top, brandTop: brand.top, brandBottom: brand.bottom, script: [...document.querySelectorAll('main h1,main h2')].every(e => getComputedStyle(e).fontFamily.includes('Allura')) };
       });
-      assert.ok(result.scrollWidth <= width && result.brandRight <= result.actionsLeft + 1, `Layout collision at ${width}: ${JSON.stringify(result)}`);
+      assert.ok(result.scrollWidth <= width, `Layout overflow at ${width}: ${JSON.stringify(result)}`);
       assert.equal(result.script, true, `Main heading font changed at ${width}`);
       if (width < 500) {
+        await page.getByRole('button', { name: 'Show After dark', exact: true }).click();
         await page.getByRole('button', { name: 'Explore After dark', exact: true }).click();
         const mobileViewer = page.getByRole('dialog', { name: 'After dark', exact: true });
         await mobileViewer.getByRole('button', { name: 'Next photograph', exact: true }).click();

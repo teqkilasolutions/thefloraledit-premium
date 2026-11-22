@@ -6,6 +6,7 @@ import './studio.css';
 import './references.css';
 import './celebration.css';
 import './portfolio.css';
+import './reference-home.css';
 import { PortfolioProvider } from '../../context/PortfolioContext';
 import { PortfolioOverlays } from './PortfolioOverlays';
 
