@@ -23,10 +23,11 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
       await page.waitForTimeout(100);
       const geometry = await page.evaluate(() => {
         const rect = selector => document.querySelector(selector).getBoundingClientRect().toJSON();
-        return { width: innerWidth, scrollWidth: document.documentElement.scrollWidth, header: rect('.reference-nav'), hero: rect('.opening-hero'), logo: rect('.studio-brand'), footer: rect('.reference-footer'), mainHeadings: [...document.querySelectorAll('main h1,main h2')].every(e => getComputedStyle(e).fontFamily.includes('Allura')) };
+        return { width: innerWidth, scrollWidth: document.documentElement.scrollWidth, header: rect('.reference-nav'), hero: rect('.opening-hero'), heroTitle: rect('.opening-hero h1'), logo: rect('.studio-brand'), footer: rect('.reference-footer'), mainHeadings: [...document.querySelectorAll('main h1,main h2')].every(e => getComputedStyle(e).fontFamily.includes('Allura')) };
       });
       assert.ok(geometry.scrollWidth <= width, `Horizontal overflow at ${width}`);
       assert.equal(geometry.mainHeadings, true);
+      assert.ok(Math.abs(geometry.heroTitle.y + geometry.heroTitle.height / 2 - geometry.hero.y - geometry.hero.height / 2) < 24, 'The hero title must remain centred over its photograph');
       assert.ok(geometry.logo.x >= 0 && geometry.logo.right <= width, 'Logo is clipped');
       if (width === 1440) {
         assert.ok(Math.abs(geometry.header.height - 101) < 1, 'Desktop header proportion');

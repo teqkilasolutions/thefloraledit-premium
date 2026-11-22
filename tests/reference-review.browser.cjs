@@ -15,6 +15,8 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
     if (heroRequests.some(url => /day-room/.test(url))) issues.push('A phone downloads the hidden desktop hero');
     if (!/stem\s+to/.test(await page.locator('.scale-copy h2').innerText())) issues.push('Mobile scale heading joins stem and to');
     if (!/together\.\s+Floral/.test(await page.locator('.forms-note p').innerText())) issues.push('Mobile story copy joins two sentences');
+    const titleOffset = await page.evaluate(() => { const hero = document.querySelector('.opening-hero').getBoundingClientRect(); const title = document.querySelector('.opening-hero h1').getBoundingClientRect(); return title.top + title.height / 2 - hero.top - hero.height / 2; });
+    if (Math.abs(titleOffset) > 24) issues.push('The responsive picture shifts the hero title off centre');
     await page.getByRole('button', { name: 'Open menu', exact: true }).tap();
     await page.getByRole('button', { name: /^Saved inspiration,/ }).tap();
     await page.getByRole('dialog', { name: 'Your inspiration', exact: true }).waitFor();
