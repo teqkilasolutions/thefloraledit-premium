@@ -72,10 +72,14 @@ export function BotanicalTypes() {
       setScrollActive(current => current === selected ? current : selected);
     };
     const schedule = () => { if (!frame) frame = requestAnimationFrame(draw); };
+    // A deliberate scroll gesture yields visual selection without moving keyboard focus.
+    const userScroll = () => setFocused(null);
     draw();
     addEventListener('scroll', schedule, { passive: true });
     addEventListener('resize', schedule);
-    return () => { cancelAnimationFrame(frame); removeEventListener('scroll', schedule); removeEventListener('resize', schedule); };
+    addEventListener('wheel', userScroll, { passive: true });
+    addEventListener('touchstart', userScroll, { passive: true });
+    return () => { cancelAnimationFrame(frame); removeEventListener('scroll', schedule); removeEventListener('resize', schedule); removeEventListener('wheel', userScroll); removeEventListener('touchstart', userScroll); };
   }, []);
   return <section id="flowers" className="botanical-types exact-flower-types" aria-labelledby="flowers-title"><div className="botanical-copy-shell"><div className="botanical-heading"><h2 id="flowers-title">Our flowers.</h2><p>Fresh colour, lasting textures and the beautiful lines of foliage. A different character in every stem, and a floral direction for every kind of setting.</p></div><div className="flower-category-list" ref={rows}>{CATEGORIES.map((category, index) => <div className={`flower-category${active === index ? ' is-active' : ''}`} key={category.file} onMouseEnter={() => setHovered(index)} onMouseLeave={() => setHovered(null)}><button onFocus={() => setFocused(index)} onBlur={() => setFocused(null)} onClick={() => openEnquiry(category.title)} aria-label={`Enquire about ${category.title.toLowerCase()}`}><h3>{category.title}</h3><span className="flower-category-visual"><img src={art(category.file)} width={category.width} height={category.height} alt={category.alt} loading="lazy" /></span><ArrowUpRight className="flower-category-arrow" size={22} strokeWidth={1} /></button></div>)}</div></div></section>;
 }

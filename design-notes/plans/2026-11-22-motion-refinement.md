@@ -25,20 +25,21 @@ Preserve original logo, header/footer dimensions, Allura/Lora/Manrope, and exist
 ### Task 1: Carousel and shared motion
 
 **Files:** HeroCarousel.tsx, useStudioMotion.ts, motion-refinement.css, tests/motion-sections.browser.cjs.
-- [ ] Write/run a browser assertion failing on the absent running multi-photo hero.
-- [ ] Implement rightward loop, pause and preference handling; preserve hero geometry.
-- [ ] Improve the expansion's initial arrangement.
+- [x] Write/run a browser assertion failing on the absent running multi-photo hero.
+- [x] Implement rightward loop, pause and preference handling; preserve hero geometry.
+- [x] Improve the expansion's initial arrangement.
 
 ### Task 2: Botanical sequence
 
 **Files:** BotanicalSections.tsx, ReferenceHome.tsx, StudioPage.tsx, PortfolioSections.tsx, motion-refinement.css, public/assets/botanicals/.
-- [ ] Implement exact decorative cutout, leaf ornaments, fan spread, category pop-ins, roses/sketch approach and four-photo section.
-- [ ] Keep real celebration projects accessible below the decorative sequence.
-- [ ] Verify on desktop and phone, including keyboard and reduced motion.
+- [x] Implement exact decorative cutout, leaf ornaments, fan spread, category pop-ins, roses/sketch approach and four-photo section.
+- [x] Keep real celebration projects accessible below the decorative sequence.
+- [x] Verify on desktop and phone, including keyboard and reduced motion.
 
 ### Task 3: Release
 
 **Files:** updated browser tests, docs/, progress ledger and external release record.
-- [ ] Adapt existing browser journeys to intentional portfolio placement changes.
-- [ ] Run unit tests, appropriate browser checks and production build; inspect captures.
-- [ ] Request one read-only review, address material findings, publish and verify the public release.
+- [x] Adapt existing browser journeys to intentional portfolio placement changes.
+- [x] Run unit tests, appropriate browser checks and production build; inspect captures.
+- [x] Request one read-only review; service unavailable, so separate author review and regression checks performed as recorded in the ledger.
+- Publication and actual live verification: recorded in output/foglia-motion-refinement-2026-11-22/release-verification.json after the push.
