@@ -20,7 +20,6 @@
 .reference-nav .menu-button{display:none}
 .opening-hero{height:clamp(570px,48.05556vw,810px);position:relative;isolation:isolate;display:grid;place-items:center;color:var(--paper);overflow:hidden}
 .reference-home .opening-photo{position:absolute;inset:0;height:100%;width:100%;object-fit:cover;object-position:50% 49%;z-index:-3}
-.reference-home .opening-photo-tall{display:none}
 .opening-shade{position:absolute;inset:0;background:linear-gradient(0deg,#17231a18,#17231a30 65%,#17231a10);z-index:-2}
 .reference-home .opening-hero h1{font-size:clamp(62px,6vw,86px);line-height:1.07;text-align:center;letter-spacing:0;font-weight:400;max-width:1100px;padding:20px 32px;text-shadow:0 2px 28px #0006;margin-top:-18px}
 .opening-scroll{position:absolute;bottom:25px;left:calc(50% - 22px);width:44px;height:44px;display:grid;place-items:center;border:1px solid #faf7f14d;border-radius:100%}
@@ -201,8 +200,7 @@ html{scroll-padding-top:24px}
   .reference-mobile-menu{height:calc(100dvh - clamp(112.5px,35.15385vw,160px));padding-top:15px}
   .reference-mobile-menu a{font-size:21px;padding-block:12px}
   .opening-hero{height:clamp(487.5px,152.34359vw,800px)}
-  .reference-home .opening-photo-wide{display:none}
-  .reference-home .opening-photo-tall{display:block;object-position:50% 48%}
+  .reference-home .opening-photo{object-position:50% 48%}
   .opening-shade{background:#14231938}
   .reference-home .opening-hero h1{font-size:clamp(53px,15.2vw,83px);line-height:1.09;padding-inline:22px;max-width:550px;margin-top:-18px}
   .opening-scroll{bottom:21px}

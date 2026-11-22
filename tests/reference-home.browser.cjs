@@ -54,12 +54,21 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
       metrics.push({ ...geometry, initial, expanded });
     }
     await page.setViewportSize({ width: 390, height: 844 });
+    assert.match(await page.locator('.scale-copy h2').innerText(), /stem\s+to/, 'The mobile scale heading must keep a word boundary');
+    assert.match(await page.locator('.forms-note p').innerText(), /together\.\s+Floral/, 'Hidden line breaks must preserve sentence spacing');
     await page.evaluate(() => scrollTo({ top: 0, behavior: 'instant' }));
     await page.getByRole('button', { name: 'Open menu', exact: true }).click();
     for (let i = 0; i < 12; i++) {
       await page.keyboard.press('Tab');
       assert.equal(await page.locator('.reference-nav').evaluate(el => el.contains(document.activeElement)), true, 'Menu keyboard focus escaped');
     }
+    await page.getByRole('button', { name: /^Saved inspiration,/ }).click();
+    await page.getByRole('dialog', { name: 'Your inspiration', exact: true }).waitFor();
+    assert.equal(await page.getByRole('button', { name: 'Open menu', exact: true }).count(), 1, 'Opening inspiration must close the mobile menu');
+    await page.keyboard.press('Escape');
+    assert.equal(await page.locator('dialog[open]').count(), 0);
+    assert.notEqual(await page.evaluate(() => document.body.style.overflow), 'hidden', 'Closing inspiration must unlock page scrolling');
+    await page.getByRole('button', { name: 'Open menu', exact: true }).click();
     await page.keyboard.press('Escape');
     assert.equal(await page.getByRole('button', { name: 'Open menu', exact: true }).getAttribute('aria-expanded'), 'false');
     await page.getByRole('button', { name: 'Show After dark', exact: true }).click();
@@ -98,5 +107,9 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
     assert.deepEqual(errors, []);
     fs.writeFileSync(path.join(qa, 'reference-verification.json'), JSON.stringify({ status: 'pass', metrics, pageErrors: errors }, null, 2));
     process.stdout.write('Reference layout, scrolling, mobile carousel, menu, contact and reduced motion: PASS\n');
+  } catch (error) {
+    await page.screenshot({ path: path.join(qa, 'failure.png') }).catch(() => {});
+    process.stderr.write(JSON.stringify(await page.locator('.menu-button').evaluate(el => ({ width: innerWidth, scrollY, display: getComputedStyle(el).display, visibility: getComputedStyle(el).visibility, bounds: el.getBoundingClientRect().toJSON() })).catch(() => ({}))) + '\n');
+    throw error;
   } finally { await browser.close(); }
 })().catch(error => { process.stderr.write(String(error.stack || error) + '\n'); process.exitCode = 1; });

@@ -1,16 +1,15 @@
-import { useRef, useState, type FormEvent } from 'react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { ArrowDown, ArrowRight, ArrowUpRight, Flower2, Layers3, Leaf, Plus, ShoppingBag } from 'lucide-react';
 import { usePresentation } from '../../context/PresentationContext';
 import { usePortfolio } from '../../context/PortfolioContext';
-import { PHOTO_BY_ID, PORTFOLIO_PROJECTS, projectForPhoto } from '../../data/portfolio';
+import { PHOTO_BY_ID, PORTFOLIO_PROJECTS, photoUrl, projectForPhoto } from '../../data/portfolio';
 import { FLORAL_PRODUCTS } from '../../data/floralData';
 import { money } from '../../data/studio';
 import { PortfolioFAQ, PortfolioImage } from './PortfolioSections';
 
 export function OpeningHero() {
   return <section className="opening-hero" aria-labelledby="opening-title">
-    <PortfolioImage photo={PHOTO_BY_ID['day-room']} className="opening-photo opening-photo-wide" priority sizes="100vw" />
-    <PortfolioImage photo={PHOTO_BY_ID['day-lounge']} className="opening-photo opening-photo-tall" priority sizes="100vw" />
+    <picture><source media="(max-width:700px)" srcSet={`${photoUrl(PHOTO_BY_ID['day-lounge'], true)} ${PHOTO_BY_ID['day-lounge'].smallWidth}w, ${photoUrl(PHOTO_BY_ID['day-lounge'])} ${PHOTO_BY_ID['day-lounge'].width}w`} sizes="100vw" /><PortfolioImage photo={PHOTO_BY_ID['day-room']} className="opening-photo" priority sizes="100vw" /></picture>
     <div className="opening-shade" />
     <h1 id="opening-title">Flowers for the moments<br />that become memories.</h1>
     <a className="opening-scroll" href="#immersive-title" aria-label="Discover The Floral Edit"><ArrowDown size={18} strokeWidth={1} /></a>
@@ -47,7 +46,7 @@ export function FloralForms() {
       <div className="form-panel-caption"><h3>{project.title}</h3><span>{project.mood}</span></div>
     </article>)}</div>
     <div className="form-pagination" aria-label="Choose a celebration">{PORTFOLIO_PROJECTS.map((project, index) => <button key={project.id} onClick={() => goTo(index)} aria-label={`Show ${project.title}`} aria-pressed={active === index}><span /></button>)}</div>
-    <div className="forms-note"><p>Arches that welcome. Tables that bring people together.<br />Floral moments, considered as part of the whole room.</p><button className="round-link light-link" onClick={() => openProject(PORTFOLIO_PROJECTS[active].id)}>Explore the celebration <ArrowRight size={20} strokeWidth={1.2} /></button></div><div className="floral-divider"><Leaf size={30} strokeWidth={.8} /></div>
+    <div className="forms-note"><p>Arches that welcome. Tables that bring people together. <br />Floral moments, considered as part of the whole room.</p><button className="round-link light-link" onClick={() => openProject(PORTFOLIO_PROJECTS[active].id)}>Explore the celebration <ArrowRight size={20} strokeWidth={1.2} /></button></div><div className="floral-divider"><Leaf size={30} strokeWidth={.8} /></div>
   </section>;
 }
 
@@ -69,7 +68,7 @@ export function StudioListening() {
 
 export function StudioScale() {
   const { openProject } = usePortfolio();
-  return <section className="studio-scale" aria-labelledby="scale-title"><div className="scale-photo-rail">{['heritage-stems', 'day-flowers', 'night-arrangement', 'day-lounge'].map(id => <button key={id} onClick={() => openProject(projectForPhoto(id)!.id, id)} aria-label={`View ${PHOTO_BY_ID[id].caption}`}><PortfolioImage photo={PHOTO_BY_ID[id]} sizes="(max-width:700px) 45vw, 24vw" /></button>)}</div><div className="scale-copy"><h2 id="scale-title">From one beautiful stem<br />to a room transformed.</h2><p>An intimate table. An immersive setting.<br />One floral idea, carried through every detail.</p><a className="round-link light-link" href="#enquiry">Bring your vision <ArrowRight size={20} strokeWidth={1.2} /></a></div></section>;
+  return <section className="studio-scale" aria-labelledby="scale-title"><div className="scale-photo-rail">{['heritage-stems', 'day-flowers', 'night-arrangement', 'day-lounge'].map(id => <button key={id} onClick={() => openProject(projectForPhoto(id)!.id, id)} aria-label={`View ${PHOTO_BY_ID[id].caption}`}><PortfolioImage photo={PHOTO_BY_ID[id]} sizes="(max-width:700px) 45vw, 24vw" /></button>)}</div><div className="scale-copy"><h2 id="scale-title">From one beautiful stem <br />to a room transformed.</h2><p>An intimate table. An immersive setting.<br />One floral idea, carried through every detail.</p><a className="round-link light-link" href="#enquiry">Bring your vision <ArrowRight size={20} strokeWidth={1.2} /></a></div></section>;
 }
 
 export function StudioPrinciples() {
@@ -94,6 +93,12 @@ function VesselCollection() {
 }
 
 export function StudioExtras() {
+  useEffect(() => {
+    const reveal = () => { const id = window.location.hash.slice(1); if (id !== 'questions' && id !== 'collections') return; const panel = document.getElementById(id); if (panel instanceof HTMLDetailsElement) panel.open = true; };
+    reveal();
+    window.addEventListener('hashchange', reveal);
+    return () => window.removeEventListener('hashchange', reveal);
+  }, []);
   return <div className="studio-extras"><details id="collections"><summary>The vessel collection <Plus size={20} strokeWidth={1} /></summary><VesselCollection /></details><details id="questions"><summary>Before we begin <Plus size={20} strokeWidth={1} /></summary><PortfolioFAQ /></details></div>;
 }
 

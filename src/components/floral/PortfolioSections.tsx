@@ -7,9 +7,9 @@ export function PortfolioImage({ photo, className = '', priority = false, sizes 
   return <img className={className} src={photoUrl(photo)} srcSet={`${photoUrl(photo, true)} ${photo.smallWidth}w, ${photoUrl(photo)} ${photo.width}w`} sizes={sizes} alt={photo.alt} width={photo.width} height={photo.height} loading={priority ? 'eager' : 'lazy'} fetchPriority={priority ? 'high' : 'auto'} />;
 }
 
-export function InspirationButton() {
+export function InspirationButton({ onBeforeOpen }: { onBeforeOpen?: () => void } = {}) {
   const { savedIds, openBoard } = usePortfolio();
-  return <button className="icon-button inspiration-button" onClick={openBoard} aria-label={`Saved inspiration, ${savedIds.length} ${savedIds.length === 1 ? 'photograph' : 'photographs'}`}><Heart size={20} strokeWidth={1.4} /><span className="inspiration-count" aria-hidden="true">{savedIds.length}</span></button>;
+  return <button className="icon-button inspiration-button" onClick={() => { onBeforeOpen?.(); openBoard(); }} aria-label={`Saved inspiration, ${savedIds.length} ${savedIds.length === 1 ? 'photograph' : 'photographs'}`}><Heart size={20} strokeWidth={1.4} /><span className="inspiration-count" aria-hidden="true">{savedIds.length}</span></button>;
 }
 
 export function SelectedProjects() {
@@ -44,5 +44,5 @@ const QUESTIONS = [
 
 export function PortfolioFAQ() {
   const [open, setOpen] = useState<number | null>(null);
-  return <section id="questions" className="section-shell portfolio-faq" aria-labelledby="faq-heading"><div className="faq-intro"><span className="eyebrow">Before we begin</span><h2 id="faq-heading">A few little<br />questions.</h2><p>A little clarity for the first conversation.</p></div><div className="faq-list">{QUESTIONS.map(([question, answer], index) => <div className="faq-item" key={question}><h3><button id={`faq-question-${index}`} aria-expanded={open === index} aria-controls={`faq-answer-${index}`} onClick={() => setOpen(open === index ? null : index)}>{question}{open === index ? <Minus size={18} /> : <Plus size={18} />}</button></h3><div id={`faq-answer-${index}`} role="region" aria-labelledby={`faq-question-${index}`} hidden={open !== index}><p>{answer}</p></div></div>)}</div></section>;
+  return <section className="section-shell portfolio-faq" aria-labelledby="faq-heading"><div className="faq-intro"><span className="eyebrow">Before we begin</span><h2 id="faq-heading">A few little<br />questions.</h2><p>A little clarity for the first conversation.</p></div><div className="faq-list">{QUESTIONS.map(([question, answer], index) => <div className="faq-item" key={question}><h3><button id={`faq-question-${index}`} aria-expanded={open === index} aria-controls={`faq-answer-${index}`} onClick={() => setOpen(open === index ? null : index)}>{question}{open === index ? <Minus size={18} /> : <Plus size={18} />}</button></h3><div id={`faq-answer-${index}`} role="region" aria-labelledby={`faq-question-${index}`} hidden={open !== index}><p>{answer}</p></div></div>)}</div></section>;
 }
