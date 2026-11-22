@@ -1,0 +1,43 @@
+{
+  "status": "85-plus performance target achieved",
+  "site": "https://teqkilasolutions.github.io/thefloraledit-premium/",
+  "implementationCommit": "94513c9ef5e010fc38b66bfb2d6183651d4fb865",
+  "pagesBuiltAtUtc": "2026-11-22T15:34:40Z",
+  "googleReportCapturedAtUtc": "2026-11-22T15:34:43Z",
+  "measurement": "Google PageSpeed Insights, Lighthouse 13.6.0, initial page load; displayed rounded metrics",
+  "mobile": {
+    "report": "https://pagespeed.web.dev/analysis/https-teqkilasolutions-github-io-thefloraledit-premium/9ey7d2vtuy?form_factor=mobile",
+    "performance": 98,
+    "firstContentfulPaintSeconds": 1.4,
+    "largestContentfulPaintSeconds": 2.3,
+    "totalBlockingTimeMs": 0,
+    "cumulativeLayoutShift": 0,
+    "speedIndexSeconds": 3.0,
+    "conditions": "Emulated Moto G Power, slow 4G throttling"
+  },
+  "desktop": {
+    "report": "https://pagespeed.web.dev/analysis/https-teqkilasolutions-github-io-thefloraledit-premium/9ey7d2vtuy?form_factor=desktop",
+    "performance": 100,
+    "firstContentfulPaintSeconds": 0.3,
+    "largestContentfulPaintSeconds": 0.5,
+    "totalBlockingTimeMs": 0,
+    "cumulativeLayoutShift": 0,
+    "speedIndexSeconds": 0.6
+  },
+  "verifiedAssets": {
+    "script": "index-D2ply90c.js",
+    "styles": "index-Cu5xIWfd.css",
+    "logoBytes": 10476,
+    "masterLogoUnchangedSha256": "c32e29173190097a0839d86e9ae437961f440aa3440997f58f9fc32ed56c2791"
+  },
+  "footerAt390Px": { "beforeHeightPx": 1125, "afterHeightPx": 509.6 },
+  "desktopFooterHeightPx": 390,
+  "validation": {
+    "unitTestsPassed": 10,
+    "browserSuitesPassed": ["performance", "reference-home", "motion-sections", "reference-review", "category-input", "portfolio"],
+    "productionBuildsPassed": ["build", "build:pages"],
+    "lintErrors": 0,
+    "existingLintWarnings": 10
+  },
+  "evidenceDirectory": "Workspace output/website-performance-2026-11-22; Google report screenshots and local/live layout captures."
+}

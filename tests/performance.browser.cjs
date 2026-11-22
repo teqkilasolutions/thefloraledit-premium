@@ -39,7 +39,9 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
       assert.ok(!requests.some(url => url.includes(`/optimized/${hidden}-`) && url.endsWith('.avif')), 'The hidden desktop/phone opening must not download');
       assert.match(await page.locator('.hero-slide').last().locator('img').evaluate(el => el.currentSrc), new RegExp(`/optimized/${opening}-`));
       assert.equal(resources.filter(item => item.name === first.name).length, 1, 'Preloading must not duplicate the opening image request');
-      const followups = resources.filter(item => /\/optimized\/(night-|heritage-)/.test(item.name));
+      // Gallery thumbnails reuse these event names as WebP and may be natively
+      // prefetched near the viewport; the carousel buffers its AVIF frames.
+      const followups = resources.filter(item => /\/optimized\/(night-|heritage-)/.test(item.name) && item.name.endsWith('.avif'));
       assert.ok(followups.every(item => item.start >= first.end - 1), 'Remaining slides must wait for the opening photo');
       assert.equal(await page.locator('.identity-monogram').first().evaluate(el => el.complete && el.naturalWidth === 320), true);
       const footer = await page.locator('.reference-footer').boundingBox();
